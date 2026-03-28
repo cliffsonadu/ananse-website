@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Anansé Creative Haus</title>
+<meta name="description" content="Anansé Creative Haus — a Warsaw-based production house rooted in storytelling and premium quality.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ORIGIN */
+.origin {
+  padding: 6rem 3.5rem;
+  border-bottom: 0.5px solid var(--cream-06);
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: center;
+}
+.origin-img-wrap {
+  position: relative;
+}
+.origin-img {
+  width: 100%; aspect-ratio: 4/5;
+  background: linear-gradient(145deg, #1c0a0a, #100606, #0d0809);
+  position: relative; overflow: hidden;
+}
+.origin-img img { width: 100%; height: 100%; object-fit: cover; }
+.origin-img-ph {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.origin-img-ph span {
+  font-family: var(--serif); font-size: 6rem;
+  color: rgba(237,232,223,0.04); font-style: italic;
+}
+.origin-img-caption {
+  position: absolute; bottom: -1.5rem; right: -1.5rem;
+  background: var(--black2); border: 0.5px solid var(--cream-06);
+  padding: 1rem 1.5rem;
+}
+.origin-img-caption span {
+  font-size: 9px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(237,232,223,0.3);
+}
+.origin-text {}
+.origin-text .s-label { margin-bottom: 1.2rem; }
+.origin-h2 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300; color: var(--cream);
+  line-height: 1.1; margin-bottom: 2rem;
+}
+.origin-h2 em { font-style: italic; color: rgba(237,232,223,0.35); }
+.origin-body {
+  font-size: 13.5px; line-height: 2;
+  color: rgba(237,232,223,0.4); font-weight: 300;
+}
+.origin-body p { margin-bottom: 1.5rem; }
+
+/* VALUES */
+.values { padding: 6rem 3.5rem; border-bottom: 0.5px solid var(--cream-06); }
+.values-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 0; margin-top: 3.5rem;
+  border-top: 0.5px solid var(--cream-06);
+}
+.val-item {
+  padding: 2.5rem 2.5rem 2.5rem 0;
+  border-right: 0.5px solid var(--cream-06);
+  transition: padding-left 0.4s;
+}
+.val-item:hover { padding-left: 0.5rem; }
+.val-item:last-child { border-right: none; padding-right: 0; }
+.val-item:not(:first-child) { padding-left: 2.5rem; }
+.val-item:not(:first-child):hover { padding-left: 3rem; }
+.val-icon {
+  font-family: var(--serif); font-size: 2.5rem;
+  color: rgba(139,26,26,0.3); margin-bottom: 1rem;
+}
+.val-title {
+  font-family: var(--serif); font-size: 1.4rem;
+  font-weight: 300; color: var(--cream); margin-bottom: 0.7rem;
+}
+.val-desc {
+  font-size: 12.5px; line-height: 1.85;
+  color: rgba(237,232,223,0.33); font-weight: 300;
+}
+
+/* TEAM */
+.team { padding: 6rem 3.5rem; border-bottom: 0.5px solid var(--cream-06); }
+.team-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 4px; margin-top: 3.5rem;
+}
+.team-card { position: relative; overflow: hidden; cursor: none; }
+.team-card-img {
+  width: 100%; aspect-ratio: 3/4;
+  background: linear-gradient(145deg,#1c0a0a,#0d0809);
+  position: relative; overflow: hidden;
+  transition: transform 0.8s var(--ease);
+}
+.team-card:hover .team-card-img { transform: scale(1.04); }
+.team-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.team-card-ph {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.team-card-ph span {
+  font-family: var(--serif); font-size: 5rem;
+  color: rgba(237,232,223,0.04); font-style: italic;
+  transition: color 0.5s;
+}
+.team-card:hover .team-card-ph span { color: rgba(237,232,223,0.08); }
+.team-card-info { padding: 1.5rem 0 0; }
+.team-card-name {
+  font-family: var(--serif); font-size: 1.3rem;
+  font-weight: 300; color: var(--cream); margin-bottom: 4px;
+}
+.team-card-role {
+  font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(237,232,223,0.3);
+  margin-bottom: 10px;
+}
+.team-card-ig {
+  font-size: 11px; color: var(--red); transition: color 0.3s;
+}
+.team-card-ig:hover { color: var(--cream); }
+
+/* COLLABORATORS */
+.collab-note {
+  margin-top: 4rem; padding: 2.5rem 3rem;
+  border: 0.5px solid var(--cream-06);
+  display: flex; align-items: center; gap: 2.5rem;
+}
+.collab-note-icon {
+  font-family: var(--serif); font-size: 3rem;
+  color: rgba(139,26,26,0.3); flex-shrink: 0;
+}
+.collab-note-text {
+  font-size: 13px; color: rgba(237,232,223,0.38);
+  line-height: 1.8; font-weight: 300;
+}
+
+/* MANIFESTO QUOTE */
+.about-manifesto {
+  padding: 6rem 3.5rem;
+  border-bottom: 0.5px solid var(--cream-06);
+  position: relative; overflow: hidden; text-align: center;
+}
+.am-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 100% at 50% 50%, rgba(139,26,26,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.am-quote {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 300; font-style: italic;
+  color: rgba(237,232,223,0.5); line-height: 1.4;
+  max-width: 860px; margin: 0 auto 2rem;
+}
+.am-quote strong { font-style: normal; color: var(--cream); }
+.am-attr {
+  font-size: 9px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--red);
+}
+
+@media (max-width: 768px) {
+  .origin { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+  .origin-img-caption { bottom: -1rem; right: -0.5rem; }
+  .values { padding: 4rem 1.5rem; }
+  .values-grid { grid-template-columns: 1fr; }
+  .val-item { border-right: none; border-bottom: 0.5px solid var(--cream-06); padding: 2rem 0; }
+  .val-item:last-child { border-bottom: none; }
+  .team { padding: 4rem 1.5rem; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .about-manifesto { padding: 4rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">ANANSÉ</a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html"><button class="nav-cta-btn">Let's Create</button></a>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-glow"></div>
+  <div class="page-hero-label rv">Our Story</div>
+  <h1 class="rv d1">Named after the <em>spider.</em></h1>
+  <p class="page-hero-sub rv d2">The master storyteller of West African folklore. The one who weaves worlds from nothing. That's Anansé.</p>
+</section>
+
+<!-- ORIGIN STORY -->
+<section class="origin">
+  <div class="origin-img-wrap rv">
+    <div class="origin-img">
+      <!--
+        ADD CLIFFSON'S PHOTO:
+        <img src="images/team/cliffson-hero.jpg" alt="Cliffson — Creative Director">
+      -->
+      <div class="origin-img-ph"><span>C</span></div>
+    </div>
+    <div class="origin-img-caption">
+      <span>Warsaw, Poland — 2025</span>
+    </div>
+  </div>
+  <div class="origin-text rv d2">
+    <div class="s-label">The Beginning</div>
+    <h2 class="origin-h2">Built from a belief that <em>every brand has a story worth telling.</em></h2>
+    <div class="origin-body">
+      <p>Anansé Creative Haus was founded by Clifford (Cliffson) — a Ghanaian director of photography, creative director, and marketing specialist based in Warsaw, Poland.</p>
+      <p>The name Anansé comes from Anansi — the spider of West African and Caribbean folklore, known as the keeper of stories. A trickster. A weaver. A world-builder. That energy is woven into everything we do.</p>
+      <p>We started as a photography studio and quickly evolved into a full production house — one that doesn't just capture moments, but builds complete visual worlds for brands. From editorial campaigns to cinematic brand films, we approach every project with the same obsession: tell a story that matters.</p>
+      <p>Warsaw-based. Globally minded. And only getting started.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="rv"><div class="s-label">What We Stand For</div><div class="s-title">Our Values</div></div>
+  <div class="values-grid">
+    <div class="val-item rv d1">
+      <div class="val-icon">✦</div>
+      <div class="val-title">Storytelling First</div>
+      <p class="val-desc">Every project begins with a story. Not a shot list. Not a brief. A story. We find the narrative before we pick up the camera.</p>
+    </div>
+    <div class="val-item rv d2">
+      <div class="val-icon">◈</div>
+      <div class="val-title">Premium Without Apology</div>
+      <p class="val-desc">We don't compromise on quality. Not on the edit, not on the concept, not on the delivery. If it doesn't feel premium, it doesn't leave the studio.</p>
+    </div>
+    <div class="val-item rv d3">
+      <div class="val-icon">Æ</div>
+      <div class="val-title">Culture, Not Content</div>
+      <p class="val-desc">Content fills a feed. Culture builds a brand. We're not interested in volume — we're interested in impact. Every frame we create is meant to mean something.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team">
+  <div class="rv"><div class="s-label">The People</div><div class="s-title">The Team</div></div>
+  <div class="team-grid">
+
+    <div class="team-card rv d1">
+      <div class="team-card-img">
+        <!--
+          ADD PHOTO: <img src="images/team/cliffson.jpg" alt="Cliffson">
+        -->
+        <div class="team-card-ph"><span>C</span></div>
+      </div>
+      <div class="team-card-info">
+        <div class="team-card-name">Clifford (Cliffson)</div>
+        <div class="team-card-role">Creative Director & Director of Photography</div>
+        <a href="https://instagram.com/cliffsonshotit" target="_blank" class="team-card-ig">@cliffsonshotit</a>
+      </div>
+    </div>
+
+    <div class="team-card rv d2">
+      <div class="team-card-img" style="background:linear-gradient(145deg,#0c0c1c,#080814);">
+        <!--
+          ADD PHOTO: <img src="images/team/team-member-2.jpg" alt="Team Member">
+        -->
+        <div class="team-card-ph"><span>+</span></div>
+      </div>
+      <div class="team-card-info">
+        <div class="team-card-name">Open Position</div>
+        <div class="team-card-role">Art Director / Stylist</div>
+        <a href="contact.html" class="team-card-ig">Join the team →</a>
+      </div>
+    </div>
+
+    <div class="team-card rv d3">
+      <div class="team-card-img" style="background:linear-gradient(145deg,#0a1408,#080e06);">
+        <!--
+          ADD PHOTO: <img src="images/team/team-member-3.jpg" alt="Team Member">
+        -->
+        <div class="team-card-ph"><span>+</span></div>
+      </div>
+      <div class="team-card-info">
+        <div class="team-card-name">Open Position</div>
+        <div class="team-card-role">Video Editor / Colourist</div>
+        <a href="contact.html" class="team-card-ig">Join the team →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="collab-note rv">
+    <div class="collab-note-icon">◉</div>
+    <p class="collab-note-text">Beyond our core team, we work with a curated network of directors, models, stylists, makeup artists, and producers across Poland and Europe. Every collaborator is hand-picked for their craft, their energy, and their commitment to quality.</p>
+  </div>
+</section>
+
+<!-- MANIFESTO QUOTE -->
+<section class="about-manifesto">
+  <div class="am-glow"></div>
+  <div class="am-quote rv">"We don't make content. We build <strong>visual worlds</strong> that brands live inside."</div>
+  <div class="am-attr rv d1">Anansé Creative Haus — Warsaw, 2025</div>
+</section>
+
+<!-- CTA -->
+<section style="padding:5rem 3.5rem;text-align:center;border-top:0.5px solid var(--cream-06);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(139,26,26,0.07) 0%,transparent 70%);"></div>
+  <div class="rv">
+    <div class="s-label">Work With Us</div>
+    <h2 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3.8rem);font-weight:300;color:var(--cream);margin-bottom:1.2rem;">Ready to build <em style="font-style:italic;color:rgba(237,232,223,0.3);">something remarkable?</em></h2>
+    <div style="margin-top:2.5rem;display:flex;justify-content:center;gap:1.4rem;flex-wrap:wrap;">
+      <a href="contact.html"><button class="btn-solid">Start a Project</button></a>
+      <a href="work.html"><button class="btn-outline">See Our Work</button></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">ANANSÉ</div>
+  <div class="footer-copy">© 2025 Anansé Creative Haus — Warsaw, Poland</div>
+  <div class="footer-links">
+    <a href="https://instagram.com/ananse.creative" target="_blank">Instagram</a>
+    <a href="mailto:info@ananse.agency">info@ananse.agency</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

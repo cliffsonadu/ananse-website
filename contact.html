@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Anansé Creative Haus</title>
+<meta name="description" content="Start a project with Anansé Creative Haus. Get in touch via email or Instagram.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* CONTACT LAYOUT */
+.contact-layout {
+  padding: 5rem 3.5rem 7rem;
+  display: grid; grid-template-columns: 1fr 1.3fr; gap: 6rem;
+  align-items: start;
+}
+
+/* LEFT INFO */
+.contact-info {}
+.contact-info-intro {
+  font-size: 13.5px; line-height: 1.9;
+  color: rgba(237,232,223,0.38); font-weight: 300;
+  margin-bottom: 3.5rem;
+}
+.contact-detail { margin-bottom: 3rem; }
+.contact-detail-label {
+  font-size: 9px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--red);
+  margin-bottom: 0.8rem;
+}
+.contact-detail a, .contact-detail p {
+  font-family: var(--serif); font-size: 1.15rem;
+  font-weight: 300; color: var(--cream);
+  transition: color 0.3s; line-height: 1.5;
+  display: block;
+}
+.contact-detail a:hover { color: rgba(237,232,223,0.6); }
+.contact-ig-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 0.5px solid rgba(237,232,223,0.15);
+  padding: 12px 22px; color: var(--cream);
+  font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all 0.4s; margin-top: 8px;
+}
+.contact-ig-btn:hover { border-color: var(--red); background: var(--red-dim); }
+.response-note {
+  margin-top: 3.5rem; padding: 1.5rem 1.8rem;
+  border-left: 0.5px solid var(--red);
+  background: rgba(139,26,26,0.05);
+}
+.response-note p {
+  font-size: 12px; line-height: 1.8;
+  color: rgba(237,232,223,0.38); font-weight: 300;
+}
+
+/* FORM */
+.contact-form-wrap {}
+.contact-form-title {
+  font-family: var(--serif); font-size: 1.8rem;
+  font-weight: 300; color: var(--cream);
+  margin-bottom: 2.5rem; line-height: 1.2;
+}
+.contact-form-title em { font-style: italic; color: rgba(237,232,223,0.35); }
+#contact-form { display: flex; flex-direction: column; gap: 0; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.form-group {
+  display: flex; flex-direction: column;
+  margin-bottom: 2px;
+}
+.form-group.full { grid-column: 1 / -1; }
+.form-label {
+  font-size: 9px; letter-spacing: 0.24em;
+  text-transform: uppercase; color: rgba(237,232,223,0.3);
+  padding: 1rem 1.2rem 0.4rem;
+  background: rgba(237,232,223,0.03);
+  border: 0.5px solid rgba(237,232,223,0.07);
+  border-bottom: none;
+}
+.form-input, .form-select, .form-textarea {
+  background: rgba(237,232,223,0.03);
+  border: 0.5px solid rgba(237,232,223,0.07);
+  border-top: none;
+  color: var(--cream); font-family: var(--sans);
+  font-size: 13px; font-weight: 300;
+  padding: 0.9rem 1.2rem;
+  transition: border-color 0.35s, background 0.35s;
+  outline: none; width: 100%;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: rgba(139,26,26,0.5);
+  background: rgba(237,232,223,0.05);
+}
+.form-input::placeholder, .form-textarea::placeholder {
+  color: rgba(237,232,223,0.18);
+}
+.form-select {
+  appearance: none; -webkit-appearance: none;
+  cursor: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='rgba(139,26,26,0.7)' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.2rem center;
+}
+.form-select option { background: #0d0d0d; color: var(--cream); }
+.form-textarea { resize: vertical; min-height: 140px; }
+.form-submit { margin-top: 4px; }
+.form-submit button { width: 100%; padding: 16px; font-size: 11px; letter-spacing: 0.22em; }
+.form-msg {
+  margin-top: 1rem; padding: 1rem 1.2rem;
+  font-size: 12px; line-height: 1.6;
+}
+.form-msg.success { color: rgba(139,200,100,0.8); border: 0.5px solid rgba(139,200,100,0.2); }
+.form-msg.error { color: rgba(200,80,80,0.8); border: 0.5px solid rgba(200,80,80,0.2); }
+
+/* OR DIVIDER */
+.or-divider {
+  display: flex; align-items: center; gap: 1rem;
+  margin: 2rem 0; color: rgba(237,232,223,0.2);
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+}
+.or-divider::before, .or-divider::after {
+  content: ''; flex: 1; height: 0.5px;
+  background: rgba(237,232,223,0.07);
+}
+
+/* FAQ */
+.faq-section {
+  padding: 5rem 3.5rem; border-top: 0.5px solid var(--cream-06);
+  background: var(--black2);
+}
+.faq-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; margin-top: 3rem;
+}
+.faq-item {
+  padding: 2rem 2.5rem 2rem 0;
+  border-bottom: 0.5px solid var(--cream-06);
+}
+.faq-item:nth-child(even) { padding-left: 2.5rem; padding-right: 0; border-left: 0.5px solid var(--cream-06); }
+.faq-q {
+  font-family: var(--serif); font-size: 1.1rem;
+  font-weight: 300; color: var(--cream);
+  margin-bottom: 0.8rem;
+}
+.faq-a {
+  font-size: 12.5px; line-height: 1.85;
+  color: rgba(237,232,223,0.33); font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .contact-layout { grid-template-columns: 1fr; gap: 3.5rem; padding: 4rem 1.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .faq-section { padding: 4rem 1.5rem; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .faq-item:nth-child(even) { border-left: none; padding-left: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">ANANSÉ</a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html"><button class="nav-cta-btn">Let's Create</button></a>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-glow"></div>
+  <div class="page-hero-label rv">Get In Touch</div>
+  <h1 class="rv d1">Let's build something<br><em>the industry remembers.</em></h1>
+  <p class="page-hero-sub rv d2">Whether you're a brand looking for a creative partner or a creative looking to collaborate — we're ready when you are.</p>
+</section>
+
+<!-- CONTACT LAYOUT -->
+<div class="contact-layout">
+
+  <!-- LEFT -->
+  <div class="contact-info rv">
+    <p class="contact-info-intro">We typically respond within 48 hours. For urgent briefs or time-sensitive projects, DM us on Instagram for a faster response.</p>
+
+    <div class="contact-detail">
+      <div class="contact-detail-label">Email</div>
+      <a href="mailto:info@ananse.agency">info@ananse.agency</a>
+    </div>
+
+    <div class="contact-detail">
+      <div class="contact-detail-label">Instagram — Agency</div>
+      <a href="https://instagram.com/ananse.creative" target="_blank">@ananse.creative</a>
+      <a href="https://instagram.com/ananse.creative" target="_blank" class="contact-ig-btn">
+        DM on Instagram <span>→</span>
+      </a>
+    </div>
+
+    <div class="contact-detail">
+      <div class="contact-detail-label">Instagram — Cliffson</div>
+      <a href="https://instagram.com/cliffsonshotit" target="_blank">@cliffsonshotit</a>
+    </div>
+
+    <div class="contact-detail">
+      <div class="contact-detail-label">Based In</div>
+      <p>Warsaw, Poland<br><span style="color:rgba(237,232,223,0.35);font-family:var(--sans);font-size:12px;font-weight:300;">Available for projects worldwide</span></p>
+    </div>
+
+    <div class="response-note">
+      <p>All enquiries are reviewed personally by Cliffson. We don't do generic responses — if you reach out, you'll hear back from the person who'll be working on your project.</p>
+    </div>
+  </div>
+
+  <!-- RIGHT — FORM -->
+  <div class="contact-form-wrap rv d2">
+    <div class="contact-form-title">Start a <em>project with us.</em></div>
+    <form id="contact-form" novalidate>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Name *</label>
+          <input class="form-input" type="text" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email *</label>
+          <input class="form-input" type="email" name="email" placeholder="your@email.com" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Company / Brand</label>
+          <input class="form-input" type="text" name="company" placeholder="Brand or company name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Project Type</label>
+          <select class="form-select" name="type">
+            <option value="Brand Campaign">Brand Campaign</option>
+            <option value="Fashion & Editorial">Fashion & Editorial</option>
+            <option value="Video Production">Video Production</option>
+            <option value="Creative Direction">Creative Direction</option>
+            <option value="Corporate Storytelling">Corporate Storytelling</option>
+            <option value="BTS Coverage">BTS Coverage</option>
+            <option value="Talent Enquiry">Talent Enquiry (Phase 2)</option>
+            <option value="Other">Other / Not Sure Yet</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group full">
+        <label class="form-label">Tell Us About Your Project *</label>
+        <textarea class="form-textarea" name="message" placeholder="What are you working on? Tell us about the brief, timeline, and any references or ideas you have in mind..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Approximate Budget (PLN)</label>
+        <select class="form-select" name="budget">
+          <option value="Under 2000">Under 2,000 PLN</option>
+          <option value="2000-5000">2,000 – 5,000 PLN</option>
+          <option value="5000-10000">5,000 – 10,000 PLN</option>
+          <option value="10000+">10,000+ PLN</option>
+          <option value="Let's discuss">Prefer to discuss</option>
+        </select>
+      </div>
+
+      <div class="form-submit">
+        <button type="submit" class="btn-solid">Send Enquiry →</button>
+      </div>
+
+    </form>
+
+    <div class="or-divider">or reach us directly</div>
+
+    <a href="https://instagram.com/ananse.creative" target="_blank" class="contact-ig-btn" style="width:100%;justify-content:center;display:flex;">
+      DM @ananse.creative on Instagram <span>→</span>
+    </a>
+  </div>
+
+</div>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="rv"><div class="s-label">Common Questions</div><div class="s-title">FAQ</div></div>
+  <div class="faq-grid">
+    <div class="faq-item rv d1">
+      <div class="faq-q">How far in advance should I book?</div>
+      <p class="faq-a">For campaign shoots, 2–4 weeks advance booking is ideal. For larger productions with multiple team members, 4–6 weeks gives us time to do the project justice. Rush bookings can sometimes be accommodated — just ask.</p>
+    </div>
+    <div class="faq-item rv d2">
+      <div class="faq-q">Do you travel for shoots?</div>
+      <p class="faq-a">Yes. We're Warsaw-based but regularly work across Poland and Europe. Travel costs are factored into the project quote. If you have something international in mind, let's talk.</p>
+    </div>
+    <div class="faq-item rv d3">
+      <div class="faq-q">Can we negotiate the rate?</div>
+      <p class="faq-a">Our rates reflect the quality and craft we deliver. That said, we're always open to a conversation — especially for long-term partnerships or interesting creative projects. Note that negotiating the rate means adjusting the deliverables, not the quality.</p>
+    </div>
+    <div class="faq-item rv d4">
+      <div class="faq-q">Do you provide RAW files?</div>
+      <p class="faq-a">RAW files are available as an add-on, priced separately from the standard package. Think of them as licensing the full creative potential of the shoot. We'll discuss this during the briefing process.</p>
+    </div>
+    <div class="faq-item rv d1">
+      <div class="faq-q">What's included in the brief process?</div>
+      <p class="faq-a">Every project starts with a discovery conversation where we understand your brand, goals, and vision. From there we develop a creative concept, moodboard, and production plan before anything is shot.</p>
+    </div>
+    <div class="faq-item rv d2">
+      <div class="faq-q">Do you work with new or emerging brands?</div>
+      <p class="faq-a">Absolutely. Some of our most exciting work has been with brands in their early stages. If the creative vision is strong and the commitment is real, we're in — regardless of the size of the brand.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">ANANSÉ</div>
+  <div class="footer-copy">© 2025 Anansé Creative Haus — Warsaw, Poland</div>
+  <div class="footer-links">
+    <a href="https://instagram.com/ananse.creative" target="_blank">Instagram</a>
+    <a href="mailto:info@ananse.agency">info@ananse.agency</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
