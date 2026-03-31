@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rehard Bags — Anansé Creative Haus</title>
+<meta name="description" content="Rehard Bags fashion editorial — shot by Anansé Creative Haus, Warsaw.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.proj-hero {
+  position: relative; height: 100vh; min-height: 600px;
+  overflow: hidden; display: flex; align-items: flex-end;
+  padding: 0 3.5rem 5rem;
+}
+.proj-hero-img { position: absolute; inset: 0; }
+.proj-hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.proj-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(7,7,7,0.92) 0%, rgba(7,7,7,0.3) 50%, rgba(7,7,7,0.1) 100%);
+}
+.proj-hero-content { position: relative; z-index: 2; }
+.proj-hero-eyebrow {
+  font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: #8b1a1a; margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 14px;
+}
+.proj-hero-eyebrow::before {
+  content: ''; display: inline-block; width: 30px; height: 0.5px; background: #8b1a1a;
+}
+.proj-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 300; line-height: 1.0; color: #ede8df; margin-bottom: 1.5rem;
+}
+.proj-hero h1 em { font-style: italic; color: rgba(237,232,223,0.35); }
+.proj-hero-meta { display: flex; gap: 3rem; flex-wrap: wrap; }
+.proj-meta-item { display: flex; flex-direction: column; }
+.proj-meta-label {
+  font-size: 8px; letter-spacing: 0.26em; text-transform: uppercase;
+  color: rgba(237,232,223,0.3); margin-bottom: 4px;
+}
+.proj-meta-val { font-size: 12px; color: rgba(237,232,223,0.6); font-weight: 300; }
+.proj-intro {
+  padding: 5rem 3.5rem;
+  display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem;
+  border-bottom: 0.5px solid rgba(237,232,223,0.06); align-items: start;
+}
+.proj-intro-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 300; color: #ede8df; line-height: 1.2; margin-bottom: 1.5rem;
+}
+.proj-intro-right { font-size: 13.5px; line-height: 1.95; color: rgba(237,232,223,0.4); font-weight: 300; }
+.proj-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2rem; }
+.proj-tag {
+  font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase;
+  border: 0.5px solid rgba(237,232,223,0.12); padding: 6px 14px; color: rgba(237,232,223,0.35);
+}
+.gallery-wrap { padding: 4rem 3.5rem 6rem; }
+.masonry-js { display: flex; gap: 6px; align-items: flex-start; }
+.masonry-col { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.masonry-item { overflow: hidden; position: relative; cursor: none; }
+.masonry-item img {
+  width: 100%; height: auto; display: block;
+  transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.4s;
+}
+.masonry-item:hover img { transform: scale(1.03); opacity: 0.88; }
+.masonry-item::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(7,7,7,0); transition: background 0.4s; pointer-events: none;
+}
+.masonry-item:hover::after { background: rgba(7,7,7,0.12); }
+.zoom-icon {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%) scale(0.6);
+  opacity: 0; transition: all 0.35s; z-index: 2;
+  width: 44px; height: 44px;
+  border: 0.5px solid rgba(237,232,223,0.6);
+  border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; pointer-events: none;
+}
+.zoom-icon::before { content: '+'; font-size: 1.4rem; color: rgba(237,232,223,0.8); font-weight: 300; line-height: 1; }
+.masonry-item:hover .zoom-icon { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 1000;
+  background: rgba(7,7,7,0.97); align-items: center; justify-content: center;
+}
+.lightbox.active { display: flex; }
+.lb-img-wrap { max-width: 90vw; max-height: 88vh; display: flex; align-items: center; justify-content: center; }
+.lb-img-wrap img { max-width: 90vw; max-height: 85vh; width: auto; height: auto; object-fit: contain; display: block; }
+.lb-close {
+  position: fixed; top: 1.8rem; right: 2rem;
+  width: 44px; height: 44px; border: 0.5px solid rgba(237,232,223,0.2);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  cursor: none; transition: all 0.3s; background: transparent; color: #ede8df; font-size: 1.1rem; z-index: 1001;
+}
+.lb-close:hover { border-color: #8b1a1a; color: #8b1a1a; }
+.lb-nav {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  width: 50px; height: 50px; border: 0.5px solid rgba(237,232,223,0.15);
+  display: flex; align-items: center; justify-content: center;
+  cursor: none; transition: all 0.35s; background: transparent;
+  color: rgba(237,232,223,0.5); font-size: 1.2rem; z-index: 1001;
+}
+.lb-nav:hover { border-color: #8b1a1a; color: #ede8df; }
+.lb-prev { left: 1.5rem; }
+.lb-next { right: 1.5rem; }
+.lb-counter {
+  position: fixed; bottom: 1.8rem; left: 50%; transform: translateX(-50%);
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(237,232,223,0.28); z-index: 1001; font-family: 'DM Sans', sans-serif;
+}
+.proj-credits {
+  padding: 4rem 3.5rem; border-top: 0.5px solid rgba(237,232,223,0.06);
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem;
+}
+.credit-item { display: flex; flex-direction: column; }
+.credit-label { font-size: 8px; letter-spacing: 0.26em; text-transform: uppercase; color: #8b1a1a; margin-bottom: 6px; }
+.credit-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; color: rgba(237,232,223,0.6); }
+.next-project {
+  border-top: 0.5px solid rgba(237,232,223,0.06); padding: 4rem 3.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: none; transition: background 0.4s; text-decoration: none;
+}
+.next-project:hover { background: rgba(237,232,223,0.02); }
+.next-label { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(237,232,223,0.25); margin-bottom: 8px; }
+.next-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: #ede8df; }
+.next-arr { font-size: 2rem; color: rgba(237,232,223,0.2); transition: transform 0.4s, color 0.4s; }
+.next-project:hover .next-arr { transform: translateX(8px); color: #8b1a1a; }
+@media (max-width: 768px) {
+  .proj-hero { padding: 0 1.5rem 3rem; }
+  .proj-intro { grid-template-columns: 1fr; gap: 2rem; padding: 3.5rem 1.5rem; }
+  .gallery-wrap { padding: 2rem 1rem 4rem; }
+  .masonry-js { gap: 4px; } .masonry-col { gap: 4px; }
+  .proj-credits { grid-template-columns: 1fr 1fr; padding: 3rem 1.5rem; }
+  .next-project { padding: 3rem 1.5rem; }
+  .lb-nav { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+<nav class="nav">
+  <a href="index.html" class="nav-logo" style="cursor:none;">ANANSÉ</a>
+  <ul class="nav-links">
+    <li><a href="work.html" style="cursor:none;">Work</a></li>
+    <li><a href="services.html" style="cursor:none;">Services</a></li>
+    <li><a href="about.html" style="cursor:none;">About</a></li>
+    <li><a href="contact.html" style="cursor:none;">Contact</a></li>
+  </ul>
+  <a href="contact.html" style="cursor:none;"><button class="nav-cta-btn">Let's Create</button></a>
+</nav>
+
+<section class="proj-hero">
+  <div class="proj-hero-img">
+    <img src="images/work/rehard-bags/rehard-00020.jpg" alt="Rehard Bags Editorial">
+  </div>
+  <div class="proj-hero-overlay"></div>
+  <div class="proj-hero-content">
+    <div class="proj-hero-eyebrow">Fashion & Editorial</div>
+    <h1>Rehard <em>Bags</em></h1>
+    <div class="proj-hero-meta">
+      <div class="proj-meta-item"><div class="proj-meta-label">Client</div><div class="proj-meta-val">Rehard Bags</div></div>
+      <div class="proj-meta-item"><div class="proj-meta-label">Type</div><div class="proj-meta-val">Fashion & Editorial</div></div>
+      <div class="proj-meta-item"><div class="proj-meta-label">Agency</div><div class="proj-meta-val">Anansé Creative Haus</div></div>
+      <div class="proj-meta-item"><div class="proj-meta-label">Location</div><div class="proj-meta-val">Warsaw, Poland</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="proj-intro">
+  <div class="rv">
+    <div class="s-label">The Project</div>
+    <div class="proj-intro-title">Where craft meets editorial vision.</div>
+    <div class="proj-tags">
+      <span class="proj-tag">Fashion</span>
+      <span class="proj-tag">Editorial</span>
+      <span class="proj-tag">Bags</span>
+      <span class="proj-tag">Warsaw</span>
+    </div>
+  </div>
+  <p class="proj-intro-right rv d2">
+    For Rehard Bags, we created an editorial campaign that puts the craft of the product front and centre. Every frame was designed to highlight the texture, detail, and intention behind each piece — turning product photography into visual storytelling.<br><br>
+    Shot with a fashion editorial lens, this project positions Rehard Bags as a brand with a distinct identity and a story worth telling.
+  </p>
+</div>
+
+<div class="gallery-wrap">
+  <div class="masonry-js" id="masonry-js"></div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lb-close">✕</button>
+  <button class="lb-nav lb-prev" id="lb-prev">←</button>
+  <div class="lb-img-wrap"><img src="" alt="Rehard Bags" id="lb-img"></div>
+  <button class="lb-nav lb-next" id="lb-next">→</button>
+  <div class="lb-counter" id="lb-counter">1 / 22</div>
+</div>
+
+<div class="proj-credits rv">
+  <div class="credit-item"><div class="credit-label">Photography & Direction</div><div class="credit-val">Cliffson / Anansé Creative Haus</div></div>
+  <div class="credit-item"><div class="credit-label">Client</div><div class="credit-val">Rehard Bags</div></div>
+  <div class="credit-item"><div class="credit-label">Category</div><div class="credit-val">Fashion & Editorial</div></div>
+  <div class="credit-item"><div class="credit-label">Agency</div><div class="credit-val"><a href="index.html" style="color:#8b1a1a;cursor:none;">@ananse.creative</a></div></div>
+</div>
+
+<a href="work.html" class="next-project" style="cursor:none;">
+  <div><div class="next-label">Back to</div><div class="next-title">All Projects</div></div>
+  <div class="next-arr">→</div>
+</a>
+
+<footer class="footer">
+  <div class="footer-logo">ANANSÉ</div>
+  <div class="footer-copy">© 2025 Anansé Creative Haus — Warsaw, Poland</div>
+  <div class="footer-links">
+    <a href="https://instagram.com/ananse.creative" target="_blank">Instagram</a>
+    <a href="mailto:info@ananse.agency">info@ananse.agency</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+(function(){
+  const photos = Array.from({length:22},(_,i)=>'images/work/rehard-bags/rehard-'+String(i+1).padStart(5,'0')+'.jpg');
+  const total = photos.length;
+  function getColCount(){ return window.innerWidth<=480?1:window.innerWidth<=768?2:3; }
+  const container = document.getElementById('masonry-js');
+  let colCount,cols,colHeights;
+  function buildGrid(){
+    colCount=getColCount(); container.innerHTML=''; cols=[]; colHeights=new Array(colCount).fill(0);
+    for(let i=0;i<colCount;i++){const c=document.createElement('div');c.className='masonry-col';container.appendChild(c);cols.push(c);}
+    photos.forEach((src,index)=>{
+      const item=document.createElement('div'); item.className='masonry-item';
+      const img=document.createElement('img'); img.src=src; img.alt='Rehard Bags'; img.loading='lazy';
+      const zoom=document.createElement('div'); zoom.className='zoom-icon';
+      item.appendChild(img); item.appendChild(zoom);
+      item.addEventListener('click',()=>openLightbox(index));
+      const s=colHeights.indexOf(Math.min(...colHeights));
+      cols[s].appendChild(item); colHeights[s]+=300;
+    });
+  }
+  buildGrid();
+  let rt; window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{if(getColCount()!==colCount)buildGrid();},200);});
+  const lightbox=document.getElementById('lightbox'),lbImg=document.getElementById('lb-img'),lbCounter=document.getElementById('lb-counter');
+  let current=0;
+  function openLightbox(i){current=i;lbImg.src=photos[current];lbCounter.textContent=(current+1)+' / '+total;lightbox.classList.add('active');document.body.style.overflow='hidden';}
+  function closeLightbox(){lightbox.classList.remove('active');document.body.style.overflow='';setTimeout(()=>{lbImg.src='';},300);}
+  function prevImg(){current=(current-1+total)%total;lbImg.src=photos[current];lbCounter.textContent=(current+1)+' / '+total;}
+  function nextImg(){current=(current+1)%total;lbImg.src=photos[current];lbCounter.textContent=(current+1)+' / '+total;}
+  document.getElementById('lb-close').addEventListener('click',closeLightbox);
+  document.getElementById('lb-prev').addEventListener('click',prevImg);
+  document.getElementById('lb-next').addEventListener('click',nextImg);
+  lightbox.addEventListener('click',(e)=>{if(e.target===lightbox)closeLightbox();});
+  document.addEventListener('keydown',(e)=>{if(!lightbox.classList.contains('active'))return;if(e.key==='ArrowLeft')prevImg();if(e.key==='ArrowRight')nextImg();if(e.key==='Escape')closeLightbox();});
+  let tx=0;
+  lightbox.addEventListener('touchstart',(e)=>{tx=e.touches[0].clientX;});
+  lightbox.addEventListener('touchend',(e)=>{const d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>50)d>0?nextImg():prevImg();});
+})();
+</script>
+</body>
+</html>
