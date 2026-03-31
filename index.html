@@ -121,6 +121,12 @@
   display: flex; justify-content: space-between;
   align-items: flex-end; margin-bottom: 3rem;
 }
+.work-grid { align-items: start; }
+.wcard-img-wrap { position: relative; overflow: hidden; }
+.wcard-ph {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
 
 /* BRAND TICKER */
 .brand-bar-ticker {
@@ -337,10 +343,8 @@
 
     <!-- LARGE LEFT CARD — Vanity of the Soul -->
     <a href="work.html" class="wcard tall">
-      <div class="wcard-img-wrap">
-        <div style="width:100%;height:100%;background:linear-gradient(145deg,#1c0a0a,#100606,#0d0809);position:relative;">
-          <div class="wcard-ph"><span class="wcard-ph-glyph">Æ</span></div>
-        </div>
+      <div class="wcard-img-wrap" style="background:linear-gradient(145deg,#1c0a0a,#100606,#0d0809);">
+        <div class="wcard-ph"><span class="wcard-ph-glyph">Æ</span></div>
       </div>
       <div class="wcard-overlay"></div>
       <div class="wcard-info">
@@ -352,10 +356,8 @@
     <!-- MIDDLE COLUMN -->
     <div class="col2">
       <a href="work.html" class="wcard">
-        <div class="wcard-img-wrap">
-          <div style="width:100%;height:100%;background:linear-gradient(145deg,#0c0c1c,#080814);position:relative;">
-            <div class="wcard-ph"><span class="wcard-ph-glyph">✦</span></div>
-          </div>
+        <div class="wcard-img-wrap" style="background:linear-gradient(145deg,#0c0c1c,#080814);">
+          <div class="wcard-ph"><span class="wcard-ph-glyph">✦</span></div>
         </div>
         <div class="wcard-overlay"></div>
         <div class="wcard-info">
@@ -364,10 +366,8 @@
         </div>
       </a>
       <a href="work.html" class="wcard">
-        <div class="wcard-img-wrap">
-          <div style="width:100%;height:100%;background:linear-gradient(145deg,#0a1408,#080e06);position:relative;">
-            <div class="wcard-ph"><span class="wcard-ph-glyph">◈</span></div>
-          </div>
+        <div class="wcard-img-wrap" style="background:linear-gradient(145deg,#0a1408,#080e06);">
+          <div class="wcard-ph"><span class="wcard-ph-glyph">◈</span></div>
         </div>
         <div class="wcard-overlay"></div>
         <div class="wcard-info">
@@ -491,7 +491,3 @@
     <a href="mailto:info@ananse.agency">info@ananse.agency</a>
   </div>
 </footer>
-
-<script src="js/main.js"></script>
-</body>
-</html>
