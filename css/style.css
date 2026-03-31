@@ -322,6 +322,8 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(13
   border-top: 0.5px solid var(--cream-06);
   padding: 2.5rem 3.5rem;
   display: flex; justify-content: space-between; align-items: center;
+  width: 100%;
+  clear: both;
 }
 .footer-logo {
   font-family: var(--serif);
@@ -356,4 +358,9 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(13
   .brand-slot { width: 100px; }
   .footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
   .page-hero { padding: 9rem 1.5rem 3.5rem; }
+}
+/* MAX WIDTH CONTAINER — prevents layout breaking on very large screens */
+body {
+  max-width: 1920px;
+  margin: 0 auto;
 }
