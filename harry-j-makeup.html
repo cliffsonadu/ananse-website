@@ -64,37 +64,37 @@
   padding: 6px 14px; color: rgba(237,232,223,0.35);
 }
 
-/* ── MASONRY GALLERY ── */
-.gallery-wrap {
-  padding: 4rem 3.5rem 6rem;
-}
+/* ── GALLERY WRAP ── */
+.gallery-wrap { padding: 4rem 3.5rem 6rem; }
 
-.masonry {
-  column-count: 3;
-  column-gap: 6px;
+/* ── JS MASONRY COLUMNS ── */
+.masonry-js {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
 }
-
+.masonry-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
 .masonry-item {
-  break-inside: avoid;
-  margin-bottom: 6px;
   overflow: hidden;
   position: relative;
   cursor: none;
+  break-inside: avoid;
 }
-
 .masonry-item img {
   width: 100%;
   height: auto;
   display: block;
   transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.4s;
 }
-
 .masonry-item:hover img {
   transform: scale(1.03);
   opacity: 0.88;
 }
-
-/* Hover overlay */
 .masonry-item::after {
   content: '';
   position: absolute; inset: 0;
@@ -102,12 +102,9 @@
   transition: background 0.4s;
   pointer-events: none;
 }
-.masonry-item:hover::after {
-  background: rgba(7,7,7,0.15);
-}
+.masonry-item:hover::after { background: rgba(7,7,7,0.12); }
 
-/* Click icon on hover */
-.masonry-item .zoom-icon {
+.zoom-icon {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%) scale(0.6);
@@ -120,7 +117,7 @@
   display: flex; align-items: center; justify-content: center;
   pointer-events: none;
 }
-.masonry-item .zoom-icon::before {
+.zoom-icon::before {
   content: '+';
   font-size: 1.4rem;
   color: rgba(237,232,223,0.8);
@@ -138,44 +135,42 @@
   position: fixed; inset: 0;
   z-index: 1000;
   background: rgba(7,7,7,0.97);
-  align-items: center; justify-content: center;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .lightbox.active { display: flex; }
 
-.lightbox-img-wrap {
+.lb-img-wrap {
   max-width: 90vw;
   max-height: 88vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
-.lightbox-img-wrap img {
+.lb-img-wrap img {
   max-width: 90vw;
   max-height: 85vh;
   width: auto;
   height: auto;
   object-fit: contain;
   display: block;
+  transition: opacity 0.3s;
 }
 
-.lightbox-close {
+.lb-close {
   position: fixed; top: 1.8rem; right: 2rem;
   width: 44px; height: 44px;
   border: 0.5px solid rgba(237,232,223,0.2);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  cursor: none; transition: border-color 0.3s;
+  cursor: none; transition: all 0.3s;
   background: transparent; color: var(--cream);
-  font-size: 1.1rem; font-weight: 300;
-  z-index: 1001;
+  font-size: 1.1rem; z-index: 1001;
 }
-.lightbox-close:hover { border-color: var(--red); color: var(--red); }
+.lb-close:hover { border-color: var(--red); color: var(--red); }
 
-.lightbox-nav {
-  position: fixed;
-  top: 50%; transform: translateY(-50%);
+.lb-nav {
+  position: fixed; top: 50%; transform: translateY(-50%);
   width: 50px; height: 50px;
   border: 0.5px solid rgba(237,232,223,0.15);
   display: flex; align-items: center; justify-content: center;
@@ -183,15 +178,15 @@
   background: transparent; color: rgba(237,232,223,0.5);
   font-size: 1.2rem; z-index: 1001;
 }
-.lightbox-nav:hover { border-color: var(--red); color: var(--cream); }
-.lightbox-prev { left: 1.5rem; }
-.lightbox-next { right: 1.5rem; }
+.lb-nav:hover { border-color: var(--red); color: var(--cream); }
+.lb-prev { left: 1.5rem; }
+.lb-next { right: 1.5rem; }
 
-.lightbox-counter {
+.lb-counter {
   position: fixed; bottom: 1.8rem; left: 50%; transform: translateX(-50%);
   font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-  color: rgba(237,232,223,0.28);
-  z-index: 1001;
+  color: rgba(237,232,223,0.28); z-index: 1001;
+  font-family: var(--sans);
 }
 
 /* ── CREDITS ── */
@@ -209,7 +204,7 @@
   font-weight: 300; color: rgba(237,232,223,0.6);
 }
 
-/* ── BACK TO WORK ── */
+/* ── BACK ── */
 .next-project {
   border-top: 0.5px solid var(--cream-06); padding: 4rem 3.5rem;
   display: flex; justify-content: space-between; align-items: center;
@@ -231,21 +226,15 @@
 .next-project:hover .next-arr { transform: translateX(8px); color: var(--red); }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 1024px) {
-  .masonry { column-count: 2; }
-}
 @media (max-width: 768px) {
   .proj-hero { padding: 0 1.5rem 3rem; }
   .proj-intro { grid-template-columns: 1fr; gap: 2rem; padding: 3.5rem 1.5rem; }
   .gallery-wrap { padding: 2rem 1rem 4rem; }
-  .masonry { column-count: 2; column-gap: 4px; }
-  .masonry-item { margin-bottom: 4px; }
+  .masonry-js { gap: 4px; }
+  .masonry-col { gap: 4px; }
   .proj-credits { grid-template-columns: 1fr 1fr; padding: 3rem 1.5rem; }
   .next-project { padding: 3rem 1.5rem; }
-  .lightbox-nav { display: none; }
-}
-@media (max-width: 480px) {
-  .masonry { column-count: 1; }
+  .lb-nav { display: none; }
 }
 </style>
 </head>
@@ -314,162 +303,22 @@
   </p>
 </div>
 
-<!-- MASONRY GALLERY -->
+<!-- GALLERY — JS masonry, left to right order -->
 <div class="gallery-wrap">
-  <div class="masonry" id="masonry">
-
-    <div class="masonry-item rv" data-index="0">
-      <img src="images/work/harry-j-make-up/harryjpro-00001.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d1" data-index="1">
-      <img src="images/work/harry-j-make-up/harryjpro-00002.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d2" data-index="2">
-      <img src="images/work/harry-j-make-up/harryjpro-00003.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv" data-index="3">
-      <img src="images/work/harry-j-make-up/harryjpro-00004.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d1" data-index="4">
-      <img src="images/work/harry-j-make-up/harryjpro-00005.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d2" data-index="5">
-      <img src="images/work/harry-j-make-up/harryjpro-00006.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv" data-index="6">
-      <img src="images/work/harry-j-make-up/harryjpro-00007.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d1" data-index="7">
-      <img src="images/work/harry-j-make-up/harryjpro-00008.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d2" data-index="8">
-      <img src="images/work/harry-j-make-up/harryjpro-00009.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv" data-index="9">
-      <img src="images/work/harry-j-make-up/harryjpro-00010.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d1" data-index="10">
-      <img src="images/work/harry-j-make-up/harryjpro-00011.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d2" data-index="11">
-      <img src="images/work/harry-j-make-up/harryjpro-00012.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv" data-index="12">
-      <img src="images/work/harry-j-make-up/harryjpro-00013.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d1" data-index="13">
-      <img src="images/work/harry-j-make-up/harryjpro-00014.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d2" data-index="14">
-      <img src="images/work/harry-j-make-up/harryjpro-00015.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv" data-index="15">
-      <img src="images/work/harry-j-make-up/harryjpro-00016.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d1" data-index="16">
-      <img src="images/work/harry-j-make-up/harryjpro-00017.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d2" data-index="17">
-      <img src="images/work/harry-j-make-up/harryjpro-00018.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv" data-index="18">
-      <img src="images/work/harry-j-make-up/harryjpro-00019.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d1" data-index="19">
-      <img src="images/work/harry-j-make-up/harryjpro-00020.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d2" data-index="20">
-      <img src="images/work/harry-j-make-up/harryjpro-00021.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv" data-index="21">
-      <img src="images/work/harry-j-make-up/harryjpro-00022.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d1" data-index="22">
-      <img src="images/work/harry-j-make-up/harryjpro-00023.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d2" data-index="23">
-      <img src="images/work/harry-j-make-up/harryjpro-00024.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv" data-index="24">
-      <img src="images/work/harry-j-make-up/harryjpro-00025.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d1" data-index="25">
-      <img src="images/work/harry-j-make-up/harryjpro-00026.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv d2" data-index="26">
-      <img src="images/work/harry-j-make-up/harryjpro-00027.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
-    <div class="masonry-item rv" data-index="27">
-      <img src="images/work/harry-j-make-up/harryjpro-00028.jpg" alt="Harry J Make Up">
-      <div class="zoom-icon"></div>
-    </div>
-
+  <div class="masonry-js" id="masonry-js">
+    <!-- Columns built by JavaScript below — photos load in order 001 to 028 -->
   </div>
 </div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lb-close">✕</button>
-  <button class="lightbox-nav lightbox-prev" id="lb-prev">←</button>
-  <div class="lightbox-img-wrap">
+  <button class="lb-close" id="lb-close">✕</button>
+  <button class="lb-nav lb-prev" id="lb-prev">←</button>
+  <div class="lb-img-wrap">
     <img src="" alt="Harry J Make Up" id="lb-img">
   </div>
-  <button class="lightbox-nav lightbox-next" id="lb-next">→</button>
-  <div class="lightbox-counter" id="lb-counter">1 / 28</div>
+  <button class="lb-nav lb-next" id="lb-next">→</button>
+  <div class="lb-counter" id="lb-counter">1 / 28</div>
 </div>
 
 <!-- CREDITS -->
@@ -516,78 +365,175 @@
 
 <script src="js/main.js"></script>
 <script>
-// ── LIGHTBOX ──
-const items    = document.querySelectorAll('.masonry-item');
-const lightbox = document.getElementById('lightbox');
-const lbImg    = document.getElementById('lb-img');
-const lbCounter = document.getElementById('lb-counter');
-const total    = items.length;
-let current    = 0;
+(function() {
 
-function getImgSrc(index) {
-  return items[index].querySelector('img').src;
-}
+  // ── PHOTO LIST in order 001 to 028 ──
+  const photos = [
+    'images/work/harry-j-make-up/harryjpro-00001.jpg',
+    'images/work/harry-j-make-up/harryjpro-00002.jpg',
+    'images/work/harry-j-make-up/harryjpro-00003.jpg',
+    'images/work/harry-j-make-up/harryjpro-00004.jpg',
+    'images/work/harry-j-make-up/harryjpro-00005.jpg',
+    'images/work/harry-j-make-up/harryjpro-00006.jpg',
+    'images/work/harry-j-make-up/harryjpro-00007.jpg',
+    'images/work/harry-j-make-up/harryjpro-00008.jpg',
+    'images/work/harry-j-make-up/harryjpro-00009.jpg',
+    'images/work/harry-j-make-up/harryjpro-00010.jpg',
+    'images/work/harry-j-make-up/harryjpro-00011.jpg',
+    'images/work/harry-j-make-up/harryjpro-00012.jpg',
+    'images/work/harry-j-make-up/harryjpro-00013.jpg',
+    'images/work/harry-j-make-up/harryjpro-00014.jpg',
+    'images/work/harry-j-make-up/harryjpro-00015.jpg',
+    'images/work/harry-j-make-up/harryjpro-00016.jpg',
+    'images/work/harry-j-make-up/harryjpro-00017.jpg',
+    'images/work/harry-j-make-up/harryjpro-00018.jpg',
+    'images/work/harry-j-make-up/harryjpro-00019.jpg',
+    'images/work/harry-j-make-up/harryjpro-00020.jpg',
+    'images/work/harry-j-make-up/harryjpro-00021.jpg',
+    'images/work/harry-j-make-up/harryjpro-00022.jpg',
+    'images/work/harry-j-make-up/harryjpro-00023.jpg',
+    'images/work/harry-j-make-up/harryjpro-00024.jpg',
+    'images/work/harry-j-make-up/harryjpro-00025.jpg',
+    'images/work/harry-j-make-up/harryjpro-00026.jpg',
+    'images/work/harry-j-make-up/harryjpro-00027.jpg',
+    'images/work/harry-j-make-up/harryjpro-00028.jpg'
+  ];
 
-function openLightbox(index) {
-  current = index;
-  lbImg.src = getImgSrc(current);
-  lbCounter.textContent = (current + 1) + ' / ' + total;
-  lightbox.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
+  const total = photos.length;
 
-function closeLightbox() {
-  lightbox.classList.remove('active');
-  document.body.style.overflow = '';
-  lbImg.src = '';
-}
-
-function prevImg() {
-  current = (current - 1 + total) % total;
-  lbImg.src = getImgSrc(current);
-  lbCounter.textContent = (current + 1) + ' / ' + total;
-}
-
-function nextImg() {
-  current = (current + 1) % total;
-  lbImg.src = getImgSrc(current);
-  lbCounter.textContent = (current + 1) + ' / ' + total;
-}
-
-// Click on image
-items.forEach((item, i) => {
-  item.addEventListener('click', () => openLightbox(i));
-});
-
-// Controls
-document.getElementById('lb-close').addEventListener('click', closeLightbox);
-document.getElementById('lb-prev').addEventListener('click', prevImg);
-document.getElementById('lb-next').addEventListener('click', nextImg);
-
-// Click outside image to close
-lightbox.addEventListener('click', (e) => {
-  if (e.target === lightbox) closeLightbox();
-});
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-  if (!lightbox.classList.contains('active')) return;
-  if (e.key === 'ArrowLeft')  prevImg();
-  if (e.key === 'ArrowRight') nextImg();
-  if (e.key === 'Escape')     closeLightbox();
-});
-
-// Touch swipe on mobile
-let touchStartX = 0;
-lightbox.addEventListener('touchstart', (e) => {
-  touchStartX = e.touches[0].clientX;
-});
-lightbox.addEventListener('touchend', (e) => {
-  const diff = touchStartX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) {
-    diff > 0 ? nextImg() : prevImg();
+  // ── BUILD COLUMNS ──
+  // Detect column count based on screen width
+  function getColCount() {
+    if (window.innerWidth <= 480) return 1;
+    if (window.innerWidth <= 768) return 2;
+    return 3;
   }
-});
+
+  const container = document.getElementById('masonry-js');
+  let colCount = getColCount();
+  let cols = [];
+  let colHeights = [];
+  let items = [];
+
+  function buildGrid() {
+    colCount = getColCount();
+    container.innerHTML = '';
+    cols = [];
+    colHeights = new Array(colCount).fill(0);
+
+    // Create column divs
+    for (let i = 0; i < colCount; i++) {
+      const col = document.createElement('div');
+      col.className = 'masonry-col';
+      container.appendChild(col);
+      cols.push(col);
+    }
+
+    // Place each photo into the shortest column — keeps order flowing naturally
+    items = [];
+    photos.forEach((src, index) => {
+      const item = document.createElement('div');
+      item.className = 'masonry-item';
+      item.dataset.index = index;
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Harry J Make Up';
+      img.loading = 'lazy';
+
+      const zoom = document.createElement('div');
+      zoom.className = 'zoom-icon';
+
+      item.appendChild(img);
+      item.appendChild(zoom);
+
+      // Click to open lightbox
+      item.addEventListener('click', () => openLightbox(index));
+
+      // Find shortest column
+      const shortestCol = colHeights.indexOf(Math.min(...colHeights));
+      cols[shortestCol].appendChild(item);
+
+      // Update height estimate — use aspect ratio once image loads
+      img.addEventListener('load', () => {
+        colHeights[shortestCol] += img.offsetHeight;
+      });
+      // Estimate before load using index to spread evenly
+      colHeights[shortestCol] += 300;
+
+      items.push(item);
+    });
+  }
+
+  buildGrid();
+
+  // Rebuild on resize
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (getColCount() !== colCount) buildGrid();
+    }, 200);
+  });
+
+  // ── LIGHTBOX ──
+  const lightbox  = document.getElementById('lightbox');
+  const lbImg     = document.getElementById('lb-img');
+  const lbCounter = document.getElementById('lb-counter');
+  let current     = 0;
+
+  function openLightbox(index) {
+    current = index;
+    lbImg.src = photos[current];
+    lbCounter.textContent = (current + 1) + ' / ' + total;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => { lbImg.src = ''; }, 300);
+  }
+
+  function prevImg() {
+    current = (current - 1 + total) % total;
+    lbImg.src = photos[current];
+    lbCounter.textContent = (current + 1) + ' / ' + total;
+  }
+
+  function nextImg() {
+    current = (current + 1) % total;
+    lbImg.src = photos[current];
+    lbCounter.textContent = (current + 1) + ' / ' + total;
+  }
+
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  document.getElementById('lb-prev').addEventListener('click', prevImg);
+  document.getElementById('lb-next').addEventListener('click', nextImg);
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'ArrowLeft')  prevImg();
+    if (e.key === 'ArrowRight') nextImg();
+    if (e.key === 'Escape')     closeLightbox();
+  });
+
+  // Swipe on mobile
+  let touchStartX = 0;
+  lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+  });
+  lightbox.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) diff > 0 ? nextImg() : prevImg();
+  });
+
+})();
 </script>
 </body>
 </html>
