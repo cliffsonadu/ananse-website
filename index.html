@@ -218,6 +218,40 @@
   .m-right { border-left: none; padding-left: 0; border-top: 0.5px solid rgba(139,26,26,0.3); padding-top: 2rem; }
   .proc-grid { grid-template-columns: 1fr 1fr; }
   .brand-bar { padding: 3rem 1.5rem; }
+  /* BRAND TICKER */
+.brand-bar-ticker {
+  border-top: 0.5px solid var(--cream-06);
+  border-bottom: 0.5px solid var(--cream-06);
+  padding: 2rem 0;
+  overflow: hidden;
+  background: var(--black2);
+}
+.brand-bar-track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  white-space: nowrap;
+  width: max-content;
+  animation: brandTicker 40s linear infinite;
+}
+.brand-slot-ph {
+  font-family: var(--serif);
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  color: rgba(237,232,223,0.25);
+  font-style: italic;
+  transition: color 0.4s;
+}
+.brand-slot-ph:hover { color: rgba(237,232,223,0.55); }
+.brand-divider {
+  color: var(--red);
+  font-size: 7px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+@keyframes brandTicker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 </style>
 </head>
