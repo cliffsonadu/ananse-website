@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harry J Make Up — Anansé Creative Haus</title>
+<meta name="description" content="Harry J Make Up editorial — shot by Anansé Creative Haus, Warsaw.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ── PROJECT HERO ── */
+.proj-hero {
+  position: relative;
+  height: 100vh; min-height: 600px;
+  overflow: hidden;
+  display: flex; align-items: flex-end;
+  padding: 0 3.5rem 5rem;
+}
+.proj-hero-img {
+  position: absolute; inset: 0;
+}
+.proj-hero-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+}
+.proj-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(7,7,7,0.92) 0%, rgba(7,7,7,0.3) 50%, rgba(7,7,7,0.1) 100%);
+}
+.proj-hero-content { position: relative; z-index: 2; }
+.proj-hero-eyebrow {
+  font-size: 9px; letter-spacing: 0.32em;
+  text-transform: uppercase; color: var(--red);
+  margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 14px;
+}
+.proj-hero-eyebrow::before {
+  content: ''; display: inline-block;
+  width: 30px; height: 0.5px; background: var(--red);
+}
+.proj-hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 300; line-height: 1.0;
+  color: var(--cream); margin-bottom: 1.5rem;
+}
+.proj-hero h1 em { font-style: italic; color: rgba(237,232,223,0.35); }
+.proj-hero-meta {
+  display: flex; gap: 3rem; flex-wrap: wrap;
+}
+.proj-meta-item {}
+.proj-meta-label {
+  font-size: 8px; letter-spacing: 0.26em;
+  text-transform: uppercase; color: rgba(237,232,223,0.3);
+  margin-bottom: 4px;
+}
+.proj-meta-val {
+  font-size: 12px; color: rgba(237,232,223,0.6);
+  font-weight: 300;
+}
+
+/* ── PROJECT INTRO ── */
+.proj-intro {
+  padding: 5rem 3.5rem;
+  display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem;
+  border-bottom: 0.5px solid var(--cream-06);
+  align-items: start;
+}
+.proj-intro-left {}
+.proj-intro-title {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 300; color: var(--cream);
+  line-height: 1.2; margin-bottom: 1.5rem;
+}
+.proj-intro-right {
+  font-size: 13.5px; line-height: 1.95;
+  color: rgba(237,232,223,0.4); font-weight: 300;
+}
+.proj-tags {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2rem;
+}
+.proj-tag {
+  font-size: 8px; letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 0.5px solid rgba(237,232,223,0.12);
+  padding: 6px 14px; color: rgba(237,232,223,0.35);
+}
+
+/* ── EDITORIAL GRID ── */
+.editorial-grid { padding: 0 3.5rem 6rem; }
+
+/* Full width image */
+.eg-full {
+  width: 100%; margin-bottom: 4px;
+}
+.eg-full img {
+  width: 100%; aspect-ratio: 16/9;
+  object-fit: cover; object-position: center top;
+  display: block;
+}
+
+/* Two column */
+.eg-two {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4px; margin-bottom: 4px;
+}
+.eg-two img {
+  width: 100%; aspect-ratio: 3/4;
+  object-fit: cover; object-position: center top;
+  display: block;
+}
+
+/* Three column */
+.eg-three {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 4px; margin-bottom: 4px;
+}
+.eg-three img {
+  width: 100%; aspect-ratio: 3/4;
+  object-fit: cover; object-position: center top;
+  display: block;
+}
+
+/* Asymmetric — wide left */
+.eg-asym-left {
+  display: grid; grid-template-columns: 1.6fr 1fr;
+  gap: 4px; margin-bottom: 4px;
+}
+.eg-asym-left img {
+  width: 100%; aspect-ratio: unset; min-height: 500px;
+  object-fit: cover; object-position: center top;
+  display: block;
+}
+
+/* Asymmetric — wide right */
+.eg-asym-right {
+  display: grid; grid-template-columns: 1fr 1.6fr;
+  gap: 4px; margin-bottom: 4px;
+}
+.eg-asym-right img {
+  width: 100%; aspect-ratio: unset; min-height: 500px;
+  object-fit: cover; object-position: center top;
+  display: block;
+}
+
+/* Single centred portrait */
+.eg-portrait {
+  display: flex; justify-content: center;
+  margin-bottom: 4px; padding: 0;
+}
+.eg-portrait img {
+  width: 55%; aspect-ratio: 2/3;
+  object-fit: cover; object-position: center top;
+  display: block;
+}
+
+/* Hover effect on all images */
+.editorial-grid img {
+  transition: opacity 0.5s;
+}
+.editorial-grid img:hover { opacity: 0.88; }
+
+/* ── CREDITS ── */
+.proj-credits {
+  padding: 4rem 3.5rem;
+  border-top: 0.5px solid var(--cream-06);
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem;
+}
+.credit-item {}
+.credit-label {
+  font-size: 8px; letter-spacing: 0.26em;
+  text-transform: uppercase; color: var(--red);
+  margin-bottom: 6px;
+}
+.credit-val {
+  font-family: var(--serif); font-size: 1rem;
+  font-weight: 300; color: rgba(237,232,223,0.6);
+}
+
+/* ── NEXT PROJECT ── */
+.next-project {
+  border-top: 0.5px solid var(--cream-06);
+  padding: 4rem 3.5rem;
+  display: flex; justify-content: space-between;
+  align-items: center; cursor: none;
+  transition: background 0.4s;
+}
+.next-project:hover { background: rgba(237,232,223,0.02); }
+.next-label {
+  font-size: 9px; letter-spacing: 0.26em;
+  text-transform: uppercase; color: rgba(237,232,223,0.25);
+  margin-bottom: 8px;
+}
+.next-title {
+  font-family: var(--serif); font-size: 1.8rem;
+  font-weight: 300; color: var(--cream);
+}
+.next-arr {
+  font-size: 2rem; color: rgba(237,232,223,0.2);
+  transition: transform 0.4s, color 0.4s;
+}
+.next-project:hover .next-arr { transform: translateX(8px); color: var(--red); }
+
+@media (max-width: 768px) {
+  .proj-hero { padding: 0 1.5rem 3rem; }
+  .proj-intro { grid-template-columns: 1fr; gap: 2rem; padding: 3.5rem 1.5rem; }
+  .editorial-grid { padding: 0 1.5rem 4rem; }
+  .eg-two, .eg-asym-left, .eg-asym-right { grid-template-columns: 1fr; }
+  .eg-three { grid-template-columns: 1fr 1fr; }
+  .eg-portrait img { width: 85%; }
+  .eg-asym-left img, .eg-asym-right img { min-height: 300px; }
+  .proj-credits { grid-template-columns: 1fr 1fr; padding: 3rem 1.5rem; }
+  .next-project { padding: 3rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">ANANSÉ</a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html"><button class="nav-cta-btn">Let's Create</button></a>
+</nav>
+
+<!-- PROJECT HERO -->
+<!--
+  REPLACE 00854 below with whichever photo number you want as the hero cover.
+  This is the first image visitors see — pick your strongest shot.
+-->
+<section class="proj-hero">
+  <div class="proj-hero-img">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00854.jpg" alt="Harry J Make Up Editorial">
+  </div>
+  <div class="proj-hero-overlay"></div>
+  <div class="proj-hero-content">
+    <div class="proj-hero-eyebrow">Editorial</div>
+    <h1>Harry J <em>Make Up</em></h1>
+    <div class="proj-hero-meta">
+      <div class="proj-meta-item">
+        <div class="proj-meta-label">Client</div>
+        <div class="proj-meta-val">Harry J Make Up</div>
+      </div>
+      <div class="proj-meta-item">
+        <div class="proj-meta-label">Type</div>
+        <div class="proj-meta-val">Editorial</div>
+      </div>
+      <div class="proj-meta-item">
+        <div class="proj-meta-label">Agency</div>
+        <div class="proj-meta-val">Anansé Creative Haus</div>
+      </div>
+      <div class="proj-meta-item">
+        <div class="proj-meta-label">Location</div>
+        <div class="proj-meta-val">Warsaw, Poland</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<div class="proj-intro">
+  <div class="proj-intro-left rv">
+    <div class="s-label">The Project</div>
+    <div class="proj-intro-title">A beauty editorial built around the art of transformation.</div>
+    <div class="proj-tags">
+      <span class="proj-tag">Editorial</span>
+      <span class="proj-tag">Beauty</span>
+      <span class="proj-tag">Fashion</span>
+      <span class="proj-tag">Warsaw</span>
+    </div>
+  </div>
+  <p class="proj-intro-right rv d2">
+    In collaboration with Harry J Make Up, we created a full editorial shoot that celebrates the craft of makeup artistry — raw, intentional, and deeply visual. Every frame was built to feel like a moment, not just a photograph.<br><br>
+    Shot under studio lighting with a controlled palette, this project blends fashion editorial sensibility with beauty campaign precision. The result is a body of work that positions Harry J Make Up at the intersection of art and craft.
+  </p>
+</div>
+
+<!-- EDITORIAL GRID — all 29 shots in an elegant layout -->
+<div class="editorial-grid">
+
+  <!-- ROW 1 — Full width opener -->
+  <div class="eg-full rv">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00944.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 2 — Two column -->
+  <div class="eg-two rv">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00812.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00813.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 3 — Three column -->
+  <div class="eg-three rv">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00840.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00854.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00865.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 4 — Asymmetric wide left -->
+  <div class="eg-asym-left rv">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00869.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00883.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 5 — Portrait centred -->
+  <div class="eg-portrait rv">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00889.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 6 — Two column -->
+  <div class="eg-two rv">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00912.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00951.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 7 — Three column -->
+  <div class="eg-three rv">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00952.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00954.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00955.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 8 — Asymmetric wide right -->
+  <div class="eg-asym-right rv">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR01078.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR01114.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 9 — Two column -->
+  <div class="eg-two rv">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR01284.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR01287.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 10 — Three column -->
+  <div class="eg-three rv">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR01303.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR01313.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR01346.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 11 — Full width -->
+  <div class="eg-full rv">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00688.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 12 — Two column -->
+  <div class="eg-two rv">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00692.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00709.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 13 — Three column -->
+  <div class="eg-three rv">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00749.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00761.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00773.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 14 — Closing portrait -->
+  <div class="eg-portrait rv">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00820.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 15 — Final two -->
+  <div class="eg-two rv">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00837.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00883.jpg" alt="Harry J Make Up">
+  </div>
+
+</div>
+
+<!-- CREDITS -->
+<div class="proj-credits rv">
+  <div class="credit-item">
+    <div class="credit-label">Photography & Direction</div>
+    <div class="credit-val">Cliffson / Anansé Creative Haus</div>
+  </div>
+  <div class="credit-item">
+    <div class="credit-label">Makeup Artist</div>
+    <div class="credit-val">Harry J Make Up</div>
+  </div>
+  <div class="credit-item">
+    <div class="credit-label">Instagram</div>
+    <div class="credit-val"><a href="https://instagram.com/harryjmakeup" target="_blank" style="color:var(--red);">@harryjmakeup</a></div>
+  </div>
+  <div class="credit-item">
+    <div class="credit-label">Agency</div>
+    <div class="credit-val"><a href="index.html" style="color:var(--red);">@ananse.creative</a></div>
+  </div>
+</div>
+
+<!-- NEXT PROJECT -->
+<a href="work.html" class="next-project">
+  <div>
+    <div class="next-label">Back to</div>
+    <div class="next-title">All Projects</div>
+  </div>
+  <div class="next-arr">→</div>
+</a>
+
+<footer class="footer">
+  <div class="footer-logo">ANANSÉ</div>
+  <div class="footer-copy">© 2025 Anansé Creative Haus — Warsaw, Poland</div>
+  <div class="footer-links">
+    <a href="https://instagram.com/ananse.creative" target="_blank">Instagram</a>
+    <a href="mailto:info@ananse.agency">info@ananse.agency</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
