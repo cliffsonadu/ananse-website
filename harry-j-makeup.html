@@ -7,198 +7,86 @@
 <meta name="description" content="Harry J Make Up editorial — shot by Anansé Creative Haus, Warsaw.">
 <link rel="stylesheet" href="css/style.css">
 <style>
-/* ── PROJECT HERO ── */
 .proj-hero {
-  position: relative;
-  height: 100vh; min-height: 600px;
-  overflow: hidden;
-  display: flex; align-items: flex-end;
+  position: relative; height: 100vh; min-height: 600px;
+  overflow: hidden; display: flex; align-items: flex-end;
   padding: 0 3.5rem 5rem;
 }
-.proj-hero-img {
-  position: absolute; inset: 0;
-}
-.proj-hero-img img {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
-}
+.proj-hero-img { position: absolute; inset: 0; }
+.proj-hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .proj-hero-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(7,7,7,0.92) 0%, rgba(7,7,7,0.3) 50%, rgba(7,7,7,0.1) 100%);
 }
 .proj-hero-content { position: relative; z-index: 2; }
 .proj-hero-eyebrow {
-  font-size: 9px; letter-spacing: 0.32em;
-  text-transform: uppercase; color: var(--red);
-  margin-bottom: 1.2rem;
+  font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 1.2rem;
   display: flex; align-items: center; gap: 14px;
 }
 .proj-hero-eyebrow::before {
-  content: ''; display: inline-block;
-  width: 30px; height: 0.5px; background: var(--red);
+  content: ''; display: inline-block; width: 30px; height: 0.5px; background: var(--red);
 }
 .proj-hero h1 {
-  font-family: var(--serif);
-  font-size: clamp(3rem, 6vw, 6rem);
-  font-weight: 300; line-height: 1.0;
-  color: var(--cream); margin-bottom: 1.5rem;
+  font-family: var(--serif); font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 300; line-height: 1.0; color: var(--cream); margin-bottom: 1.5rem;
 }
 .proj-hero h1 em { font-style: italic; color: rgba(237,232,223,0.35); }
-.proj-hero-meta {
-  display: flex; gap: 3rem; flex-wrap: wrap;
-}
-.proj-meta-item {}
+.proj-hero-meta { display: flex; gap: 3rem; flex-wrap: wrap; }
 .proj-meta-label {
-  font-size: 8px; letter-spacing: 0.26em;
-  text-transform: uppercase; color: rgba(237,232,223,0.3);
-  margin-bottom: 4px;
+  font-size: 8px; letter-spacing: 0.26em; text-transform: uppercase;
+  color: rgba(237,232,223,0.3); margin-bottom: 4px;
 }
-.proj-meta-val {
-  font-size: 12px; color: rgba(237,232,223,0.6);
-  font-weight: 300;
-}
+.proj-meta-val { font-size: 12px; color: rgba(237,232,223,0.6); font-weight: 300; }
 
-/* ── PROJECT INTRO ── */
 .proj-intro {
   padding: 5rem 3.5rem;
   display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem;
-  border-bottom: 0.5px solid var(--cream-06);
-  align-items: start;
+  border-bottom: 0.5px solid var(--cream-06); align-items: start;
 }
-.proj-intro-left {}
 .proj-intro-title {
-  font-family: var(--serif);
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  font-weight: 300; color: var(--cream);
-  line-height: 1.2; margin-bottom: 1.5rem;
+  font-family: var(--serif); font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 300; color: var(--cream); line-height: 1.2; margin-bottom: 1.5rem;
 }
-.proj-intro-right {
-  font-size: 13.5px; line-height: 1.95;
-  color: rgba(237,232,223,0.4); font-weight: 300;
-}
-.proj-tags {
-  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2rem;
-}
+.proj-intro-right { font-size: 13.5px; line-height: 1.95; color: rgba(237,232,223,0.4); font-weight: 300; }
+.proj-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2rem; }
 .proj-tag {
-  font-size: 8px; letter-spacing: 0.2em;
-  text-transform: uppercase;
-  border: 0.5px solid rgba(237,232,223,0.12);
-  padding: 6px 14px; color: rgba(237,232,223,0.35);
+  font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase;
+  border: 0.5px solid rgba(237,232,223,0.12); padding: 6px 14px; color: rgba(237,232,223,0.35);
 }
 
-/* ── EDITORIAL GRID ── */
 .editorial-grid { padding: 0 3.5rem 6rem; }
-
-/* Full width image */
-.eg-full {
-  width: 100%; margin-bottom: 4px;
-}
-.eg-full img {
-  width: 100%; aspect-ratio: 16/9;
-  object-fit: cover; object-position: center top;
-  display: block;
-}
-
-/* Two column */
-.eg-two {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 4px; margin-bottom: 4px;
-}
-.eg-two img {
-  width: 100%; aspect-ratio: 3/4;
-  object-fit: cover; object-position: center top;
-  display: block;
-}
-
-/* Three column */
-.eg-three {
-  display: grid; grid-template-columns: 1fr 1fr 1fr;
-  gap: 4px; margin-bottom: 4px;
-}
-.eg-three img {
-  width: 100%; aspect-ratio: 3/4;
-  object-fit: cover; object-position: center top;
-  display: block;
-}
-
-/* Asymmetric — wide left */
-.eg-asym-left {
-  display: grid; grid-template-columns: 1.6fr 1fr;
-  gap: 4px; margin-bottom: 4px;
-}
-.eg-asym-left img {
-  width: 100%; aspect-ratio: unset; min-height: 500px;
-  object-fit: cover; object-position: center top;
-  display: block;
-}
-
-/* Asymmetric — wide right */
-.eg-asym-right {
-  display: grid; grid-template-columns: 1fr 1.6fr;
-  gap: 4px; margin-bottom: 4px;
-}
-.eg-asym-right img {
-  width: 100%; aspect-ratio: unset; min-height: 500px;
-  object-fit: cover; object-position: center top;
-  display: block;
-}
-
-/* Single centred portrait */
-.eg-portrait {
-  display: flex; justify-content: center;
-  margin-bottom: 4px; padding: 0;
-}
-.eg-portrait img {
-  width: 55%; aspect-ratio: 2/3;
-  object-fit: cover; object-position: center top;
-  display: block;
-}
-
-/* Hover effect on all images */
-.editorial-grid img {
-  transition: opacity 0.5s;
-}
+.eg-full { width: 100%; margin-bottom: 4px; }
+.eg-full img { width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: center top; display: block; }
+.eg-two { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 4px; }
+.eg-two img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; }
+.eg-three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin-bottom: 4px; }
+.eg-three img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; }
+.eg-asym-left { display: grid; grid-template-columns: 1.6fr 1fr; gap: 4px; margin-bottom: 4px; }
+.eg-asym-left img { width: 100%; min-height: 500px; object-fit: cover; object-position: center top; display: block; }
+.eg-asym-right { display: grid; grid-template-columns: 1fr 1.6fr; gap: 4px; margin-bottom: 4px; }
+.eg-asym-right img { width: 100%; min-height: 500px; object-fit: cover; object-position: center top; display: block; }
+.eg-portrait { display: flex; justify-content: center; margin-bottom: 4px; }
+.eg-portrait img { width: 55%; aspect-ratio: 2/3; object-fit: cover; object-position: center top; display: block; }
+.editorial-grid img { transition: opacity 0.5s; }
 .editorial-grid img:hover { opacity: 0.88; }
 
-/* ── CREDITS ── */
 .proj-credits {
-  padding: 4rem 3.5rem;
-  border-top: 0.5px solid var(--cream-06);
+  padding: 4rem 3.5rem; border-top: 0.5px solid var(--cream-06);
   display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem;
 }
-.credit-item {}
-.credit-label {
-  font-size: 8px; letter-spacing: 0.26em;
-  text-transform: uppercase; color: var(--red);
-  margin-bottom: 6px;
-}
-.credit-val {
-  font-family: var(--serif); font-size: 1rem;
-  font-weight: 300; color: rgba(237,232,223,0.6);
-}
+.credit-label { font-size: 8px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
+.credit-val { font-family: var(--serif); font-size: 1rem; font-weight: 300; color: rgba(237,232,223,0.6); }
 
-/* ── NEXT PROJECT ── */
 .next-project {
-  border-top: 0.5px solid var(--cream-06);
-  padding: 4rem 3.5rem;
-  display: flex; justify-content: space-between;
-  align-items: center; cursor: none;
-  transition: background 0.4s;
+  border-top: 0.5px solid var(--cream-06); padding: 4rem 3.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: none; transition: background 0.4s; text-decoration: none;
 }
 .next-project:hover { background: rgba(237,232,223,0.02); }
-.next-label {
-  font-size: 9px; letter-spacing: 0.26em;
-  text-transform: uppercase; color: rgba(237,232,223,0.25);
-  margin-bottom: 8px;
-}
-.next-title {
-  font-family: var(--serif); font-size: 1.8rem;
-  font-weight: 300; color: var(--cream);
-}
-.next-arr {
-  font-size: 2rem; color: rgba(237,232,223,0.2);
-  transition: transform 0.4s, color 0.4s;
-}
+.next-label { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(237,232,223,0.25); margin-bottom: 8px; }
+.next-title { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; color: var(--cream); }
+.next-arr { font-size: 2rem; color: rgba(237,232,223,0.2); transition: transform 0.4s, color 0.4s; }
 .next-project:hover .next-arr { transform: translateX(8px); color: var(--red); }
 
 @media (max-width: 768px) {
@@ -230,14 +118,10 @@
   <a href="contact.html"><button class="nav-cta-btn">Let's Create</button></a>
 </nav>
 
-<!-- PROJECT HERO -->
-<!--
-  REPLACE 00854 below with whichever photo number you want as the hero cover.
-  This is the first image visitors see — pick your strongest shot.
--->
+<!-- HERO — harryjpro-00005.jpg as cover -->
 <section class="proj-hero">
   <div class="proj-hero-img">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00854.jpg" alt="Harry J Make Up Editorial">
+    <img src="images/work/harry-j-make-up/harryjpro-00005.jpg" alt="Harry J Make Up Editorial">
   </div>
   <div class="proj-hero-overlay"></div>
   <div class="proj-hero-content">
@@ -266,7 +150,7 @@
 
 <!-- INTRO -->
 <div class="proj-intro">
-  <div class="proj-intro-left rv">
+  <div class="rv">
     <div class="s-label">The Project</div>
     <div class="proj-intro-title">A beauty editorial built around the art of transformation.</div>
     <div class="proj-tags">
@@ -282,97 +166,95 @@
   </p>
 </div>
 
-<!-- EDITORIAL GRID — all 29 shots in an elegant layout -->
+<!-- EDITORIAL GRID — 28 shots -->
 <div class="editorial-grid">
 
   <!-- ROW 1 — Full width opener -->
   <div class="eg-full rv">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00944.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00001.jpg" alt="Harry J Make Up">
   </div>
 
   <!-- ROW 2 — Two column -->
   <div class="eg-two rv">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00812.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00813.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00002.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00003.jpg" alt="Harry J Make Up">
   </div>
 
   <!-- ROW 3 — Three column -->
   <div class="eg-three rv">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00840.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00854.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00865.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00004.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00005.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00006.jpg" alt="Harry J Make Up">
   </div>
 
   <!-- ROW 4 — Asymmetric wide left -->
   <div class="eg-asym-left rv">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00869.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00883.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00007.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00008.jpg" alt="Harry J Make Up">
   </div>
 
   <!-- ROW 5 — Portrait centred -->
   <div class="eg-portrait rv">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00889.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00009.jpg" alt="Harry J Make Up">
   </div>
 
   <!-- ROW 6 — Two column -->
   <div class="eg-two rv">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00912.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00951.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00010.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00011.jpg" alt="Harry J Make Up">
   </div>
 
   <!-- ROW 7 — Three column -->
   <div class="eg-three rv">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00952.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00954.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00955.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00012.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00013.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00014.jpg" alt="Harry J Make Up">
   </div>
 
   <!-- ROW 8 — Asymmetric wide right -->
   <div class="eg-asym-right rv">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR01078.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR01114.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00015.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00016.jpg" alt="Harry J Make Up">
   </div>
 
   <!-- ROW 9 — Two column -->
   <div class="eg-two rv">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR01284.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR01287.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00017.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00018.jpg" alt="Harry J Make Up">
   </div>
 
-  <!-- ROW 10 — Three column -->
-  <div class="eg-three rv">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR01303.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR01313.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR01346.jpg" alt="Harry J Make Up">
-  </div>
-
-  <!-- ROW 11 — Full width -->
+  <!-- ROW 10 — Full width -->
   <div class="eg-full rv">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00688.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00019.jpg" alt="Harry J Make Up">
   </div>
 
-  <!-- ROW 12 — Two column -->
-  <div class="eg-two rv">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00692.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00709.jpg" alt="Harry J Make Up">
-  </div>
-
-  <!-- ROW 13 — Three column -->
+  <!-- ROW 11 — Three column -->
   <div class="eg-three rv">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00749.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00761.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00773.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00020.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00021.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00022.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 12 — Asymmetric wide left -->
+  <div class="eg-asym-left rv">
+    <img src="images/work/harry-j-make-up/harryjpro-00023.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00024.jpg" alt="Harry J Make Up">
+  </div>
+
+  <!-- ROW 13 — Two column -->
+  <div class="eg-two rv">
+    <img src="images/work/harry-j-make-up/harryjpro-00025.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00026.jpg" alt="Harry J Make Up">
   </div>
 
   <!-- ROW 14 — Closing portrait -->
   <div class="eg-portrait rv">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00820.jpg" alt="Harry J Make Up">
+    <img src="images/work/harry-j-make-up/harryjpro-00027.jpg" alt="Harry J Make Up">
   </div>
 
-  <!-- ROW 15 — Final two -->
-  <div class="eg-two rv">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00837.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/ANANSE%20X%20HARRY%20GLAMOUR00883.jpg" alt="Harry J Make Up">
+  <!-- ROW 15 — Final full width -->
+  <div class="eg-full rv">
+    <img src="images/work/harry-j-make-up/harryjpro-00028.jpg" alt="Harry J Make Up">
   </div>
 
 </div>
@@ -397,7 +279,7 @@
   </div>
 </div>
 
-<!-- NEXT PROJECT -->
+<!-- BACK TO WORK -->
 <a href="work.html" class="next-project">
   <div>
     <div class="next-label">Back to</div>
@@ -411,4 +293,10 @@
   <div class="footer-copy">© 2025 Anansé Creative Haus — Warsaw, Poland</div>
   <div class="footer-links">
     <a href="https://instagram.com/ananse.creative" target="_blank">Instagram</a>
-    <a href="/cdn-cgi/l/email-protection#157c7b737a55747b747b66703b7472707b766c"><span class="__cf_email__" data-cfemail="0e676068614e
+    <a href="mailto:info@ananse.agency">info@ananse.agency</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
