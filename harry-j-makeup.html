@@ -33,12 +33,14 @@
 }
 .proj-hero h1 em { font-style: italic; color: rgba(237,232,223,0.35); }
 .proj-hero-meta { display: flex; gap: 3rem; flex-wrap: wrap; }
+.proj-meta-item { display: flex; flex-direction: column; }
 .proj-meta-label {
   font-size: 8px; letter-spacing: 0.26em; text-transform: uppercase;
   color: rgba(237,232,223,0.3); margin-bottom: 4px;
 }
 .proj-meta-val { font-size: 12px; color: rgba(237,232,223,0.6); font-weight: 300; }
 
+/* INTRO */
 .proj-intro {
   padding: 5rem 3.5rem;
   display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem;
@@ -48,55 +50,112 @@
   font-family: var(--serif); font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 300; color: var(--cream); line-height: 1.2; margin-bottom: 1.5rem;
 }
-.proj-intro-right { font-size: 13.5px; line-height: 1.95; color: rgba(237,232,223,0.4); font-weight: 300; }
+.proj-intro-right {
+  font-size: 13.5px; line-height: 1.95;
+  color: rgba(237,232,223,0.4); font-weight: 300;
+}
 .proj-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2rem; }
 .proj-tag {
   font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase;
-  border: 0.5px solid rgba(237,232,223,0.12); padding: 6px 14px; color: rgba(237,232,223,0.35);
+  border: 0.5px solid rgba(237,232,223,0.12);
+  padding: 6px 14px; color: rgba(237,232,223,0.35);
 }
 
-.editorial-grid { padding: 0 3.5rem 6rem; }
-.eg-full { width: 100%; margin-bottom: 4px; }
-.eg-full img { width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: center top; display: block; }
-.eg-two { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 4px; }
-.eg-two img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; }
-.eg-three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin-bottom: 4px; }
-.eg-three img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; }
-.eg-asym-left { display: grid; grid-template-columns: 1.6fr 1fr; gap: 4px; margin-bottom: 4px; }
-.eg-asym-left img { width: 100%; min-height: 500px; object-fit: cover; object-position: center top; display: block; }
-.eg-asym-right { display: grid; grid-template-columns: 1fr 1.6fr; gap: 4px; margin-bottom: 4px; }
-.eg-asym-right img { width: 100%; min-height: 500px; object-fit: cover; object-position: center top; display: block; }
-.eg-portrait { display: flex; justify-content: center; margin-bottom: 4px; }
-.eg-portrait img { width: 55%; aspect-ratio: 2/3; object-fit: cover; object-position: center top; display: block; }
-.editorial-grid img { transition: opacity 0.5s; }
-.editorial-grid img:hover { opacity: 0.88; }
+/* ── MASONRY GALLERY ── */
+.editorial-grid {
+  padding: 4rem 3.5rem 6rem;
+}
 
+/* Each row is a flex container */
+.eg-row {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+  align-items: flex-start;
+}
+
+/* Single image — full width */
+.eg-row.solo .eg-img { flex: 1; width: 100%; }
+
+/* Two images side by side — equal flex */
+.eg-row.duo .eg-img { flex: 1; }
+
+/* Three images — equal flex */
+.eg-row.trio .eg-img { flex: 1; }
+
+/* Asymmetric — left wider */
+.eg-row.asym-l .eg-img:first-child { flex: 1.6; }
+.eg-row.asym-l .eg-img:last-child  { flex: 1; }
+
+/* Asymmetric — right wider */
+.eg-row.asym-r .eg-img:first-child { flex: 1; }
+.eg-row.asym-r .eg-img:last-child  { flex: 1.6; }
+
+/* Centred single — portrait feel */
+.eg-row.centred { justify-content: center; }
+.eg-row.centred .eg-img { flex: 0 0 55%; max-width: 55%; }
+
+/* Image wrapper */
+.eg-img {
+  overflow: hidden;
+  position: relative;
+  cursor: none;
+}
+.eg-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.5s, transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.eg-img:hover img { opacity: 0.85; transform: scale(1.02); }
+
+/* CREDITS */
 .proj-credits {
   padding: 4rem 3.5rem; border-top: 0.5px solid var(--cream-06);
   display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem;
 }
-.credit-label { font-size: 8px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
-.credit-val { font-family: var(--serif); font-size: 1rem; font-weight: 300; color: rgba(237,232,223,0.6); }
+.credit-item { display: flex; flex-direction: column; }
+.credit-label {
+  font-size: 8px; letter-spacing: 0.26em;
+  text-transform: uppercase; color: var(--red); margin-bottom: 6px;
+}
+.credit-val {
+  font-family: var(--serif); font-size: 1rem;
+  font-weight: 300; color: rgba(237,232,223,0.6);
+}
 
+/* NEXT PROJECT */
 .next-project {
   border-top: 0.5px solid var(--cream-06); padding: 4rem 3.5rem;
   display: flex; justify-content: space-between; align-items: center;
   cursor: none; transition: background 0.4s; text-decoration: none;
 }
 .next-project:hover { background: rgba(237,232,223,0.02); }
-.next-label { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(237,232,223,0.25); margin-bottom: 8px; }
-.next-title { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; color: var(--cream); }
-.next-arr { font-size: 2rem; color: rgba(237,232,223,0.2); transition: transform 0.4s, color 0.4s; }
+.next-label {
+  font-size: 9px; letter-spacing: 0.26em;
+  text-transform: uppercase; color: rgba(237,232,223,0.25); margin-bottom: 8px;
+}
+.next-title {
+  font-family: var(--serif); font-size: 1.8rem;
+  font-weight: 300; color: var(--cream);
+}
+.next-arr {
+  font-size: 2rem; color: rgba(237,232,223,0.2);
+  transition: transform 0.4s, color 0.4s;
+}
 .next-project:hover .next-arr { transform: translateX(8px); color: var(--red); }
 
+/* MOBILE */
 @media (max-width: 768px) {
   .proj-hero { padding: 0 1.5rem 3rem; }
   .proj-intro { grid-template-columns: 1fr; gap: 2rem; padding: 3.5rem 1.5rem; }
-  .editorial-grid { padding: 0 1.5rem 4rem; }
-  .eg-two, .eg-asym-left, .eg-asym-right { grid-template-columns: 1fr; }
-  .eg-three { grid-template-columns: 1fr 1fr; }
-  .eg-portrait img { width: 85%; }
-  .eg-asym-left img, .eg-asym-right img { min-height: 300px; }
+  .editorial-grid { padding: 2rem 1.5rem 4rem; }
+  .eg-row.trio { flex-wrap: wrap; }
+  .eg-row.trio .eg-img { flex: 0 0 calc(50% - 2px); }
+  .eg-row.centred .eg-img { flex: 0 0 85%; max-width: 85%; }
+  .eg-row.asym-l, .eg-row.asym-r { flex-direction: column; }
+  .eg-row.asym-l .eg-img,
+  .eg-row.asym-r .eg-img { flex: 1 1 100%; max-width: 100%; }
   .proj-credits { grid-template-columns: 1fr 1fr; padding: 3rem 1.5rem; }
   .next-project { padding: 3rem 1.5rem; }
 }
@@ -108,17 +167,17 @@
 <div class="cursor-ring"></div>
 
 <nav class="nav">
-  <a href="index.html" class="nav-logo">ANANSÉ</a>
+  <a href="index.html" class="nav-logo" style="cursor:none;">ANANSÉ</a>
   <ul class="nav-links">
-    <li><a href="work.html">Work</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="work.html" style="cursor:none;">Work</a></li>
+    <li><a href="services.html" style="cursor:none;">Services</a></li>
+    <li><a href="about.html" style="cursor:none;">About</a></li>
+    <li><a href="contact.html" style="cursor:none;">Contact</a></li>
   </ul>
-  <a href="contact.html"><button class="nav-cta-btn">Let's Create</button></a>
+  <a href="contact.html" style="cursor:none;"><button class="nav-cta-btn">Let's Create</button></a>
 </nav>
 
-<!-- HERO — harryjpro-00005.jpg as cover -->
+<!-- HERO -->
 <section class="proj-hero">
   <div class="proj-hero-img">
     <img src="images/work/harry-j-make-up/harryjpro-00005.jpg" alt="Harry J Make Up Editorial">
@@ -166,95 +225,95 @@
   </p>
 </div>
 
-<!-- EDITORIAL GRID — 28 shots -->
+<!-- GALLERY — natural sizes, flex arranged -->
 <div class="editorial-grid">
 
   <!-- ROW 1 — Full width opener -->
-  <div class="eg-full rv">
-    <img src="images/work/harry-j-make-up/harryjpro-00001.jpg" alt="Harry J Make Up">
+  <div class="eg-row solo rv">
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00001.jpg" alt="Harry J Make Up"></div>
   </div>
 
-  <!-- ROW 2 — Two column -->
-  <div class="eg-two rv">
-    <img src="images/work/harry-j-make-up/harryjpro-00002.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/harryjpro-00003.jpg" alt="Harry J Make Up">
+  <!-- ROW 2 — Two side by side -->
+  <div class="eg-row duo rv">
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00002.jpg" alt="Harry J Make Up"></div>
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00003.jpg" alt="Harry J Make Up"></div>
   </div>
 
-  <!-- ROW 3 — Three column -->
-  <div class="eg-three rv">
-    <img src="images/work/harry-j-make-up/harryjpro-00004.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/harryjpro-00005.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/harryjpro-00006.jpg" alt="Harry J Make Up">
+  <!-- ROW 3 — Three equal -->
+  <div class="eg-row trio rv">
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00004.jpg" alt="Harry J Make Up"></div>
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00005.jpg" alt="Harry J Make Up"></div>
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00006.jpg" alt="Harry J Make Up"></div>
   </div>
 
-  <!-- ROW 4 — Asymmetric wide left -->
-  <div class="eg-asym-left rv">
-    <img src="images/work/harry-j-make-up/harryjpro-00007.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/harryjpro-00008.jpg" alt="Harry J Make Up">
+  <!-- ROW 4 — Left wider -->
+  <div class="eg-row asym-l rv">
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00007.jpg" alt="Harry J Make Up"></div>
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00008.jpg" alt="Harry J Make Up"></div>
   </div>
 
-  <!-- ROW 5 — Portrait centred -->
-  <div class="eg-portrait rv">
-    <img src="images/work/harry-j-make-up/harryjpro-00009.jpg" alt="Harry J Make Up">
+  <!-- ROW 5 — Centred portrait -->
+  <div class="eg-row centred rv">
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00009.jpg" alt="Harry J Make Up"></div>
   </div>
 
-  <!-- ROW 6 — Two column -->
-  <div class="eg-two rv">
-    <img src="images/work/harry-j-make-up/harryjpro-00010.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/harryjpro-00011.jpg" alt="Harry J Make Up">
+  <!-- ROW 6 — Two equal -->
+  <div class="eg-row duo rv">
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00010.jpg" alt="Harry J Make Up"></div>
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00011.jpg" alt="Harry J Make Up"></div>
   </div>
 
-  <!-- ROW 7 — Three column -->
-  <div class="eg-three rv">
-    <img src="images/work/harry-j-make-up/harryjpro-00012.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/harryjpro-00013.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/harryjpro-00014.jpg" alt="Harry J Make Up">
+  <!-- ROW 7 — Three equal -->
+  <div class="eg-row trio rv">
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00012.jpg" alt="Harry J Make Up"></div>
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00013.jpg" alt="Harry J Make Up"></div>
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00014.jpg" alt="Harry J Make Up"></div>
   </div>
 
-  <!-- ROW 8 — Asymmetric wide right -->
-  <div class="eg-asym-right rv">
-    <img src="images/work/harry-j-make-up/harryjpro-00015.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/harryjpro-00016.jpg" alt="Harry J Make Up">
+  <!-- ROW 8 — Right wider -->
+  <div class="eg-row asym-r rv">
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00015.jpg" alt="Harry J Make Up"></div>
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00016.jpg" alt="Harry J Make Up"></div>
   </div>
 
-  <!-- ROW 9 — Two column -->
-  <div class="eg-two rv">
-    <img src="images/work/harry-j-make-up/harryjpro-00017.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/harryjpro-00018.jpg" alt="Harry J Make Up">
+  <!-- ROW 9 — Two equal -->
+  <div class="eg-row duo rv">
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00017.jpg" alt="Harry J Make Up"></div>
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00018.jpg" alt="Harry J Make Up"></div>
   </div>
 
   <!-- ROW 10 — Full width -->
-  <div class="eg-full rv">
-    <img src="images/work/harry-j-make-up/harryjpro-00019.jpg" alt="Harry J Make Up">
+  <div class="eg-row solo rv">
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00019.jpg" alt="Harry J Make Up"></div>
   </div>
 
-  <!-- ROW 11 — Three column -->
-  <div class="eg-three rv">
-    <img src="images/work/harry-j-make-up/harryjpro-00020.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/harryjpro-00021.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/harryjpro-00022.jpg" alt="Harry J Make Up">
+  <!-- ROW 11 — Three equal -->
+  <div class="eg-row trio rv">
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00020.jpg" alt="Harry J Make Up"></div>
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00021.jpg" alt="Harry J Make Up"></div>
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00022.jpg" alt="Harry J Make Up"></div>
   </div>
 
-  <!-- ROW 12 — Asymmetric wide left -->
-  <div class="eg-asym-left rv">
-    <img src="images/work/harry-j-make-up/harryjpro-00023.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/harryjpro-00024.jpg" alt="Harry J Make Up">
+  <!-- ROW 12 — Left wider -->
+  <div class="eg-row asym-l rv">
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00023.jpg" alt="Harry J Make Up"></div>
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00024.jpg" alt="Harry J Make Up"></div>
   </div>
 
-  <!-- ROW 13 — Two column -->
-  <div class="eg-two rv">
-    <img src="images/work/harry-j-make-up/harryjpro-00025.jpg" alt="Harry J Make Up">
-    <img src="images/work/harry-j-make-up/harryjpro-00026.jpg" alt="Harry J Make Up">
+  <!-- ROW 13 — Two equal -->
+  <div class="eg-row duo rv">
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00025.jpg" alt="Harry J Make Up"></div>
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00026.jpg" alt="Harry J Make Up"></div>
   </div>
 
-  <!-- ROW 14 — Closing portrait -->
-  <div class="eg-portrait rv">
-    <img src="images/work/harry-j-make-up/harryjpro-00027.jpg" alt="Harry J Make Up">
+  <!-- ROW 14 — Centred closing portrait -->
+  <div class="eg-row centred rv">
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00027.jpg" alt="Harry J Make Up"></div>
   </div>
 
-  <!-- ROW 15 — Final full width -->
-  <div class="eg-full rv">
-    <img src="images/work/harry-j-make-up/harryjpro-00028.jpg" alt="Harry J Make Up">
+  <!-- ROW 15 — Full width closer -->
+  <div class="eg-row solo rv">
+    <div class="eg-img"><img src="images/work/harry-j-make-up/harryjpro-00028.jpg" alt="Harry J Make Up"></div>
   </div>
 
 </div>
@@ -271,11 +330,15 @@
   </div>
   <div class="credit-item">
     <div class="credit-label">Instagram</div>
-    <div class="credit-val"><a href="https://instagram.com/harryjmakeup" target="_blank" style="color:var(--red);">@harryjmakeup</a></div>
+    <div class="credit-val">
+      <a href="https://instagram.com/harryjmakeup" target="_blank" style="color:var(--red);">@harryjmakeup</a>
+    </div>
   </div>
   <div class="credit-item">
     <div class="credit-label">Agency</div>
-    <div class="credit-val"><a href="index.html" style="color:var(--red);">@ananse.creative</a></div>
+    <div class="credit-val">
+      <a href="index.html" style="color:var(--red);">@ananse.creative</a>
+    </div>
   </div>
 </div>
 
