@@ -65,23 +65,10 @@
   transition: transform 0.8s var(--ease);
 }
 .gallery-item:hover .gi-wrap { transform: scale(1.05); }
-.gallery-item .gi-wrap.ratio-tall  { aspect-ratio: 2/3; }
-.gallery-item .gi-wrap.ratio-sq    { aspect-ratio: 1/1; }
-.gallery-item .gi-wrap.ratio-wide  { aspect-ratio: 4/3; }
-.gallery-item .gi-wrap.ratio-port  { aspect-ratio: 3/4; }
+/* One ratio, matching the native 2:3 of the photography. Mixed ratios were
+   what made this grid read as ragged — object-fit was cropping to fit. */
+.gallery-item .gi-wrap { aspect-ratio: 2/3; }
 .gi-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
-/* Placeholder */
-.gi-ph {
-  width: 100%; height: 100%;
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-}
-.gi-ph-glyph {
-  font-family: var(--serif); font-size: 4rem;
-  color: rgba(237,232,223,0.04); font-style: italic;
-  transition: color 0.5s;
-}
-.gallery-item:hover .gi-ph-glyph { color: rgba(237,232,223,0.08); }
 .gi-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(7,7,7,0.9) 0%, rgba(7,7,7,0.15) 50%, transparent 70%);
@@ -104,12 +91,9 @@
   font-weight: 300; color: var(--cream); line-height: 1.25;
 }
 
-/* SPAN HELPERS */
-.gallery-item.span2 { grid-column: span 2; }
 
 @media (max-width: 768px) {
   .gallery-grid { grid-template-columns: 1fr 1fr; }
-  .gallery-item.span2 { grid-column: span 1; }
   .filter-bar { padding: 2rem 1.5rem; }
   .gallery-section { padding: 2.5rem 1.5rem 4rem; }
 }
@@ -157,123 +141,101 @@
 <!-- FILTER -->
 <div class="filter-bar rv">
   <span class="filter-label">Filter by</span>
-  <button class="filter-btn active" data-filter="all">All</button>
-  <button class="filter-btn" data-filter="editorial">Editorial</button>
-  <button class="filter-btn" data-filter="brand-campaign">Brand Campaign</button>
-  <button class="filter-btn" data-filter="bts">BTS</button>
-  <button class="filter-btn" data-filter="film">Film</button>
+  <button class="filter-btn active" type="button" aria-pressed="true" data-filter="all">All</button>
+  <button class="filter-btn" type="button" aria-pressed="false" data-filter="editorial">Editorial</button>
+  <button class="filter-btn" type="button" aria-pressed="false" data-filter="brand-campaign">Brand Campaign</button>
 </div>
 
 <!-- GALLERY -->
 <section class="gallery-section">
   <div class="gallery-grid">
 
-    <!--
-      HOW TO ADD YOUR IMAGES:
-      1. Put your image files in the /images/work/ folder
-      2. Replace the <div class="gi-ph">...</div> placeholder with:
-         <img src="images/work/your-image.jpg" alt="Project Name">
-      3. Change data-category to match: editorial | brand-campaign | bts | film
-      4. Update gi-cat and gi-name text
-    -->
-
-   <a class="gallery-item span2" data-category="brand-campaign" href="vanity-of-the-soul.html">
-  <div class="gi-wrap ratio-wide">
-    <img decoding="async" loading="lazy" width="1280" height="1707" srcset="images/covers/vanity-cover-640.webp 640w, images/covers/vanity-cover-1280.webp 1280w" sizes="(max-width: 768px) 100vw, 33vw" src="images/covers/vanity-cover-640.webp" alt="Vanity of the Soul">
-  </div>
-  <div class="gi-overlay"></div>
-  <div class="gi-info"><div class="gi-cat">Brand Campaign</div><div class="gi-name">Vanity of the Soul — Heritage Editorial</div></div>
-</a>
-
-    <div class="gallery-item" data-category="brand-campaign">
-      <div class="gi-wrap ratio-tall">
-        <div class="gi-ph"><span class="gi-ph-glyph">◈</span></div>
-        <!-- <img src="images/work/vanity-2.jpg" alt="Vanity of the Soul"> -->
+    <a href="harry-j-makeup.html" class="gallery-item" data-category="editorial">
+      <div class="gi-wrap">
+        <img src="images/covers/harry-j-cover-640.webp"
+             srcset="images/covers/harry-j-cover-640.webp 640w, images/covers/harry-j-cover-1280.webp 1280w"
+             sizes="(max-width: 768px) 100vw, 33vw" width="1280" height="1920"
+             alt="Harry J Make Up — Make-Up Designer" loading="lazy" decoding="async">
       </div>
       <div class="gi-overlay"></div>
-      <div class="gi-info"><div class="gi-cat">Brand Campaign</div><div class="gi-name">Vanity of the Soul<br>Product Detail</div></div>
-    </div>
+      <div class="gi-info">
+        <div class="gi-cat">Editorial</div>
+        <div class="gi-name">Harry J Make Up — Make-Up Designer</div>
+      </div>
+    </a>
 
-    <a class="gallery-item" data-category="editorial" href="rehard-bags.html">
-  <div class="gi-wrap ratio-tall">
-    <img decoding="async" loading="lazy" width="1280" height="1920" srcset="images/covers/rehard-cover-640.webp 640w, images/covers/rehard-cover-1280.webp 1280w" sizes="(max-width: 768px) 100vw, 33vw" src="images/covers/rehard-cover-640.webp" alt="Rehard Bags">
-  </div>
-  <div class="gi-overlay"></div>
-  <div class="gi-info"><div class="gi-cat">Fashion & Editorial</div><div class="gi-name">Rehard Bags — Editorial</div></div>
-</a>
-
-    <div class="gallery-item" data-category="editorial">
-      <div class="gi-wrap ratio-tall">
-        <div class="gi-ph"><span class="gi-ph-glyph">◉</span></div>
-        <!-- <img src="images/work/editorial-2.jpg" alt="Editorial"> -->
+    <a href="vertus-ai.html" class="gallery-item" data-category="brand-campaign">
+      <div class="gi-wrap">
+        <img src="images/covers/vertus-ai-cover-640.webp"
+             srcset="images/covers/vertus-ai-cover-640.webp 640w, images/covers/vertus-ai-cover-1280.webp 1280w"
+             sizes="(max-width: 768px) 100vw, 33vw" width="1280" height="1920"
+             alt="Vertus AI — Founders Portrait" loading="lazy" decoding="async">
       </div>
       <div class="gi-overlay"></div>
-      <div class="gi-info"><div class="gi-cat">Editorial</div><div class="gi-name">Colour & Form Series II</div></div>
-    </div>
+      <div class="gi-info">
+        <div class="gi-cat">Brand Campaign</div>
+        <div class="gi-name">Vertus AI — Founders Portrait</div>
+      </div>
+    </a>
 
-   <a class="gallery-item" data-category="editorial" href="harry-j-makeup.html">
-  <div class="gi-wrap ratio-sq">
-    <img decoding="async" loading="lazy" width="1280" height="1920" srcset="images/covers/harryjpro-cover-640.webp 640w, images/covers/harryjpro-cover-1280.webp 1280w" sizes="(max-width: 768px) 100vw, 33vw" src="images/covers/harryjpro-cover-640.webp" alt="Harry J Make Up — Editorial">
-  </div>
-  <div class="gi-overlay"></div>
-  <div class="gi-info"><div class="gi-cat">Editorial</div><div class="gi-name">Harry J Make Up — Editorial</div></div>
-</a>
-    
-    <div class="gallery-item" data-category="editorial">
-      <div class="gi-wrap ratio-port">
-        <div class="gi-ph"><span class="gi-ph-glyph">◇</span></div>
-        <!-- <img src="images/work/portrait-1.jpg" alt="Portrait"> -->
+    <a href="rehard-bags.html" class="gallery-item" data-category="editorial">
+      <div class="gi-wrap">
+        <img src="images/covers/rehard-cover-640.webp"
+             srcset="images/covers/rehard-cover-640.webp 640w, images/covers/rehard-cover-1280.webp 1280w"
+             sizes="(max-width: 768px) 100vw, 33vw" width="1280" height="1920"
+             alt="Rehard — Fashion Editorial" loading="lazy" decoding="async">
       </div>
       <div class="gi-overlay"></div>
-      <div class="gi-info"><div class="gi-cat">Editorial</div><div class="gi-name">Identity — B&W Series</div></div>
-    </div>
+      <div class="gi-info">
+        <div class="gi-cat">Editorial</div>
+        <div class="gi-name">Rehard — Fashion Editorial</div>
+      </div>
+    </a>
 
-    <div class="gallery-item span2" data-category="bts">
-      <div class="gi-wrap ratio-wide">
-        <div class="gi-ph"><span class="gi-ph-glyph">☽</span></div>
-        <!-- <img src="images/work/bts-1.jpg" alt="BTS"> -->
+    <a href="summerhouse.html" class="gallery-item" data-category="brand-campaign">
+      <div class="gi-wrap">
+        <img src="images/covers/summerhouse-cover-640.webp"
+             srcset="images/covers/summerhouse-cover-640.webp 640w, images/covers/summerhouse-cover-1280.webp 1280w"
+             sizes="(max-width: 768px) 100vw, 33vw" width="1280" height="1920"
+             alt="SummerHouse — Brand Film" loading="lazy" decoding="async">
       </div>
       <div class="gi-overlay"></div>
-      <div class="gi-info"><div class="gi-cat">BTS</div><div class="gi-name">Behind the Craft — Vanity of the Soul Set</div></div>
-    </div>
+      <div class="gi-info">
+        <div class="gi-cat">Brand Campaign</div>
+        <div class="gi-name">SummerHouse — Brand Film</div>
+      </div>
+    </a>
 
-    <div class="gallery-item" data-category="bts">
-      <div class="gi-wrap ratio-sq">
-        <div class="gi-ph"><span class="gi-ph-glyph">⬡</span></div>
-        <!-- <img src="images/work/bts-2.jpg" alt="BTS"> -->
+    <a href="motkime.html" class="gallery-item" data-category="editorial">
+      <div class="gi-wrap">
+        <img src="images/covers/motkime-cover-640.webp"
+             srcset="images/covers/motkime-cover-640.webp 640w, images/covers/motkime-cover-1280.webp 1280w"
+             sizes="(max-width: 768px) 100vw, 33vw" width="1280" height="1920"
+             alt="Motkime — Knitwear Editorial" loading="lazy" decoding="async">
       </div>
       <div class="gi-overlay"></div>
-      <div class="gi-info"><div class="gi-cat">BTS</div><div class="gi-name">On Set — Creative Process</div></div>
-    </div>
+      <div class="gi-info">
+        <div class="gi-cat">Editorial</div>
+        <div class="gi-name">Motkime — Knitwear Editorial</div>
+      </div>
+    </a>
 
-    <div class="gallery-item" data-category="editorial">
-      <div class="gi-wrap ratio-port">
-        <div class="gi-ph"><span class="gi-ph-glyph">✧</span></div>
-        <!-- <img src="images/work/kmag-1.jpg" alt="KMag Gala"> -->
+    <a href="vanity-of-the-soul.html" class="gallery-item" data-category="brand-campaign">
+      <div class="gi-wrap">
+        <img src="images/covers/vanity-cover-640.webp"
+             srcset="images/covers/vanity-cover-640.webp 640w, images/covers/vanity-cover-1280.webp 1280w"
+             sizes="(max-width: 768px) 100vw, 33vw" width="1280" height="1920"
+             alt="Vanity of The Soul — Heritage Editorial" loading="lazy" decoding="async">
       </div>
       <div class="gi-overlay"></div>
-      <div class="gi-info"><div class="gi-cat">Editorial</div><div class="gi-name">KMag Gala Coverage</div></div>
-    </div>
-
-    <div class="gallery-item" data-category="brand-campaign">
-      <div class="gi-wrap ratio-port">
-        <div class="gi-ph"><span class="gi-ph-glyph">❋</span></div>
-        <!-- <img src="images/work/hair-brand.jpg" alt="Hair Brand"> -->
+      <div class="gi-info">
+        <div class="gi-cat">Brand Campaign</div>
+        <div class="gi-name">Vanity of The Soul — Heritage Editorial</div>
       </div>
-      <div class="gi-overlay"></div>
-      <div class="gi-info"><div class="gi-cat">Brand Campaign</div><div class="gi-name">Hair Brand — Coming Soon</div></div>
-    </div>
-
-    <div class="gallery-item" data-category="film">
-      <div class="gi-wrap ratio-port">
-        <div class="gi-ph"><span class="gi-ph-glyph">▷</span></div>
-        <!-- <img src="images/work/film-1.jpg" alt="Film"> -->
-      </div>
-      <div class="gi-overlay"></div>
-      <div class="gi-info"><div class="gi-cat">Film</div><div class="gi-name">Short Film — Coming Soon</div></div>
-    </div>
+    </a>
 
   </div>
+
 </section>
 
 <!-- CTA -->

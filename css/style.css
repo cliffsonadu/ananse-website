@@ -236,9 +236,15 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
 }
 
 /* ── WORK GRID ── */
+/* Every cover tile is 2:3 — the native ratio of the photography. Cards differ
+   in content only, never in geometry, so nothing is cropped by object-fit and
+   the grid holds true alignment lines on every edge.
+   TODO Lead Dev: for a more art-directed rhythm, let one card span 2 columns
+   AND 2 rows — that scales it without changing its ratio. Uniform is the
+   calmer read and is what's shipped. */
 .work-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 4px;
 }
 .wcard {
@@ -246,12 +252,10 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
   background: #111; cursor: none;
 }
 .wcard-img-wrap {
+  aspect-ratio: 2/3;
   width: 100%; overflow: hidden;
   transition: transform 0.85s var(--ease);
 }
-.wcard.tall .wcard-img-wrap { aspect-ratio: 2/3.1; }
-.wcard.med  .wcard-img-wrap { aspect-ratio: 3/3.8; }
-.wcard.sm   .wcard-img-wrap { aspect-ratio: 3/2.3; }
 .wcard:hover .wcard-img-wrap { transform: scale(1.05); }
 .wcard-img-wrap img {
   width: 100%; height: 100%;
@@ -291,9 +295,7 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
   font-size: 1.1rem; font-weight: 300;
   color: var(--cream); line-height: 1.25;
 }
-.col2 { display: flex; flex-direction: column; gap: 4px; }
-.col2 .wcard { flex: 1; }
-.col2 .wcard .wcard-img-wrap { aspect-ratio: unset; min-height: 200px; }
+
 
 /* ── PAGE HERO (inner pages) ── */
 .page-hero {
@@ -366,7 +368,7 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
   .nav.scrolled { padding: 0.9rem 1.5rem; }
   .nav-links { display: none; }
   .work-grid { grid-template-columns: 1fr 1fr; }
-  .col2 { display: contents; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
   .brand-logos { gap: 1.5rem; }
   .brand-slot { width: 100px; }
   .footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
