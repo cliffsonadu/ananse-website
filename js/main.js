@@ -244,7 +244,12 @@ document.addEventListener('DOMContentLoaded', () => {
         `Email: ${email}\n` +
         `Company: ${company || '—'}\n` +
         `Project Type: ${type || '—'}\n` +
-        `Budget: ${budget || '—'}\n\n` +
+        `Budget: ${budget || '—'}\n` +
+        [...form.querySelectorAll('[data-extra]')]
+          .map(f => `${f.dataset.extra}: ${f.value.trim() || '—'}`)
+          .join('\n') +
+        ([...form.querySelectorAll('[data-extra]')].length ? '\n' : '') +
+        `\n` +
         `Message:\n${message}`
       );
 
