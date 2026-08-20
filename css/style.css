@@ -1,8 +1,12 @@
 
 /* ── VARIABLES ── */
 :root {
-  --red: #8b1a1a;
-  --red-dim: rgba(139,26,26,0.12);
+  --red: #610c0b;            /* brand logo red — fills, buttons, rules, glows */
+  --red-text: #bb5a58;       /* AA tint for small red text on --black (4.52:1) */
+                            /* TODO Lead Dev: the logo red is 1.50:1 as text and
+                               unreadable at 9px. This is the most muted tint that
+                               still clears AA — adjust to taste, keep it >= 4.5:1. */
+  --red-dim: rgba(97,12,11,0.12);
   --cream: #ede8df;
   --cream-45: rgba(237,232,223,0.45);
   --cream-20: rgba(237,232,223,0.2);
@@ -48,7 +52,7 @@ ul { list-style: none; }
 }
 .cursor-ring {
   width: 36px; height: 36px;
-  border: 0.5px solid rgba(139,26,26,0.4);
+  border: 0.5px solid rgba(97,12,11,0.4);
   border-radius: 50%;
   position: fixed; top: 0; left: 0;
   pointer-events: none; z-index: 9998;
@@ -57,7 +61,7 @@ ul { list-style: none; }
   will-change: transform;
 }
 body.is-hovering .cursor-dot { transform: translate(-50%, -50%) scale(0); }
-body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(139,26,26,0.7); }
+body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(97,12,11,0.7); }
 
 /* ── NAV ── */
 .nav {
@@ -145,7 +149,7 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(13
 /* ── SECTION LABELS ── */
 .s-label {
   font-size: 9px; letter-spacing: 0.3em;
-  text-transform: uppercase; color: var(--red);
+  text-transform: uppercase; color: var(--red-text);
   margin-bottom: 0.7rem;
 }
 .s-title {
@@ -188,7 +192,7 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
   text-transform: uppercase;
   color: rgba(237,232,223,0.5);
 }
-.ticker-gem { color: var(--red); font-size: 7px; vertical-align: middle; }
+.ticker-gem { color: var(--red-text); font-size: 7px; vertical-align: middle; }
 
 /* ── BRAND BAR ── */
 .brand-bar {
@@ -280,7 +284,7 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
 .wcard:hover .wcard-info { transform: translateY(0); opacity: 1; }
 .wcard-cat {
   font-size: 8px; letter-spacing: 0.24em;
-  text-transform: uppercase; color: var(--red); margin-bottom: 5px;
+  text-transform: uppercase; color: var(--red-text); margin-bottom: 5px;
 }
 .wcard-name {
   font-family: var(--serif);
@@ -300,12 +304,12 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
 .page-hero-glow {
   position: absolute; top: -20%; right: -5%;
   width: 50%; height: 130%;
-  background: radial-gradient(ellipse, rgba(139,26,26,0.1) 0%, transparent 65%);
+  background: radial-gradient(ellipse, rgba(97,12,11,0.1) 0%, transparent 65%);
   pointer-events: none;
 }
 .page-hero-label {
   font-size: 9px; letter-spacing: 0.32em;
-  text-transform: uppercase; color: var(--red);
+  text-transform: uppercase; color: var(--red-text);
   margin-bottom: 1.5rem;
   display: flex; align-items: center; gap: 14px;
 }
@@ -429,7 +433,7 @@ body {
 .nav-drawer.open li:nth-child(2) a { transition-delay: 0.14s; }
 .nav-drawer.open li:nth-child(3) a { transition-delay: 0.20s; }
 .nav-drawer.open li:nth-child(4) a { transition-delay: 0.26s; }
-.nav-drawer a:hover, .nav-drawer a.active { color: var(--red); }
+.nav-drawer a:hover, .nav-drawer a.active { color: var(--red-text); }
 .nav-drawer-meta {
   margin-top: 3rem;
   font-size: 10px; letter-spacing: 0.24em;
