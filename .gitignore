@@ -1,0 +1,22 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Node / tooling
+node_modules/
+dist/
+.cache/
+
+# Source media (originals live outside the repo)
+*.psd
+*.ai
+*.mp4
+*.mov
+
+# Accidental shell-expansion artefacts
+{css,js,images*/

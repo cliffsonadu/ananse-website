@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
 
 /* ── VARIABLES ── */
 :root {
@@ -18,7 +17,11 @@
 
 /* ── RESET ── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background: var(--black); /* fills the gutters beyond the 1920px content cap */
+}
 body {
   background: var(--black);
   color: var(--cream);
@@ -58,7 +61,9 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(13
 
 /* ── NAV ── */
 .nav {
-  position: fixed; top: 0; left: 0; right: 0;
+  position: fixed; top: 0;
+  left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 1920px;
   z-index: 500;
   display: flex; align-items: center; justify-content: space-between;
   padding: 1.6rem 3.5rem;
@@ -81,7 +86,7 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(13
 .nav-links a {
   font-size: 10px; letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(237,232,223,0.38);
+  color: rgba(237,232,223,0.5);
   transition: color 0.3s;
 }
 .nav-links a:hover, .nav-links a.active { color: var(--cream); }
@@ -130,7 +135,7 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(13
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 10px; letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(237,232,223,0.35);
+  color: rgba(237,232,223,0.5);
   cursor: none; transition: color 0.35s;
 }
 .ghost-link:hover { color: var(--cream); }
@@ -150,11 +155,15 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(13
 }
 
 /* ── REVEAL ANIMATION ── */
-.rv {
+/* Content is visible by default. Only once JS has confirmed it is running
+   (html.js, set inline in <head>) do we hide it to animate it in. A JS error
+   or a blocked script can no longer leave the page blank. */
+.rv { opacity: 1; transform: none; }
+html.js .rv {
   opacity: 0; transform: translateY(34px);
   transition: opacity 0.95s var(--ease), transform 0.95s var(--ease);
 }
-.rv.on { opacity: 1; transform: translateY(0); }
+html.js .rv.on { opacity: 1; transform: translateY(0); }
 .rv.d1 { transition-delay: 0.1s; }
 .rv.d2 { transition-delay: 0.22s; }
 .rv.d3 { transition-delay: 0.34s; }
@@ -177,7 +186,7 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(13
 .ticker-word {
   font-size: 9px; letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(237,232,223,0.2);
+  color: rgba(237,232,223,0.5);
 }
 .ticker-gem { color: var(--red); font-size: 7px; vertical-align: middle; }
 
@@ -190,7 +199,7 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(13
 .brand-bar-label {
   font-size: 9px; letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(237,232,223,0.22);
+  color: rgba(237,232,223,0.5);
   text-align: center; margin-bottom: 2.5rem;
 }
 .brand-logos {
@@ -217,7 +226,7 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(13
 .brand-slot-ph {
   font-family: var(--serif);
   font-size: 11px; letter-spacing: 0.15em;
-  color: rgba(237,232,223,0.2);
+  color: rgba(237,232,223,0.5);
   text-align: center; padding: 0 8px;
   font-style: italic;
 }
@@ -310,10 +319,10 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(13
   font-weight: 300; line-height: 1.0;
   color: var(--cream); margin-bottom: 1.5rem;
 }
-.page-hero h1 em { font-style: italic; color: rgba(237,232,223,0.35); }
+.page-hero h1 em { font-style: italic; color: rgba(237,232,223,0.5); }
 .page-hero-sub {
   font-size: 14px; line-height: 1.9;
-  color: rgba(237,232,223,0.4);
+  color: rgba(237,232,223,0.5);
   max-width: 480px; font-weight: 300;
 }
 
@@ -328,14 +337,14 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(13
 .footer-logo {
   font-family: var(--serif);
   font-size: 1.1rem; letter-spacing: 0.15em;
-  color: rgba(237,232,223,0.28);
+  color: rgba(237,232,223,0.5);
 }
-.footer-copy { font-size: 9px; color: rgba(237,232,223,0.16); letter-spacing: 0.08em; }
+.footer-copy { font-size: 9px; color: rgba(237,232,223,0.5); letter-spacing: 0.08em; }
 .footer-links { display: flex; gap: 2rem; }
 .footer-links a {
   font-size: 9px; letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(237,232,223,0.25);
+  color: rgba(237,232,223,0.5);
   transition: color 0.3s;
 }
 .footer-links a:hover { color: var(--cream); }
@@ -359,8 +368,127 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(13
   .footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
   .page-hero { padding: 9rem 1.5rem 3.5rem; }
 }
-/* MAX WIDTH CONTAINER — prevents layout breaking on very large screens */
+/* ── MAX WIDTH CONTAINER ── */
+/* Caps content on ultra-wide displays. .nav is position:fixed so it is capped
+   separately above — otherwise it spans the viewport while content is centred. */
 body {
   max-width: 1920px;
   margin: 0 auto;
+}
+
+/* ── MOBILE NAV ── */
+.nav-toggle {
+  display: none;
+  width: 44px; height: 44px;
+  align-items: center; justify-content: center;
+  background: transparent; border: none;
+  padding: 0; cursor: none;
+}
+.nav-toggle-bars { position: relative; width: 22px; height: 12px; }
+.nav-toggle-bars span {
+  position: absolute; left: 0;
+  display: block; width: 100%; height: 1px;
+  background: var(--cream);
+  transition: transform 0.4s var(--ease), opacity 0.3s var(--ease);
+}
+.nav-toggle-bars span:nth-child(1) { top: 0; }
+.nav-toggle-bars span:nth-child(2) { top: 11px; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(1) {
+  transform: translateY(5.5px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(2) {
+  transform: translateY(-5.5px) rotate(-45deg);
+}
+
+.nav-drawer {
+  position: fixed; inset: 0;
+  z-index: 490;
+  background: rgba(7,7,7,0.97);
+  backdrop-filter: blur(26px);
+  -webkit-backdrop-filter: blur(26px);
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: flex-start;
+  padding: 0 1.5rem;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.45s var(--ease), visibility 0.45s;
+}
+.nav-drawer.open { opacity: 1; visibility: visible; }
+.nav-drawer ul { display: flex; flex-direction: column; gap: 0; width: 100%; }
+.nav-drawer li { border-bottom: 0.5px solid var(--cream-06); }
+.nav-drawer li:first-child { border-top: 0.5px solid var(--cream-06); }
+.nav-drawer a {
+  display: block; padding: 1.4rem 0;
+  font-family: var(--serif);
+  font-size: 2rem; font-weight: 300;
+  color: var(--cream);
+  transform: translateY(14px); opacity: 0;
+  transition: transform 0.5s var(--ease), opacity 0.5s var(--ease), color 0.3s;
+}
+.nav-drawer.open a { transform: translateY(0); opacity: 1; }
+.nav-drawer.open li:nth-child(1) a { transition-delay: 0.08s; }
+.nav-drawer.open li:nth-child(2) a { transition-delay: 0.14s; }
+.nav-drawer.open li:nth-child(3) a { transition-delay: 0.20s; }
+.nav-drawer.open li:nth-child(4) a { transition-delay: 0.26s; }
+.nav-drawer a:hover, .nav-drawer a.active { color: var(--red); }
+.nav-drawer-meta {
+  margin-top: 3rem;
+  font-size: 10px; letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(237,232,223,0.5);
+}
+body.nav-open { overflow: hidden; }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; }
+  .nav .nav-cta-btn { display: none; }
+}
+@media (min-width: 769px) {
+  .nav-drawer { display: none; }
+}
+
+/* ── FOCUS VISIBILITY ── */
+/* The custom cursor hides the pointer, so keyboard focus must be unmistakable. */
+:focus-visible {
+  outline: 1px solid var(--red);
+  outline-offset: 3px;
+}
+a:focus-visible, button:focus-visible {
+  outline: 1px solid var(--red);
+  outline-offset: 4px;
+}
+.skip-link {
+  position: absolute; top: 0; left: 0;
+  z-index: 1000;
+  padding: 12px 20px;
+  background: var(--red); color: var(--cream);
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  transform: translateY(-120%);
+  transition: transform 0.25s var(--ease);
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* ── POINTER-LESS DEVICES ── */
+/* Touch and hybrid devices get the real cursor back; the custom one is
+   pointer-driven and would otherwise leave them with no cursor at all. */
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none !important; }
+  body, button, a, .wcard, .gallery-item, .masonry-item,
+  .ghost-link, .brand-slot, .filter-btn, .proc-item, .nav-toggle {
+    cursor: auto !important;
+  }
+  button, a, .filter-btn { cursor: pointer !important; }
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  html.js .rv { opacity: 1 !important; transform: none !important; }
+  .ticker-inner, .brand-track { animation: none !important; }
+  .cursor-dot, .cursor-ring { display: none; }
+  body { cursor: auto; }
 }

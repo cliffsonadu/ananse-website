@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About — Anansé Creative Haus</title>
 <meta name="description" content="Anansé Creative Haus — a Warsaw-based production house rooted in storytelling and premium quality.">
+<link rel="canonical" href="https://ananse.agency/about.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#070707">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Anansé Creative Haus">
+<meta property="og:title" content="About — Anansé Creative Haus">
+<meta property="og:description" content="Anansé Creative Haus — a Warsaw-based production house rooted in storytelling and premium quality.">
+<meta property="og:url" content="https://ananse.agency/about.html">
+<meta property="og:image" content="https://ananse.agency/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About — Anansé Creative Haus">
+<meta name="twitter:description" content="Anansé Creative Haus — a Warsaw-based production house rooted in storytelling and premium quality.">
+<meta name="twitter:image" content="https://ananse.agency/og-cover.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap">
 <link rel="stylesheet" href="css/style.css">
 <style>
 /* ORIGIN */
@@ -177,6 +197,7 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
 
@@ -189,7 +210,21 @@
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <a href="contact.html"><button class="nav-cta-btn">Let's Create</button></a>
+  <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+    <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span></span>
+  </button>
 </nav>
+
+<div id="main" class="nav-drawer" id="nav-drawer" aria-hidden="true">
+  <ul>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-drawer-meta">Warsaw — Worldwide</div>
+</div>
+
 
 <!-- PAGE HERO -->
 <section class="page-hero">
@@ -324,7 +359,7 @@
 
 <footer class="footer">
   <div class="footer-logo">ANANSÉ</div>
-  <div class="footer-copy">© 2025 Anansé Creative Haus — Warsaw, Poland</div>
+  <div class="footer-copy">© <span data-year>2026</span> Anansé Creative Haus — Warsaw, Poland</div>
   <div class="footer-links">
     <a href="https://instagram.com/ananse.creative" target="_blank">Instagram</a>
     <a href="mailto:info@ananse.agency">info@ananse.agency</a>
