@@ -107,6 +107,60 @@ document.addEventListener('DOMContentLoaded', () => {
     revealables.forEach(el => obs.observe(el));
   }
 
+
+  /* ── MASONRY ──
+     Balances tiles of differing native heights into columns, shortest-column
+     first, so nothing has to be cropped to a common shape. Ratios come from
+     each image's width/height attributes, so no layout waits on a download. */
+  document.querySelectorAll('.masonry').forEach(grid => {
+    const tiles = [...grid.children];
+    if (!tiles.length) return;
+
+    const ratioOf = el => {
+      const img = el.querySelector('img');
+      const w = +(img && img.getAttribute('width'));
+      const h = +(img && img.getAttribute('height'));
+      return (w && h) ? h / w : 1.5;        /* height per unit width */
+    };
+    const ratios = tiles.map(ratioOf);
+
+    const colCount = () =>
+      window.innerWidth <= 560 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+
+    let current = 0;
+    const layout = () => {
+      const n = colCount();
+      if (n === current) return;
+      current = n;
+
+      grid.classList.add('is-columns');
+      grid.textContent = '';
+      const cols = [];
+      const heights = new Array(n).fill(0);
+      for (let i = 0; i < n; i++) {
+        const c = document.createElement('div');
+        c.className = 'masonry-col';
+        grid.appendChild(c);
+        cols.push(c);
+      }
+      tiles.forEach((tile, i) => {
+        const shortest = heights.indexOf(Math.min(...heights));
+        cols[shortest].appendChild(tile);
+        heights[shortest] += ratios[i];
+      });
+    };
+
+    layout();
+    let t;
+    window.addEventListener('resize', () => {
+      clearTimeout(t);
+      t = setTimeout(layout, 180);
+    });
+
+    /* Filter buttons hide tiles; rebalance so no column is left hanging. */
+    grid.addEventListener('masonry:refresh', () => { current = 0; layout(); });
+  });
+
   /* ── FOOTER YEAR ── */
   document.querySelectorAll('[data-year]').forEach(el => {
     el.textContent = String(new Date().getFullYear());
@@ -135,6 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.style.transform = 'translateY(0)';
               });
             }
+            const grid = item.closest('.masonry');
+            if (grid) grid.dispatchEvent(new Event('masonry:refresh'));
           }, reducedMotion ? 0 : 200);
         });
       });
@@ -188,7 +244,12 @@ document.addEventListener('DOMContentLoaded', () => {
         `Email: ${email}\n` +
         `Company: ${company || '—'}\n` +
         `Project Type: ${type || '—'}\n` +
-        `Budget: ${budget || '—'}\n\n` +
+        `Budget: ${budget || '—'}\n` +
+        [...form.querySelectorAll('[data-extra]')]
+          .map(f => `${f.dataset.extra}: ${f.value.trim() || '—'}`)
+          .join('\n') +
+        ([...form.querySelectorAll('[data-extra]')].length ? '\n' : '') +
+        `\n` +
         `Message:\n${message}`
       );
 

@@ -1,8 +1,12 @@
 
 /* ── VARIABLES ── */
 :root {
-  --red: #8b1a1a;
-  --red-dim: rgba(139,26,26,0.12);
+  --red: #610c0b;            /* brand logo red — fills, buttons, rules, glows */
+  --red-text: #bb5a58;       /* AA tint for small red text on --black (4.52:1) */
+                            /* TODO Lead Dev: the logo red is 1.50:1 as text and
+                               unreadable at 9px. This is the most muted tint that
+                               still clears AA — adjust to taste, keep it >= 4.5:1. */
+  --red-dim: rgba(97,12,11,0.12);
   --cream: #ede8df;
   --cream-45: rgba(237,232,223,0.45);
   --cream-20: rgba(237,232,223,0.2);
@@ -22,6 +26,11 @@ html {
   font-size: 16px;
   background: var(--black); /* fills the gutters beyond the 1920px content cap */
 }
+/* Marquees are wider than the screen by design. If one ever escapes its
+   clipping ancestor it widens the layout viewport, which pushes the fixed
+   nav — and the mobile menu button with it — off the side of the screen.
+   `clip` rather than `hidden` so position:fixed children still work. */
+html, body { overflow-x: clip; }
 body {
   background: var(--black);
   color: var(--cream);
@@ -48,7 +57,7 @@ ul { list-style: none; }
 }
 .cursor-ring {
   width: 36px; height: 36px;
-  border: 0.5px solid rgba(139,26,26,0.4);
+  border: 0.5px solid rgba(97,12,11,0.4);
   border-radius: 50%;
   position: fixed; top: 0; left: 0;
   pointer-events: none; z-index: 9998;
@@ -57,7 +66,7 @@ ul { list-style: none; }
   will-change: transform;
 }
 body.is-hovering .cursor-dot { transform: translate(-50%, -50%) scale(0); }
-body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(139,26,26,0.7); }
+body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(97,12,11,0.7); }
 
 /* ── NAV ── */
 .nav {
@@ -145,7 +154,7 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(13
 /* ── SECTION LABELS ── */
 .s-label {
   font-size: 9px; letter-spacing: 0.3em;
-  text-transform: uppercase; color: var(--red);
+  text-transform: uppercase; color: var(--red-text);
   margin-bottom: 0.7rem;
 }
 .s-title {
@@ -188,7 +197,7 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
   text-transform: uppercase;
   color: rgba(237,232,223,0.5);
 }
-.ticker-gem { color: var(--red); font-size: 7px; vertical-align: middle; }
+.ticker-gem { color: var(--red-text); font-size: 7px; vertical-align: middle; }
 
 /* ── BRAND BAR ── */
 .brand-bar {
@@ -232,9 +241,28 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
 }
 
 /* ── WORK GRID ── */
-.work-grid {
+/* ── MASONRY ──
+   Every tile carries its own aspect-ratio, set inline from the file's real
+   pixel dimensions. Nothing is ever cropped to fit a box: the photographer's
+   crop IS the crop. Because heights then differ, the columns are balanced by
+   JS (shortest-column placement) rather than by a row grid, which is what
+   keeps mixed ratios reading as composed instead of ragged.
+
+   No-JS fallback below is a plain 3-up grid — ragged at the row bottoms but
+   never broken, and every image still shows at its true shape. */
+.masonry {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  gap: 4px;
+}
+.masonry.is-columns {           /* upgraded by main.js */
+  display: flex;
+  align-items: flex-start;
+}
+.masonry-col {
+  flex: 1 1 0; min-width: 0;
+  display: flex; flex-direction: column;
   gap: 4px;
 }
 .wcard {
@@ -245,9 +273,6 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
   width: 100%; overflow: hidden;
   transition: transform 0.85s var(--ease);
 }
-.wcard.tall .wcard-img-wrap { aspect-ratio: 2/3.1; }
-.wcard.med  .wcard-img-wrap { aspect-ratio: 3/3.8; }
-.wcard.sm   .wcard-img-wrap { aspect-ratio: 3/2.3; }
 .wcard:hover .wcard-img-wrap { transform: scale(1.05); }
 .wcard-img-wrap img {
   width: 100%; height: 100%;
@@ -280,16 +305,14 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
 .wcard:hover .wcard-info { transform: translateY(0); opacity: 1; }
 .wcard-cat {
   font-size: 8px; letter-spacing: 0.24em;
-  text-transform: uppercase; color: var(--red); margin-bottom: 5px;
+  text-transform: uppercase; color: var(--red-text); margin-bottom: 5px;
 }
 .wcard-name {
   font-family: var(--serif);
   font-size: 1.1rem; font-weight: 300;
   color: var(--cream); line-height: 1.25;
 }
-.col2 { display: flex; flex-direction: column; gap: 4px; }
-.col2 .wcard { flex: 1; }
-.col2 .wcard .wcard-img-wrap { aspect-ratio: unset; min-height: 200px; }
+
 
 /* ── PAGE HERO (inner pages) ── */
 .page-hero {
@@ -300,12 +323,12 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
 .page-hero-glow {
   position: absolute; top: -20%; right: -5%;
   width: 50%; height: 130%;
-  background: radial-gradient(ellipse, rgba(139,26,26,0.1) 0%, transparent 65%);
+  background: radial-gradient(ellipse, rgba(97,12,11,0.1) 0%, transparent 65%);
   pointer-events: none;
 }
 .page-hero-label {
   font-size: 9px; letter-spacing: 0.32em;
-  text-transform: uppercase; color: var(--red);
+  text-transform: uppercase; color: var(--red-text);
   margin-bottom: 1.5rem;
   display: flex; align-items: center; gap: 14px;
 }
@@ -361,8 +384,7 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
   .nav { padding: 1.2rem 1.5rem; }
   .nav.scrolled { padding: 0.9rem 1.5rem; }
   .nav-links { display: none; }
-  .work-grid { grid-template-columns: 1fr 1fr; }
-  .col2 { display: contents; }
+
   .brand-logos { gap: 1.5rem; }
   .brand-slot { width: 100px; }
   .footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
@@ -429,7 +451,7 @@ body {
 .nav-drawer.open li:nth-child(2) a { transition-delay: 0.14s; }
 .nav-drawer.open li:nth-child(3) a { transition-delay: 0.20s; }
 .nav-drawer.open li:nth-child(4) a { transition-delay: 0.26s; }
-.nav-drawer a:hover, .nav-drawer a.active { color: var(--red); }
+.nav-drawer a:hover, .nav-drawer a.active { color: var(--red-text); }
 .nav-drawer-meta {
   margin-top: 3rem;
   font-size: 10px; letter-spacing: 0.24em;
@@ -492,3 +514,7 @@ a:focus-visible, button:focus-visible {
   .cursor-dot, .cursor-ring { display: none; }
   body { cursor: auto; }
 }
+
+/* Masonry column counts mirror the no-JS grid so both paths agree */
+@media (max-width: 900px) { .masonry { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .masonry { grid-template-columns: 1fr; } }

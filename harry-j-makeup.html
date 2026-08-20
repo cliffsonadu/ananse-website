@@ -43,7 +43,7 @@
 .proj-hero-content { position: relative; z-index: 2; }
 .proj-hero-eyebrow {
   font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--red); margin-bottom: 1.2rem;
+  color: var(--red-text); margin-bottom: 1.2rem;
   display: flex; align-items: center; gap: 14px;
 }
 .proj-hero-eyebrow::before {
@@ -187,7 +187,7 @@
   background: transparent; color: var(--cream);
   font-size: 1.1rem; z-index: 1001;
 }
-.lb-close:hover { border-color: var(--red); color: var(--red); }
+.lb-close:hover { border-color: var(--red); color: var(--red-text); }
 
 .lb-nav {
   position: fixed; top: 50%; transform: translateY(-50%);
@@ -217,7 +217,7 @@
 .credit-item { display: flex; flex-direction: column; }
 .credit-label {
   font-size: 8px; letter-spacing: 0.26em;
-  text-transform: uppercase; color: var(--red); margin-bottom: 6px;
+  text-transform: uppercase; color: var(--red-text); margin-bottom: 6px;
 }
 .credit-val {
   font-family: var(--serif); font-size: 1rem;
@@ -243,7 +243,7 @@
   font-size: 2rem; color: rgba(237,232,223,0.2);
   transition: transform 0.4s, color 0.4s;
 }
-.next-project:hover .next-arr { transform: translateX(8px); color: var(--red); }
+.next-project:hover .next-arr { transform: translateX(8px); color: var(--red-text); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
@@ -270,10 +270,11 @@
   <ul class="nav-links">
     <li><a href="work.html">Work</a></li>
     <li><a href="services.html">Services</a></li>
+    <li><a href="weddings.html">Weddings</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <a href="contact.html"><button class="nav-cta-btn">Let's Create</button></a>
+  <a href="contact.html"><button type="button" class="nav-cta-btn">Let's Create</button></a>
   <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
     <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span></span>
   </button>
@@ -283,6 +284,7 @@
   <ul>
     <li><a href="work.html">Work</a></li>
     <li><a href="services.html">Services</a></li>
+    <li><a href="weddings.html">Weddings</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
@@ -347,12 +349,12 @@
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
-  <button class="lb-close" id="lb-close">✕</button>
-  <button class="lb-nav lb-prev" id="lb-prev">←</button>
+  <button type="button" class="lb-close" id="lb-close">✕</button>
+  <button type="button" class="lb-nav lb-prev" id="lb-prev">←</button>
   <div class="lb-img-wrap">
     <img src="" alt="Harry J Make Up" id="lb-img">
   </div>
-  <button class="lb-nav lb-next" id="lb-next">→</button>
+  <button type="button" class="lb-nav lb-next" id="lb-next">→</button>
   <div class="lb-counter" id="lb-counter">1 / 28</div>
 </div>
 
@@ -369,13 +371,13 @@
   <div class="credit-item">
     <div class="credit-label">Instagram</div>
     <div class="credit-val">
-      <a href="https://instagram.com/harryjmakeup" target="_blank" style="color:var(--red);cursor:none;">@harryjmakeup</a>
+      <a href="https://instagram.com/harryjmakeup" target="_blank" style="color:var(--red-text);cursor:none;">@harryjmakeup</a>
     </div>
   </div>
   <div class="credit-item">
     <div class="credit-label">Agency</div>
     <div class="credit-val">
-      <a href="index.html" style="color:var(--red);cursor:none;">@ananse.creative</a>
+      <a href="index.html" style="color:var(--red-text);cursor:none;">@ananse.creative</a>
     </div>
   </div>
 </div>
@@ -519,6 +521,7 @@
   function openLightbox(index) {
     current = index;
     lbImg.src = photos[current].s + '-1280.webp';
+    lbImg.width = photos[current].w; lbImg.height = photos[current].h;
     lbCounter.textContent = (current + 1) + ' / ' + total;
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -533,12 +536,14 @@
   function prevImg() {
     current = (current - 1 + total) % total;
     lbImg.src = photos[current].s + '-1280.webp';
+    lbImg.width = photos[current].w; lbImg.height = photos[current].h;
     lbCounter.textContent = (current + 1) + ' / ' + total;
   }
 
   function nextImg() {
     current = (current + 1) % total;
     lbImg.src = photos[current].s + '-1280.webp';
+    lbImg.width = photos[current].w; lbImg.height = photos[current].h;
     lbCounter.textContent = (current + 1) + ' / ' + total;
   }
 
