@@ -26,6 +26,11 @@ html {
   font-size: 16px;
   background: var(--black); /* fills the gutters beyond the 1920px content cap */
 }
+/* Marquees are wider than the screen by design. If one ever escapes its
+   clipping ancestor it widens the layout viewport, which pushes the fixed
+   nav — and the mobile menu button with it — off the side of the screen.
+   `clip` rather than `hidden` so position:fixed children still work. */
+html, body { overflow-x: clip; }
 body {
   background: var(--black);
   color: var(--cream);
