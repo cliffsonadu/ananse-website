@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harry J Make Up — Anansé Creative Haus</title>
 <meta name="description" content="Harry J Make Up editorial — shot by Anansé Creative Haus, Warsaw.">
+<link rel="canonical" href="https://ananse.agency/harry-j-makeup.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#070707">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Anansé Creative Haus">
+<meta property="og:title" content="Harry J Make Up — Anansé Creative Haus">
+<meta property="og:description" content="Harry J Make Up editorial — shot by Anansé Creative Haus, Warsaw.">
+<meta property="og:url" content="https://ananse.agency/harry-j-makeup.html">
+<meta property="og:image" content="https://ananse.agency/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Harry J Make Up — Anansé Creative Haus">
+<meta name="twitter:description" content="Harry J Make Up editorial — shot by Anansé Creative Haus, Warsaw.">
+<meta name="twitter:image" content="https://ananse.agency/og-cover.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap">
 <link rel="stylesheet" href="css/style.css">
 <style>
 
@@ -240,25 +260,40 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="index.html" class="nav-logo" style="cursor:none;">ANANSÉ</a>
+  <a href="index.html" class="nav-logo">ANANSÉ</a>
   <ul class="nav-links">
-    <li><a href="work.html" style="cursor:none;">Work</a></li>
-    <li><a href="services.html" style="cursor:none;">Services</a></li>
-    <li><a href="about.html" style="cursor:none;">About</a></li>
-    <li><a href="contact.html" style="cursor:none;">Contact</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
-  <a href="contact.html" style="cursor:none;"><button class="nav-cta-btn">Let's Create</button></a>
+  <a href="contact.html"><button class="nav-cta-btn">Let's Create</button></a>
+  <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+    <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span></span>
+  </button>
 </nav>
+
+<div id="main" class="nav-drawer" id="nav-drawer" aria-hidden="true">
+  <ul>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-drawer-meta">Warsaw — Worldwide</div>
+</div>
+
 
 <!-- HERO -->
 <section class="proj-hero">
   <div class="proj-hero-img">
-    <img src="images/work/harry-j-make-up/harryjpro-00005.jpg" alt="Harry J Make Up Editorial">
+    <img decoding="async" loading="lazy" width="1280" height="853" srcset="images/work/harry-j-make-up/harryjpro-00005-640.webp 640w, images/work/harry-j-make-up/harryjpro-00005-1280.webp 1280w" sizes="(max-width: 768px) 100vw, 50vw" src="images/work/harry-j-make-up/harryjpro-00005-640.webp" alt="Harry J Make Up Editorial">
   </div>
   <div class="proj-hero-overlay"></div>
   <div class="proj-hero-content">
@@ -346,7 +381,7 @@
 </div>
 
 <!-- BACK TO WORK -->
-<a href="work.html" class="next-project" style="cursor:none;">
+<a href="work.html" class="next-project">
   <div>
     <div class="next-label">Back to</div>
     <div class="next-title">All Projects</div>
@@ -356,7 +391,7 @@
 
 <footer class="footer">
   <div class="footer-logo">ANANSÉ</div>
-  <div class="footer-copy">© 2025 Anansé Creative Haus — Warsaw, Poland</div>
+  <div class="footer-copy">© <span data-year>2026</span> Anansé Creative Haus — Warsaw, Poland</div>
   <div class="footer-links">
     <a href="https://instagram.com/ananse.creative" target="_blank">Instagram</a>
     <a href="mailto:info@ananse.agency">info@ananse.agency</a>
@@ -369,34 +404,34 @@
 
   // ── PHOTO LIST in order 001 to 028 ──
   const photos = [
-    'images/work/harry-j-make-up/harryjpro-00001.jpg',
-    'images/work/harry-j-make-up/harryjpro-00002.jpg',
-    'images/work/harry-j-make-up/harryjpro-00003.jpg',
-    'images/work/harry-j-make-up/harryjpro-00004.jpg',
-    'images/work/harry-j-make-up/harryjpro-00005.jpg',
-    'images/work/harry-j-make-up/harryjpro-00006.jpg',
-    'images/work/harry-j-make-up/harryjpro-00007.jpg',
-    'images/work/harry-j-make-up/harryjpro-00008.jpg',
-    'images/work/harry-j-make-up/harryjpro-00009.jpg',
-    'images/work/harry-j-make-up/harryjpro-00010.jpg',
-    'images/work/harry-j-make-up/harryjpro-00011.jpg',
-    'images/work/harry-j-make-up/harryjpro-00012.jpg',
-    'images/work/harry-j-make-up/harryjpro-00013.jpg',
-    'images/work/harry-j-make-up/harryjpro-00014.jpg',
-    'images/work/harry-j-make-up/harryjpro-00015.jpg',
-    'images/work/harry-j-make-up/harryjpro-00016.jpg',
-    'images/work/harry-j-make-up/harryjpro-00017.jpg',
-    'images/work/harry-j-make-up/harryjpro-00018.jpg',
-    'images/work/harry-j-make-up/harryjpro-00019.jpg',
-    'images/work/harry-j-make-up/harryjpro-00020.jpg',
-    'images/work/harry-j-make-up/harryjpro-00021.jpg',
-    'images/work/harry-j-make-up/harryjpro-00022.jpg',
-    'images/work/harry-j-make-up/harryjpro-00023.jpg',
-    'images/work/harry-j-make-up/harryjpro-00024.jpg',
-    'images/work/harry-j-make-up/harryjpro-00025.jpg',
-    'images/work/harry-j-make-up/harryjpro-00026.jpg',
-    'images/work/harry-j-make-up/harryjpro-00027.jpg',
-    'images/work/harry-j-make-up/harryjpro-00028.jpg'
+    {s:'images/work/harry-j-make-up/harryjpro-00001',w:1638,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00002',w:1638,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00003',w:1638,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00004',w:1365,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00005',w:2048,h:1365},
+    {s:'images/work/harry-j-make-up/harryjpro-00006',w:1489,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00007',w:1489,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00008',w:1365,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00009',w:2048,h:1365},
+    {s:'images/work/harry-j-make-up/harryjpro-00010',w:1365,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00011',w:1365,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00012',w:1365,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00013',w:1365,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00014',w:1365,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00015',w:1365,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00016',w:1365,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00017',w:1638,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00018',w:1638,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00019',w:1638,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00020',w:1638,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00021',w:1638,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00022',w:1522,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00023',w:1638,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00024',w:1638,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00025',w:1365,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00026',w:1365,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00027',w:1365,h:2048},
+    {s:'images/work/harry-j-make-up/harryjpro-00028',w:2048,h:1365}
   ];
 
   const total = photos.length;
@@ -437,9 +472,13 @@
       item.dataset.index = index;
 
       const img = document.createElement('img');
-      img.src = src;
+      img.src = src.s + '-640.webp';
+      img.srcset = src.s + '-640.webp 640w, ' + src.s + '-1280.webp 1280w';
+      img.sizes = '(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw';
+      img.width = src.w; img.height = src.h;
       img.alt = 'Harry J Make Up';
       img.loading = 'lazy';
+      img.decoding = 'async';
 
       const zoom = document.createElement('div');
       zoom.className = 'zoom-icon';
@@ -453,13 +492,8 @@
       // Find shortest column
       const shortestCol = colHeights.indexOf(Math.min(...colHeights));
       cols[shortestCol].appendChild(item);
-
-      // Update height estimate — use aspect ratio once image loads
-      img.addEventListener('load', () => {
-        colHeights[shortestCol] += img.offsetHeight;
-      });
       // Estimate before load using index to spread evenly
-      colHeights[shortestCol] += 300;
+      colHeights[shortestCol] += src.h / src.w;
 
       items.push(item);
     });
@@ -484,7 +518,7 @@
 
   function openLightbox(index) {
     current = index;
-    lbImg.src = photos[current];
+    lbImg.src = photos[current].s + '-1280.webp';
     lbCounter.textContent = (current + 1) + ' / ' + total;
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -498,13 +532,13 @@
 
   function prevImg() {
     current = (current - 1 + total) % total;
-    lbImg.src = photos[current];
+    lbImg.src = photos[current].s + '-1280.webp';
     lbCounter.textContent = (current + 1) + ' / ' + total;
   }
 
   function nextImg() {
     current = (current + 1) % total;
-    lbImg.src = photos[current];
+    lbImg.src = photos[current].s + '-1280.webp';
     lbCounter.textContent = (current + 1) + ' / ' + total;
   }
 

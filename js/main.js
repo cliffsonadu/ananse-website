@@ -2,10 +2,16 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* Pointer-driven custom cursor is meaningless on touch devices, and the
+     matching CSS restores the native cursor there. Gate the JS on the same
+     query so we don't attach listeners we can't honour. */
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   /* ── CURSOR ── */
   const dot  = document.querySelector('.cursor-dot');
   const ring = document.querySelector('.cursor-ring');
-  if (dot && ring) {
+  if (dot && ring && finePointer && !reducedMotion) {
     let mx = 0, my = 0, rx = 0, ry = 0;
     document.addEventListener('mousemove', e => {
       mx = e.clientX; my = e.clientY;
@@ -19,11 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
       ring.style.top  = ry + 'px';
       requestAnimationFrame(animRing);
     })();
-    const hovers = 'button, a, .wcard, .svc-item, .brand-slot, .ghost-link, .filter-btn, .team-card, .proc-item';
+    const hovers = 'button, a, .wcard, .svc-item, .brand-slot, .ghost-link, .filter-btn, .team-card, .proc-item, .gallery-item, .masonry-item';
     document.querySelectorAll(hovers).forEach(el => {
       el.addEventListener('mouseenter', () => document.body.classList.add('is-hovering'));
       el.addEventListener('mouseleave', () => document.body.classList.remove('is-hovering'));
     });
+  } else if (dot && ring) {
+    dot.remove();
+    ring.remove();
   }
 
   /* ── NAV SCROLL ── */
@@ -34,20 +43,74 @@ document.addEventListener('DOMContentLoaded', () => {
     onScroll();
   }
 
+  /* ── MOBILE NAV DRAWER ── */
+  const toggle = document.querySelector('.nav-toggle');
+  const drawer = document.querySelector('.nav-drawer');
+  if (toggle && drawer) {
+    const focusables = () => drawer.querySelectorAll('a[href]');
+
+    const setOpen = open => {
+      toggle.setAttribute('aria-expanded', String(open));
+      drawer.classList.toggle('open', open);
+      drawer.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (open) {
+        const first = focusables()[0];
+        if (first) first.focus();
+      } else {
+        toggle.focus();
+      }
+    };
+
+    toggle.addEventListener('click', () => setOpen(!drawer.classList.contains('open')));
+    drawer.addEventListener('click', e => { if (e.target.tagName === 'A') setOpen(false); });
+
+    document.addEventListener('keydown', e => {
+      if (!drawer.classList.contains('open')) return;
+      if (e.key === 'Escape') { setOpen(false); return; }
+      /* Keep tab focus inside the drawer while it covers the page. */
+      if (e.key === 'Tab') {
+        const items = [toggle, ...focusables()];
+        const i = items.indexOf(document.activeElement);
+        if (e.shiftKey && i <= 0) { e.preventDefault(); items[items.length - 1].focus(); }
+        else if (!e.shiftKey && i === items.length - 1) { e.preventDefault(); items[0].focus(); }
+      }
+    });
+
+    /* Resizing past the breakpoint must not strand the page in nav-open state. */
+    window.matchMedia('(min-width: 769px)').addEventListener('change', e => {
+      if (e.matches && drawer.classList.contains('open')) setOpen(false);
+    });
+  }
+
   /* ── ACTIVE NAV LINK ── */
   const page = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a').forEach(a => {
+  document.querySelectorAll('.nav-links a, .nav-drawer a').forEach(a => {
     const href = a.getAttribute('href');
     if (href === page || (page === '' && href === 'index.html')) {
       a.classList.add('active');
+      a.setAttribute('aria-current', 'page');
     }
   });
 
   /* ── SCROLL REVEAL ── */
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+  const revealables = document.querySelectorAll('.rv');
+  if (reducedMotion) {
+    revealables.forEach(el => el.classList.add('on'));
+  } else {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    revealables.forEach(el => obs.observe(el));
+  }
+
+  /* ── FOOTER YEAR ── */
+  document.querySelectorAll('[data-year]').forEach(el => {
+    el.textContent = String(new Date().getFullYear());
+  });
 
   /* ── GALLERY FILTER ── */
   const filterBtns = document.querySelectorAll('.filter-btn');
@@ -55,8 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (filterBtns.length && galleryItems.length) {
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
+        filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
         const cat = btn.dataset.filter;
         galleryItems.forEach(item => {
           const show = cat === 'all' || item.dataset.category === cat;
@@ -71,50 +135,94 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.style.transform = 'translateY(0)';
               });
             }
-          }, 200);
+          }, reducedMotion ? 0 : 200);
         });
       });
     });
   }
 
   /* ── CONTACT FORM ── */
+  const CONTACT_EMAIL = 'info@ananse.agency';
   const form = document.getElementById('contact-form');
   if (form) {
     form.addEventListener('submit', e => {
       e.preventDefault();
-      const name    = form.querySelector('[name="name"]').value.trim();
-      const email   = form.querySelector('[name="email"]').value.trim();
-      const company = form.querySelector('[name="company"]').value.trim();
-      const type    = form.querySelector('[name="type"]').value;
-      const message = form.querySelector('[name="message"]').value.trim();
-      if (!name || !email || !message) {
-        showFormMsg('Please fill in all required fields.', 'error');
+      const val = n => {
+        const f = form.querySelector(`[name="${n}"]`);
+        return f ? f.value.trim() : '';
+      };
+      const name    = val('name');
+      const email   = val('email');
+      const company = val('company');
+      const type    = val('type');
+      const budget  = val('budget');
+      const message = val('message');
+
+      const missing = [];
+      if (!name)    missing.push('name');
+      if (!email)   missing.push('email');
+      if (!message) missing.push('message');
+
+      form.querySelectorAll('[name]').forEach(f => f.removeAttribute('aria-invalid'));
+      if (missing.length) {
+        missing.forEach(n => {
+          const f = form.querySelector(`[name="${n}"]`);
+          if (f) f.setAttribute('aria-invalid', 'true');
+        });
+        showFormMsg('Please fill in your name, email, and a short message.', 'error');
+        const first = form.querySelector(`[name="${missing[0]}"]`);
+        if (first) first.focus();
         return;
       }
+      /* Cheap format check — the field is type=email but the form is novalidate. */
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        const f = form.querySelector('[name="email"]');
+        if (f) { f.setAttribute('aria-invalid', 'true'); f.focus(); }
+        showFormMsg('That email address does not look right.', 'error');
+        return;
+      }
+
       const subject = encodeURIComponent(`New Project Enquiry — ${company || name}`);
       const body    = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nProject Type: ${type}\n\nMessage:\n${message}`
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Company: ${company || '—'}\n` +
+        `Project Type: ${type || '—'}\n` +
+        `Budget: ${budget || '—'}\n\n` +
+        `Message:\n${message}`
       );
-      window.location.href = `mailto:info@ananse.agency?subject=${subject}&body=${body}`;
-      showFormMsg('Opening your email client... We look forward to hearing from you.', 'success');
+
+      showFormMsg('Opening your email client…', 'success');
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+
+      /* A mailto: handoff fails silently when no mail client is registered —
+         common on desktop Chrome. If we're still here and visible, say so
+         rather than leaving a false "sent" impression. */
+      setTimeout(() => {
+        if (!document.hidden) {
+          showFormMsg(
+            `If your email client didn't open, write to ${CONTACT_EMAIL} directly — ` +
+            `your message is ready to copy from the field above.`,
+            'error'
+          );
+        }
+      }, 2000);
     });
   }
 
   function showFormMsg(msg, type) {
+    const target = document.getElementById('contact-form');
+    if (!target) return;
     let el = document.getElementById('form-msg');
     if (!el) {
       el = document.createElement('div');
       el.id = 'form-msg';
-      document.getElementById('contact-form').appendChild(el);
+      el.setAttribute('role', 'status');
+      el.setAttribute('aria-live', 'polite');
+      target.appendChild(el);
     }
     el.textContent = msg;
     el.className = 'form-msg ' + type;
-  }
-
-  /* ── HERO SCROLL INDICATOR ── */
-  const scrollBar = document.querySelector('.scroll-bar-line');
-  if (scrollBar) {
-    scrollBar.style.animation = 'scrollLine 2s 2.5s infinite';
   }
 
 });
