@@ -241,15 +241,28 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
 }
 
 /* ── WORK GRID ── */
-/* Every cover tile is 2:3 — the native ratio of the photography. Cards differ
-   in content only, never in geometry, so nothing is cropped by object-fit and
-   the grid holds true alignment lines on every edge.
-   TODO Lead Dev: for a more art-directed rhythm, let one card span 2 columns
-   AND 2 rows — that scales it without changing its ratio. Uniform is the
-   calmer read and is what's shipped. */
-.work-grid {
+/* ── MASONRY ──
+   Every tile carries its own aspect-ratio, set inline from the file's real
+   pixel dimensions. Nothing is ever cropped to fit a box: the photographer's
+   crop IS the crop. Because heights then differ, the columns are balanced by
+   JS (shortest-column placement) rather than by a row grid, which is what
+   keeps mixed ratios reading as composed instead of ragged.
+
+   No-JS fallback below is a plain 3-up grid — ragged at the row bottoms but
+   never broken, and every image still shows at its true shape. */
+.masonry {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  gap: 4px;
+}
+.masonry.is-columns {           /* upgraded by main.js */
+  display: flex;
+  align-items: flex-start;
+}
+.masonry-col {
+  flex: 1 1 0; min-width: 0;
+  display: flex; flex-direction: column;
   gap: 4px;
 }
 .wcard {
@@ -257,7 +270,6 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
   background: #111; cursor: none;
 }
 .wcard-img-wrap {
-  aspect-ratio: 2/3;
   width: 100%; overflow: hidden;
   transition: transform 0.85s var(--ease);
 }
@@ -372,8 +384,7 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
   .nav { padding: 1.2rem 1.5rem; }
   .nav.scrolled { padding: 0.9rem 1.5rem; }
   .nav-links { display: none; }
-  .work-grid { grid-template-columns: 1fr 1fr; }
-  .gallery-grid { grid-template-columns: 1fr 1fr; }
+
   .brand-logos { gap: 1.5rem; }
   .brand-slot { width: 100px; }
   .footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
@@ -503,3 +514,7 @@ a:focus-visible, button:focus-visible {
   .cursor-dot, .cursor-ring { display: none; }
   body { cursor: auto; }
 }
+
+/* Masonry column counts mirror the no-JS grid so both paths agree */
+@media (max-width: 900px) { .masonry { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .masonry { grid-template-columns: 1fr; } }
