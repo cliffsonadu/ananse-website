@@ -2,38 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* Pointer-driven custom cursor is meaningless on touch devices, and the
-     matching CSS restores the native cursor there. Gate the JS on the same
-     query so we don't attach listeners we can't honour. */
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ── CURSOR ── */
-  const dot  = document.querySelector('.cursor-dot');
-  const ring = document.querySelector('.cursor-ring');
-  if (dot && ring && finePointer && !reducedMotion) {
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      dot.style.left = mx + 'px';
-      dot.style.top  = my + 'px';
-    });
-    (function animRing() {
-      rx += (mx - rx) * 0.1;
-      ry += (my - ry) * 0.1;
-      ring.style.left = rx + 'px';
-      ring.style.top  = ry + 'px';
-      requestAnimationFrame(animRing);
-    })();
-    const hovers = 'button, a, .wcard, .svc-item, .brand-slot, .ghost-link, .filter-btn, .team-card, .proc-item, .gallery-item, .masonry-item';
-    document.querySelectorAll(hovers).forEach(el => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('is-hovering'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('is-hovering'));
-    });
-  } else if (dot && ring) {
-    dot.remove();
-    ring.remove();
-  }
 
   /* ── NAV SCROLL ── */
   const nav = document.querySelector('.nav');
@@ -211,7 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const email   = val('email');
       const company = val('company');
       const type    = val('type');
-      const budget  = val('budget');
       const message = val('message');
 
       const missing = [];
@@ -244,7 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `Email: ${email}\n` +
         `Company: ${company || '—'}\n` +
         `Project Type: ${type || '—'}\n` +
-        `Budget: ${budget || '—'}\n` +
         [...form.querySelectorAll('[data-extra]')]
           .map(f => `${f.dataset.extra}: ${f.value.trim() || '—'}`)
           .join('\n') +

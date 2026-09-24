@@ -79,7 +79,7 @@
 .gallery-wrap { padding: 4rem 3.5rem 6rem; }
 .masonry-js { display: flex; gap: 6px; align-items: flex-start; }
 .masonry-col { display: flex; flex-direction: column; gap: 6px; flex: 1; }
-.masonry-item { overflow: hidden; position: relative; cursor: none; }
+.masonry-item { overflow: hidden; position: relative; cursor: pointer; }
 .masonry-item img {
   width: 100%; height: auto; display: block;
   transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.4s;
@@ -111,15 +111,13 @@
 .lb-close {
   position: fixed; top: 1.8rem; right: 2rem;
   width: 44px; height: 44px; border: 0.5px solid rgba(237,232,223,0.2);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  cursor: none; transition: all 0.3s; background: transparent; color: #ede8df; font-size: 1.1rem; z-index: 1001;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; background: transparent; color: #ede8df; font-size: 1.1rem; z-index: 1001;
 }
 .lb-close:hover { border-color: #610c0b; color: #bb5a58; }
 .lb-nav {
   position: fixed; top: 50%; transform: translateY(-50%);
   width: 50px; height: 50px; border: 0.5px solid rgba(237,232,223,0.15);
-  display: flex; align-items: center; justify-content: center;
-  cursor: none; transition: all 0.35s; background: transparent;
+  display: flex; align-items: center; justify-content: center; transition: all 0.35s; background: transparent;
   color: rgba(237,232,223,0.5); font-size: 1.2rem; z-index: 1001;
 }
 .lb-nav:hover { border-color: #610c0b; color: #ede8df; }
@@ -139,8 +137,7 @@
 .credit-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; color: rgba(237,232,223,0.6); }
 .next-project {
   border-top: 0.5px solid rgba(237,232,223,0.06); padding: 4rem 3.5rem;
-  display: flex; justify-content: space-between; align-items: center;
-  cursor: none; transition: background 0.4s; text-decoration: none;
+  display: flex; justify-content: space-between; align-items: center; transition: background 0.4s; text-decoration: none;
 }
 .next-project:hover { background: rgba(237,232,223,0.02); }
 .next-label { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(237,232,223,0.25); margin-bottom: 8px; }
@@ -160,8 +157,6 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
 <nav class="nav">
   <a href="index.html" class="nav-logo">ANANSÉ</a>
   <ul class="nav-links">
@@ -177,7 +172,7 @@
   </button>
 </nav>
 
-<div id="main" class="nav-drawer" id="nav-drawer" aria-hidden="true">
+<div class="nav-drawer" id="nav-drawer" aria-hidden="true">
   <ul>
     <li><a href="work.html">Work</a></li>
     <li><a href="services.html">Services</a></li>
@@ -189,7 +184,7 @@
 </div>
 
 
-<section class="proj-hero">
+<section id="main" class="proj-hero">
   <div class="proj-hero-img">
     <img decoding="async" loading="lazy" width="1280" height="853" srcset="images/work/rehard-bags/rehard-00020-640.webp 640w, images/work/rehard-bags/rehard-00020-1280.webp 1280w" sizes="(max-width: 768px) 100vw, 50vw" src="images/work/rehard-bags/rehard-00020-640.webp" alt="Rehard Bags Editorial">
   </div>
@@ -239,7 +234,7 @@
   <div class="credit-item"><div class="credit-label">Photography & Direction</div><div class="credit-val">Cliffson / Anansé Creative Haus</div></div>
   <div class="credit-item"><div class="credit-label">Client</div><div class="credit-val">Rehard Bags</div></div>
   <div class="credit-item"><div class="credit-label">Category</div><div class="credit-val">Fashion & Editorial</div></div>
-  <div class="credit-item"><div class="credit-label">Agency</div><div class="credit-val"><a href="index.html" style="color:#bb5a58;cursor:none;">@ananse.creative</a></div></div>
+  <div class="credit-item"><div class="credit-label">Agency</div><div class="credit-val"><a href="index.html" style="color:#bb5a58;">@ananse.creative</a></div></div>
 </div>
 
 <a href="work.html" class="next-project">

@@ -5,252 +5,143 @@
 <script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Weddings — Anansé Creative Haus</title>
-<meta name="description" content="Engagements, editorial portraits and full wedding coverage — photographed and filmed with an editorial eye. Warsaw and worldwide.">
+<meta name="description" content="Anansé Weddings is coming soon — engagement, editorial portraits and wedding coverage, shot with an editorial eye. Warsaw and worldwide. Enquiries open now.">
 <link rel="canonical" href="https://ananse.agency/weddings.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="theme-color" content="#f1ede2">
+<meta name="theme-color" content="#070707">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Anansé Creative Haus">
 <meta property="og:title" content="Weddings — Anansé Creative Haus">
-<meta property="og:description" content="Engagements, editorial portraits and full wedding coverage — photographed and filmed with an editorial eye.">
+<meta property="og:description" content="Anansé Weddings is coming soon. Enquiries for the season are open now.">
 <meta property="og:url" content="https://ananse.agency/weddings.html">
 <meta property="og:image" content="https://ananse.agency/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Weddings — Anansé Creative Haus">
-<meta name="twitter:description" content="Engagements, editorial portraits and full wedding coverage — photographed and filmed with an editorial eye.">
+<meta name="twitter:description" content="Anansé Weddings is coming soon. Enquiries for the season are open now.">
 <meta name="twitter:image" content="https://ananse.agency/og-cover.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/weddings.css">
+<style>
+/* Holding page. The built section lives at weddings-preview.html and moves
+   here once the portfolio is ready to show. */
+.soon {
+  min-height: 88vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 10rem 3.5rem 6rem;
+  position: relative; overflow: hidden;
+}
+.soon-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 70% at 50% 45%, rgba(97,12,11,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.soon-mark {
+  position: absolute; left: 50%; top: 47%;
+  transform: translate(-50%, -50%);
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(4rem, 15vw, 15rem); line-height: 1;
+  letter-spacing: 0.04em; color: rgba(237,232,223,0.03);
+  white-space: nowrap; pointer-events: none; user-select: none;
+}
+.soon-inner { position: relative; z-index: 2; max-width: 680px; }
+.soon-eyebrow {
+  font-size: 9px; letter-spacing: 0.34em; text-transform: uppercase;
+  color: var(--red-text); margin-bottom: 2rem;
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.soon-eyebrow::before, .soon-eyebrow::after {
+  content: ''; width: 28px; height: 0.5px; background: var(--red);
+}
+.soon h1 {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(2.6rem, 5.4vw, 4.6rem); line-height: 1.08;
+  color: var(--cream); margin-bottom: 1.8rem;
+}
+.soon h1 em { font-style: italic; color: rgba(237,232,223,0.35); }
+.soon-body {
+  font-size: 13.5px; line-height: 2; color: rgba(237,232,223,0.5);
+  max-width: 460px; margin: 0 auto 1.6rem;
+}
+.soon-services {
+  display: flex; gap: 1.6rem; justify-content: center; flex-wrap: wrap;
+  margin: 2.4rem 0 3rem;
+  font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: rgba(237,232,223,0.5);
+}
+.soon-services span { display: inline-flex; align-items: center; gap: 1.6rem; }
+.soon-services span::after { content: '\2726'; color: var(--red-text); font-size: 7px; }
+.soon-services span:last-child::after { content: none; }
+.soon-btns { display: flex; gap: 1.3rem; justify-content: center; flex-wrap: wrap; }
+@media (max-width: 768px) {
+  .soon { padding: 8rem 1.5rem 4rem; min-height: 84vh; }
+  .soon-services, .soon-services span { gap: 1rem; }
+}
+
+</style>
 </head>
-<body class="wed">
+<body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav class="wed-nav" id="wed-nav">
-  <ul class="wed-nav-links">
-    <li><a href="#story">Story</a></li>
-    <li><a href="#services">Services</a></li>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">ANANSÉ</a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="weddings.html">Weddings</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
-  <a href="weddings.html" class="wed-mark" aria-label="Anansé Weddings">
-    Anansé<span>Weddings</span>
-  </a>
-  <ul class="wed-nav-links right">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#inquire">Inquire</a></li>
-  </ul>
-  <button class="wed-nav-toggle" type="button" id="wed-toggle"
-          aria-label="Open menu" aria-expanded="false" aria-controls="wed-drawer">
-    <span></span><span></span>
+  <a href="contact.html"><button type="button" class="nav-cta-btn">Let's Create</button></a>
+  <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+    <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span></span>
   </button>
 </nav>
 
-<div class="wed-drawer" id="wed-drawer" aria-hidden="true">
+<div class="nav-drawer" id="nav-drawer" aria-hidden="true">
   <ul>
-    <li><a href="#story">Story</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#inquire">Inquire</a></li>
-    <li><a href="index.html">Anansé Creative Haus</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="weddings.html">Weddings</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
+  <div class="nav-drawer-meta">Warsaw — Worldwide</div>
 </div>
 
-<!-- ── HERO ── full-bleed landscape, same shape as the main site's hero ── -->
-<header class="wed-hero" id="main">
-  <div class="wed-hero-media">
-    <img src="images/weddings/ogi-02-1280.webp"
-         srcset="images/weddings/ogi-02-640.webp 640w, images/weddings/ogi-02-1280.webp 1280w"
-         sizes="100vw" width="1920" height="1080"
-         alt="A wedding photographed by Anansé Creative Haus" fetchpriority="high" decoding="async">
-  </div>
-  <div class="wed-hero-scrim"></div>
-  <div class="wed-hero-content">
-    <div class="wed-eyebrow">Warsaw — Worldwide</div>
-    <h1>Two people,<br>one day,<br><em>told properly.</em></h1>
-    <p class="wed-hero-sub">Photography and film, made with the same eye we bring to campaigns.</p>
-    <div class="wed-btns">
-      <a href="#inquire" class="wed-btn solid">Check Our Availability</a>
-      <a href="#projects" class="wed-btn ghost">See The Work</a>
+<section id="main" class="soon">
+  <div class="soon-glow"></div>
+  <div class="soon-mark" aria-hidden="true">Weddings</div>
+  <div class="soon-inner">
+    <div class="soon-eyebrow">Coming Soon</div>
+    <h1>Weddings, with the same eye<br><em>we bring to campaigns.</em></h1>
+    <p class="soon-body">We are photographing and filming weddings, and building the portfolio to show for it. The full section opens once that work is ready to be seen properly.</p>
+    <div class="soon-services">
+      <span>Engagement</span><span>Editorial Portraits</span><span>Wedding Coverage</span>
     </div>
-  </div>
-  <div class="wed-scroll" aria-hidden="true">
-    <div class="wed-scroll-bar"><div class="wed-scroll-line"></div></div>
-    <div class="wed-scroll-txt">Scroll</div>
-  </div>
-</header>
-
-<!-- ── STORY ── -->
-<section class="wed-split" id="story">
-  <div class="wed-split-img">
-    <img src="images/weddings/wedding-story-640.webp"
-         srcset="images/weddings/wedding-story-640.webp 640w, images/weddings/wedding-story-1280.webp 1280w"
-         sizes="(max-width: 768px) 100vw, 50vw" width="1920" height="1080"
-         alt="A quiet moment from a wedding day" loading="lazy" decoding="async">
-  </div>
-  <div class="wed-split-panel">
-    <div class="wed-eyebrow ink">Who We Are</div>
-    <h2>The same eye we bring<br>to <em>campaigns</em>, turned<br>toward <em>your day.</em></h2>
-    <p>Anansé is a production house first. We spend our year directing brand films and shooting editorial, and we bring that discipline to weddings — lighting we have thought about, frames we have composed, a story with a shape rather than a folder of moments.</p>
-    <p>We take a small number of weddings a year on purpose. It is the only way the work stays this considered.</p>
-    <a href="#inquire" class="wed-btn">Start The Conversation</a>
-  </div>
-</section>
-
-<!-- ── SERVICES ── -->
-<section class="wed-section" id="services">
-  <div class="wed-head">
-    <div class="wed-eyebrow ink">What We Offer</div>
-    <h2>Three ways we <em>work together</em></h2>
-    <p>Every one of them can be photography, film, or both. We scope the day with you and quote from there — no packages to squeeze yourselves into.</p>
-  </div>
-  <div class="wed-services">
-    <article class="wed-service">
-      <div class="wed-service-num">01</div>
-      <h3>Engagement</h3>
-      <p>The shoot before the day. A relaxed session on location that gets you used to being photographed together — and gives you images for the save-the-date, the website, and the walls.</p>
-      <ul>
-        <li>Location scouted with you</li>
-        <li>1–3 hours, one or two looks</li>
-        <li>Stills, with a short film on request</li>
-      </ul>
-    </article>
-    <article class="wed-service">
-      <div class="wed-service-num">02</div>
-      <h3>Editorial Portraits</h3>
-      <p>A directed portrait session with the styling, lighting and intent of a fashion editorial. For the couple, the wedding party, or the two of you after the day itself.</p>
-      <ul>
-        <li>Creative direction and moodboard</li>
-        <li>Studio or location</li>
-        <li>Full retouching, editorial finish</li>
-      </ul>
-    </article>
-    <article class="wed-service">
-      <div class="wed-service-num">03</div>
-      <h3>Wedding Coverage</h3>
-      <p>The day itself, from preparations through to the last dance. Mostly invisible, occasionally directive — we step in when a frame needs it and step back for everything else.</p>
-      <ul>
-        <li>Half day through to multi-day</li>
-        <li>Second shooter where it earns its place</li>
-        <li>Private gallery and a film worth rewatching</li>
-      </ul>
-    </article>
-  </div>
-  <div class="wed-services-note">
-    <p>Every wedding is scoped differently, so we quote rather than price off a list. Tell us the date, the place and roughly what you have in mind, and we will come back with a number.</p>
-    <a href="#inquire" class="wed-btn">Request A Quote</a>
-  </div>
-</section>
-
-<!-- ── PROJECTS ── -->
-<section class="wed-section tint" id="projects">
-  <div class="wed-head">
-    <div class="wed-eyebrow ink">Selected Weddings</div>
-    <h2>The <em>work</em></h2>
-    <p>Each wedding gets its own gallery. Frames sit at whatever shape they were shot and cropped — nothing is squared off to fit a grid.</p>
-  </div>
-
-  <!-- Each card's aspect-ratio comes from the cover file's real pixel size, so
-       an unfilled card can never be a different shape from a filled one.
-       To add a wedding: duplicate a card, point it at its own page, and set
-       both the style aspect-ratio and the img width/height from the file. -->
-  <div class="wed-projects">
-    <a class="wed-project" href="weddings-ogi.html">
-      <div class="wed-project-img" style="aspect-ratio: 1920 / 1080;">
-        <img src="images/weddings/ogi-07-640.webp"
-             srcset="images/weddings/ogi-07-640.webp 640w, images/weddings/ogi-07-1280.webp 1280w"
-             sizes="(max-width: 768px) 100vw, 50vw" width="1920" height="1080"
-             alt="Ogi's wedding" loading="lazy" decoding="async">
-      </div>
-      <div class="wed-project-meta">
-        <div class="wed-project-cat">Wedding Coverage</div>
-        <h3>Ogi</h3>
-        <span class="wed-project-link">View the gallery <span class="arr">&rarr;</span></span>
-      </div>
-    </a>
-
-    <div class="wed-project next">
-      <div class="wed-project-img" style="aspect-ratio: 1920 / 1080;">
-        <div class="wed-project-empty"><span>&#10022;</span></div>
-      </div>
-      <div class="wed-project-meta">
-        <div class="wed-project-cat">In Progress</div>
-        <h3>Next</h3>
-        <span class="wed-project-note">We are finishing a set now. It lands here first.</span>
-      </div>
+    <p class="soon-body">Dates for the coming season are open now. Every wedding is scoped and quoted on its own terms.</p>
+    <div class="soon-btns">
+      <a href="contact.html"><button type="button" class="btn-solid">Enquire About Your Date</button></a>
+      <a href="work.html"><button type="button" class="btn-outline">See Our Work</button></a>
     </div>
   </div>
 </section>
 
-<!-- ── INQUIRE ── -->
-<section class="wed-section" id="inquire">
-  <div class="wed-head">
-    <div class="wed-eyebrow ink">Say Hello</div>
-    <h2>Tell us about <em>your day</em></h2>
-    <p>We take a small number of weddings each year. The earlier you write, the likelier we are free.</p>
-  </div>
-  <div class="wed-form-wrap">
-    <form id="contact-form" class="wed-form" novalidate>
-      <input type="hidden" name="type" value="Wedding">
-      <div class="wed-field">
-        <label for="w-name">Your Names *</label>
-        <input type="text" name="name" id="w-name" placeholder="Both of you" required aria-required="true">
-      </div>
-      <div class="wed-field">
-        <label for="w-email">Email *</label>
-        <input type="email" name="email" id="w-email" placeholder="your@email.com" required aria-required="true">
-      </div>
-      <div class="wed-field">
-        <label for="w-date">Date</label>
-        <input type="text" name="weddingDate" id="w-date" data-extra="Date" placeholder="Or roughly when">
-      </div>
-      <div class="wed-field">
-        <label for="w-venue">Venue / Location</label>
-        <input type="text" name="venue" id="w-venue" data-extra="Venue" placeholder="Where it happens">
-      </div>
-      <div class="wed-field full">
-        <label for="w-service">What you are after</label>
-        <select name="budget" id="w-service">
-          <option value="">Not sure yet</option>
-          <option value="Engagement">Engagement</option>
-          <option value="Editorial Portraits">Editorial Portraits</option>
-          <option value="Wedding Coverage">Wedding Coverage</option>
-          <option value="Engagement + Wedding Coverage">Engagement + Wedding Coverage</option>
-        </select>
-      </div>
-      <div class="wed-field full">
-        <label for="w-format">Photography, film, or both</label>
-        <select name="format" id="w-format" data-extra="Format">
-          <option value="">Not sure yet</option>
-          <option value="Photography">Photography</option>
-          <option value="Film">Film</option>
-          <option value="Both">Both</option>
-        </select>
-      </div>
-      <div class="wed-field full">
-        <label for="w-message">Tell us about it *</label>
-        <textarea name="message" id="w-message" placeholder="How you met, what the day looks like, anything you would hate to lose." required aria-required="true"></textarea>
-      </div>
-      <div class="wed-field full">
-        <button type="submit" class="wed-btn solid full-w">Send Enquiry</button>
-      </div>
-    </form>
-  </div>
-</section>
 
-<footer class="wed-footer">
-  <div class="wed-footer-note">&copy; <span data-year>2026</span> Anansé Creative Haus — Warsaw, Poland</div>
-  <div class="wed-footer-links">
-    <a href="index.html">Anansé Creative Haus</a>
-    <a href="https://instagram.com/ananse.creative" target="_blank" rel="noopener">Instagram</a>
+<footer class="footer">
+  <div class="footer-logo">ANANSÉ</div>
+  <div class="footer-copy">© <span data-year>2026</span> Anansé Creative Haus — Warsaw, Poland</div>
+  <div class="footer-links">
+    <a href="https://instagram.com/ananse.creative" target="_blank">Instagram</a>
     <a href="mailto:info@ananse.agency">info@ananse.agency</a>
   </div>
 </footer>
 
 <script src="js/main.js"></script>
-<script src="js/weddings.js"></script>
 </body>
 </html>

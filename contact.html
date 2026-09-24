@@ -116,7 +116,6 @@
 }
 .form-select {
   appearance: none; -webkit-appearance: none;
-  cursor: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='rgba(97,12,11,0.7)' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1.2rem center;
@@ -179,8 +178,6 @@
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
 
 <nav class="nav">
   <a href="index.html" class="nav-logo">ANANSÉ</a>
@@ -197,7 +194,7 @@
   </button>
 </nav>
 
-<div id="main" class="nav-drawer" id="nav-drawer" aria-hidden="true">
+<div class="nav-drawer" id="nav-drawer" aria-hidden="true">
   <ul>
     <li><a href="work.html">Work</a></li>
     <li><a href="services.html">Services</a></li>
@@ -210,7 +207,7 @@
 
 
 <!-- PAGE HERO -->
-<section class="page-hero">
+<section id="main" class="page-hero">
   <div class="page-hero-glow"></div>
   <div class="page-hero-label rv">Get In Touch</div>
   <h1 class="rv d1">Let's build something<br><em>the industry remembers.</em></h1>
@@ -291,17 +288,6 @@
       <div class="form-group full">
         <label class="form-label" for="f-message">Tell Us About Your Project *</label>
         <textarea class="form-textarea" name="message" id="f-message" placeholder="What are you working on? Tell us about the brief, timeline, and any references or ideas you have in mind..." required aria-required="true"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="f-budget">Approximate Budget (PLN)</label>
-        <select class="form-select" name="budget" id="f-budget">
-          <option value="Under 2000">Under 2,000 PLN</option>
-          <option value="2000-5000">2,000 – 5,000 PLN</option>
-          <option value="5000-10000">5,000 – 10,000 PLN</option>
-          <option value="10000+">10,000+ PLN</option>
-          <option value="Let's discuss">Prefer to discuss</option>
-        </select>
       </div>
 
       <div class="form-submit">

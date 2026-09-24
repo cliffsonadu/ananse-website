@@ -109,7 +109,7 @@
   display: grid; grid-template-columns: repeat(3,1fr);
   gap: 4px; margin-top: 3.5rem;
 }
-.team-card { position: relative; overflow: hidden; cursor: none; }
+.team-card { position: relative; overflow: hidden; }
 .team-card-img {
   width: 100%; aspect-ratio: 3/4;
   background: linear-gradient(145deg,#1c0a0a,#0d0809);
@@ -198,8 +198,6 @@
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
 
 <nav class="nav">
   <a href="index.html" class="nav-logo">ANANSÉ</a>
@@ -216,7 +214,7 @@
   </button>
 </nav>
 
-<div id="main" class="nav-drawer" id="nav-drawer" aria-hidden="true">
+<div class="nav-drawer" id="nav-drawer" aria-hidden="true">
   <ul>
     <li><a href="work.html">Work</a></li>
     <li><a href="services.html">Services</a></li>
@@ -229,7 +227,7 @@
 
 
 <!-- PAGE HERO -->
-<section class="page-hero">
+<section id="main" class="page-hero">
   <div class="page-hero-glow"></div>
   <div class="page-hero-label rv">Our Story</div>
   <h1 class="rv d1">Named after the <em>spider.</em></h1>
