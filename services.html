@@ -44,7 +44,7 @@
   border-bottom: 0.5px solid var(--cream-06);
   padding: 4rem 0;
   display: grid; grid-template-columns: 0.5fr 1.5fr 1fr; gap: 3rem;
-  align-items: start; cursor: none;
+  align-items: start;
   transition: background 0.4s; position: relative;
 }
 .svc-card::before {
@@ -104,66 +104,62 @@
   margin-left: 12px; vertical-align: middle;
 }
 
-/* PRICING SECTION */
-.pricing-section {
+/* WAYS OF WORKING */
+.ways-section {
   padding: 6rem 3.5rem;
   border-top: 0.5px solid var(--cream-06);
   background: var(--black2);
 }
-.pricing-grid {
+.ways-grid {
   display: grid; grid-template-columns: repeat(3,1fr);
   gap: 2px; margin-top: 3.5rem;
 }
-.price-card {
+.way-card {
   padding: 2.5rem; border: 0.5px solid var(--cream-06);
-  position: relative; transition: border-color 0.4s;
-  cursor: none;
+  display: flex; flex-direction: column;
+  transition: border-color 0.4s;
 }
-.price-card:hover { border-color: rgba(237,232,223,0.2); }
-.price-card.featured {
+.way-card:hover { border-color: rgba(237,232,223,0.2); }
+.way-card.featured {
   border-color: var(--red);
   background: rgba(97,12,11,0.06);
 }
-.price-tag {
+.way-tag {
   font-size: 8px; letter-spacing: 0.22em;
   text-transform: uppercase; color: var(--red-text);
   margin-bottom: 1.5rem;
 }
-.price-name {
-  font-family: var(--serif); font-size: 1.6rem;
-  font-weight: 300; color: var(--cream); margin-bottom: 0.5rem;
+.way-name {
+  font-family: var(--serif); font-size: 1.7rem;
+  font-weight: 300; color: var(--cream); margin-bottom: 0.8rem;
 }
-.price-amount {
-  font-family: var(--serif); font-size: 2.8rem;
-  font-weight: 300; color: var(--cream); margin-bottom: 0.4rem;
+.way-desc {
+  font-size: 12.5px; color: rgba(237,232,223,0.5);
+  line-height: 1.9; margin-bottom: 1.8rem;
 }
-.price-amount em { font-size: 1rem; font-style: normal; color: rgba(237,232,223,0.4); }
-.price-note {
-  font-size: 11px; color: rgba(237,232,223,0.3);
-  margin-bottom: 2rem; line-height: 1.6;
+.way-label {
+  font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: rgba(237,232,223,0.5); margin-bottom: 0.9rem;
 }
-.price-includes li {
-  font-size: 12px; color: rgba(237,232,223,0.45);
+.way-list { margin-bottom: 2rem; }
+.way-list li {
+  font-size: 12px; color: rgba(237,232,223,0.5);
   padding: 5px 0; display: flex; gap: 8px; align-items: flex-start;
 }
-.price-includes li::before { content: '✦'; color: var(--red-text); font-size: 7px; margin-top: 4px; flex-shrink: 0; }
-.price-cta { margin-top: 2rem; }
-.price-cta a button { width: 100%; }
-
+.way-list li::before { content: '\2726'; color: var(--red-text); font-size: 7px; margin-top: 4px; flex-shrink: 0; }
+.way-cta { margin-top: auto; }
 @media (max-width: 768px) {
   .services-intro { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem; }
   .services-list { padding: 0 1.5rem 4rem; }
   .svc-card { grid-template-columns: 1fr; gap: 1.5rem; }
-  .pricing-section { padding: 4rem 1.5rem; }
-  .pricing-grid { grid-template-columns: 1fr; gap: 4px; }
+  .ways-section { padding: 4rem 1.5rem; }
+  .ways-grid { grid-template-columns: 1fr; gap: 4px; }
 }
 </style>
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
 
 <nav class="nav">
   <a href="index.html" class="nav-logo">ANANSÉ</a>
@@ -180,7 +176,7 @@
   </button>
 </nav>
 
-<div id="main" class="nav-drawer" id="nav-drawer" aria-hidden="true">
+<div class="nav-drawer" id="nav-drawer" aria-hidden="true">
   <ul>
     <li><a href="work.html">Work</a></li>
     <li><a href="services.html">Services</a></li>
@@ -193,7 +189,7 @@
 
 
 <!-- PAGE HERO -->
-<section class="page-hero">
+<section id="main" class="page-hero">
   <div class="page-hero-glow"></div>
   <div class="page-hero-label rv">Services</div>
   <h1 class="rv d1">What We <em>Create.</em></h1>
@@ -315,52 +311,52 @@
 </div>
 
 <!-- PRICING -->
-<section class="pricing-section">
-  <div class="rv"><div class="s-label">Investment</div><div class="s-title">Starting Rates</div></div>
-  <div class="pricing-grid">
-    <div class="price-card rv d1">
-      <div class="price-tag">Small Session</div>
-      <div class="price-name">Starter</div>
-      <div class="price-amount">1,500 <em>PLN</em></div>
-      <p class="price-note">3 hours · For individuals and emerging brands needing impactful content.</p>
-      <ul class="price-includes">
-        <li>Up to 3 hours shooting</li>
-        <li>15–20 retouched images</li>
-        <li>1 social-optimised video reel</li>
-        <li>Online delivery gallery</li>
+<section class="ways-section">
+  <div class="rv"><div class="s-label">Working Together</div><div class="s-title">Ways In</div></div>
+  <p style="font-size:13px;color:rgba(237,232,223,0.5);max-width:520px;margin-top:1.2rem;line-height:1.9;">Every brief is scoped and quoted on its own terms. What changes between these is the shape of the relationship, not the standard of the work.</p>
+  <div class="ways-grid">
+
+    <div class="way-card rv d1">
+      <div class="way-tag">Single Production</div>
+      <div class="way-name">The Shoot</div>
+      <p class="way-desc">One production, concept through delivery. You have a specific thing to make &mdash; a campaign, an editorial, a product story &mdash; and a date in mind.</p>
+      <div class="way-label">Suits</div>
+      <ul class="way-list">
+        <li>A launch, a collection, a single campaign</li>
+        <li>Brands with an in-house team who need the craft</li>
+        <li>A defined deliverable and a fixed date</li>
       </ul>
-      <div class="price-cta"><a href="contact.html"><button type="button" class="btn-outline" style="width:100%;margin-top:2rem;">Enquire</button></a></div>
+      <div class="way-cta"><a href="contact.html"><button type="button" class="btn-outline" style="width:100%;">Start a Project</button></a></div>
     </div>
-    <div class="price-card featured rv d2">
-      <div class="price-tag">Most Popular</div>
-      <div class="price-name">Campaign</div>
-      <div class="price-amount">Custom <em>rate</em></div>
-      <p class="price-note">Full day · Tailored to your brand's specific needs and deliverables.</p>
-      <ul class="price-includes">
-        <li>Full creative direction</li>
-        <li>Full-day production</li>
-        <li>Photo + video package</li>
-        <li>Styling & set coordination</li>
-        <li>Premium post-production</li>
+
+    <div class="way-card featured rv d2">
+      <div class="way-tag">Most Common</div>
+      <div class="way-name">The Campaign</div>
+      <p class="way-desc">Multi-day, multi-deliverable, built from a blank page. We handle direction, casting, styling coordination and post, and you come away with a season&rsquo;s worth of assets rather than a folder of photos.</p>
+      <div class="way-label">Suits</div>
+      <ul class="way-list">
+        <li>A brand world that needs building, not decorating</li>
+        <li>Stills and film delivered as one body of work</li>
+        <li>Assets cut for every platform you sell on</li>
       </ul>
-      <div class="price-cta"><a href="contact.html"><button type="button" class="btn-solid" style="width:100%;margin-top:2rem;">Start a Project</button></a></div>
+      <div class="way-cta"><a href="contact.html"><button type="button" class="btn-solid" style="width:100%;">Start a Project</button></a></div>
     </div>
-    <div class="price-card rv d3">
-      <div class="price-tag">Corporate</div>
-      <div class="price-name">Storytelling</div>
-      <div class="price-amount">Custom <em>rate</em></div>
-      <p class="price-note">Teams of 25–35 · Corporate photography with a narrative-led approach.</p>
-      <ul class="price-includes">
-        <li>Team & individual portraits</li>
-        <li>Brand storytelling approach</li>
-        <li>Location or studio options</li>
-        <li>Full retouched delivery</li>
-        <li>Usage rights for all media</li>
+
+    <div class="way-card rv d3">
+      <div class="way-tag">Long-Term Retainer</div>
+      <div class="way-name">The Partnership</div>
+      <p class="way-desc">A long-term retainer. We hold dates across the year, learn the brand properly, and the work compounds instead of restarting at every brief.</p>
+      <div class="way-label">Suits</div>
+      <ul class="way-list">
+        <li>Brands shipping content continuously</li>
+        <li>Teams who want one creative partner, not a rota</li>
+        <li>Priority on dates through your busy season</li>
       </ul>
-      <div class="price-cta"><a href="contact.html"><button type="button" class="btn-outline" style="width:100%;margin-top:2rem;">Enquire</button></a></div>
+      <div class="way-cta"><a href="contact.html"><button type="button" class="btn-outline" style="width:100%;">Talk To Us</button></a></div>
     </div>
+
   </div>
-  <p style="font-size:11px;color:rgba(237,232,223,0.25);text-align:center;margin-top:2rem;line-height:1.7;">All rates are bespoke and depend on brief, location, team size, and deliverables. <a href="contact.html" style="color:var(--red-text);">Get in touch</a> for a tailored quote.</p>
+  <p style="font-size:11px;color:rgba(237,232,223,0.5);text-align:center;margin-top:2.5rem;line-height:1.7;">Cost depends on brief, location, team size and deliverables, so we quote rather than price off a list. <a href="contact.html" style="color:var(--red-text);">Tell us what you have in mind.</a></p>
 </section>
 
 <!-- CTA -->

@@ -135,9 +135,9 @@
   flex: 1;
 }
 .masonry-item {
+  cursor: pointer;
   overflow: hidden;
   position: relative;
-  cursor: none;
 }
 .masonry-item img {
   width: 100%;
@@ -217,7 +217,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: none;
   transition: all 0.3s;
   background: transparent;
   color: #ede8df;
@@ -234,7 +233,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: none;
   transition: all 0.35s;
   background: transparent;
   color: rgba(237,232,223,0.5);
@@ -287,7 +285,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: none;
   transition: background 0.4s;
   text-decoration: none;
 }
@@ -331,8 +328,6 @@
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
 
 <!-- NAV -->
 <nav class="nav">
@@ -350,7 +345,7 @@
   </button>
 </nav>
 
-<div id="main" class="nav-drawer" id="nav-drawer" aria-hidden="true">
+<div class="nav-drawer" id="nav-drawer" aria-hidden="true">
   <ul>
     <li><a href="work.html">Work</a></li>
     <li><a href="services.html">Services</a></li>
@@ -363,7 +358,7 @@
 
 
 <!-- HERO -->
-<section class="proj-hero">
+<section id="main" class="proj-hero">
   <div class="proj-hero-img">
     <img decoding="async" loading="lazy" width="1280" height="853" srcset="images/work/vanity-of-the-soul/vanity-00005-640.webp 640w, images/work/vanity-of-the-soul/vanity-00005-1280.webp 1280w" sizes="(max-width: 768px) 100vw, 50vw" src="images/work/vanity-of-the-soul/vanity-00005-640.webp" alt="Vanity of the Soul Campaign">
   </div>
@@ -439,13 +434,13 @@
   <div class="credit-item">
     <div class="credit-label">Instagram</div>
     <div class="credit-val">
-      <a href="https://instagram.com/vanityofthesoul" target="_blank" style="color:#bb5a58;cursor:none;">@vanityofthesoul</a>
+      <a href="https://instagram.com/vanityofthesoul" target="_blank" style="color:#bb5a58;">@vanityofthesoul</a>
     </div>
   </div>
   <div class="credit-item">
     <div class="credit-label">Agency</div>
     <div class="credit-val">
-      <a href="index.html" style="color:#bb5a58;cursor:none;">@ananse.creative</a>
+      <a href="index.html" style="color:#bb5a58;">@ananse.creative</a>
     </div>
   </div>
 </div>

@@ -36,37 +36,12 @@ body {
   color: var(--cream);
   font-family: var(--sans);
   overflow-x: hidden;
-  cursor: none;
   -webkit-font-smoothing: antialiased;
 }
 img { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
-button { font-family: var(--sans); cursor: none; }
+button { font-family: var(--sans); cursor: pointer; }
 ul { list-style: none; }
-
-/* ── CURSOR ── */
-.cursor-dot {
-  width: 7px; height: 7px;
-  background: var(--red);
-  border-radius: 50%;
-  position: fixed; top: 0; left: 0;
-  pointer-events: none; z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.2s var(--ease), background 0.3s;
-  will-change: transform;
-}
-.cursor-ring {
-  width: 36px; height: 36px;
-  border: 0.5px solid rgba(97,12,11,0.4);
-  border-radius: 50%;
-  position: fixed; top: 0; left: 0;
-  pointer-events: none; z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width 0.4s var(--ease), height 0.4s var(--ease), border-color 0.4s;
-  will-change: transform;
-}
-body.is-hovering .cursor-dot { transform: translate(-50%, -50%) scale(0); }
-body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(97,12,11,0.7); }
 
 /* ── NAV ── */
 .nav {
@@ -110,7 +85,7 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(97
   text-transform: uppercase;
   border: 0.5px solid rgba(237,232,223,0.22);
   padding: 10px 24px; color: var(--cream);
-  background: transparent; cursor: none;
+  background: transparent; cursor: pointer;
   transition: all 0.4s;
 }
 .nav-cta-btn:hover { background: var(--red-dim); border-color: var(--red); }
@@ -120,7 +95,7 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(97
   background: var(--red); color: var(--cream);
   font-size: 10px; letter-spacing: 0.2em;
   text-transform: uppercase; padding: 14px 36px;
-  border: none; cursor: none;
+  border: none; cursor: pointer;
   transition: opacity 0.35s; position: relative; overflow: hidden;
 }
 .btn-solid::after {
@@ -134,7 +109,7 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(97
   text-transform: uppercase;
   border: 0.5px solid rgba(237,232,223,0.22);
   padding: 14px 36px; color: var(--cream);
-  background: transparent; cursor: none;
+  background: transparent; cursor: pointer;
   transition: all 0.4s;
 }
 .btn-outline:hover { border-color: var(--red); background: var(--red-dim); }
@@ -145,7 +120,7 @@ body.is-hovering .cursor-ring { width: 54px; height: 54px; border-color: rgba(97
   font-size: 10px; letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(237,232,223,0.5);
-  cursor: none; transition: color 0.35s;
+  cursor: pointer; transition: color 0.35s;
 }
 .ghost-link:hover { color: var(--cream); }
 .ghost-link .arr { display: inline-block; transition: transform 0.35s; }
@@ -267,7 +242,7 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
 }
 .wcard {
   position: relative; overflow: hidden;
-  background: #111; cursor: none;
+  background: #111; cursor: pointer;
 }
 .wcard-img-wrap {
   width: 100%; overflow: hidden;
@@ -404,7 +379,7 @@ body {
   width: 44px; height: 44px;
   align-items: center; justify-content: center;
   background: transparent; border: none;
-  padding: 0; cursor: none;
+  padding: 0; cursor: pointer;
 }
 .nav-toggle-bars { position: relative; width: 22px; height: 12px; }
 .nav-toggle-bars span {
@@ -469,7 +444,7 @@ body.nav-open { overflow: hidden; }
 }
 
 /* ── FOCUS VISIBILITY ── */
-/* The custom cursor hides the pointer, so keyboard focus must be unmistakable. */
+/* Keyboard focus must stay unmistakable on a dark ground. */
 :focus-visible {
   outline: 1px solid var(--red);
   outline-offset: 3px;
@@ -489,18 +464,6 @@ a:focus-visible, button:focus-visible {
 }
 .skip-link:focus { transform: translateY(0); }
 
-/* ── POINTER-LESS DEVICES ── */
-/* Touch and hybrid devices get the real cursor back; the custom one is
-   pointer-driven and would otherwise leave them with no cursor at all. */
-@media (hover: none), (pointer: coarse) {
-  .cursor-dot, .cursor-ring { display: none !important; }
-  body, button, a, .wcard, .gallery-item, .masonry-item,
-  .ghost-link, .brand-slot, .filter-btn, .proc-item, .nav-toggle {
-    cursor: auto !important;
-  }
-  button, a, .filter-btn { cursor: pointer !important; }
-}
-
 /* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -511,8 +474,6 @@ a:focus-visible, button:focus-visible {
   }
   html.js .rv { opacity: 1 !important; transform: none !important; }
   .ticker-inner, .brand-track { animation: none !important; }
-  .cursor-dot, .cursor-ring { display: none; }
-  body { cursor: auto; }
 }
 
 /* Masonry column counts mirror the no-JS grid so both paths agree */

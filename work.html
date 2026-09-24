@@ -43,7 +43,7 @@
   text-transform: uppercase;
   border: 0.5px solid rgba(237,232,223,0.14);
   padding: 8px 18px; color: rgba(237,232,223,0.4);
-  background: transparent; cursor: none;
+  background: transparent;
   transition: all 0.35s; font-family: var(--sans);
 }
 .filter-btn:hover, .filter-btn.active {
@@ -55,7 +55,7 @@
 /* GALLERY */
 .gallery-section { padding: 4rem 3.5rem 6rem; }
 
-.gallery-item { position: relative; overflow: hidden; background: #111; cursor: none; }
+.gallery-item { position: relative; overflow: hidden; background: #111; }
 .gallery-item .gi-wrap {
   width: 100%; overflow: hidden;
   transition: transform 0.8s var(--ease);
@@ -98,8 +98,6 @@
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
 
 <nav class="nav">
   <a href="index.html" class="nav-logo">ANANSÉ</a>
@@ -116,7 +114,7 @@
   </button>
 </nav>
 
-<div id="main" class="nav-drawer" id="nav-drawer" aria-hidden="true">
+<div class="nav-drawer" id="nav-drawer" aria-hidden="true">
   <ul>
     <li><a href="work.html">Work</a></li>
     <li><a href="services.html">Services</a></li>
@@ -129,7 +127,7 @@
 
 
 <!-- PAGE HERO -->
-<section class="page-hero">
+<section id="main" class="page-hero">
   <div class="page-hero-glow"></div>
   <div class="page-hero-label rv">Selected Work</div>
   <h1 class="rv d1">The <em>Craft.</em></h1>

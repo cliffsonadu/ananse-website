@@ -100,9 +100,9 @@
   flex: 1;
 }
 .masonry-item {
+  cursor: pointer;
   overflow: hidden;
   position: relative;
-  cursor: none;
   break-inside: avoid;
 }
 .masonry-item img {
@@ -182,8 +182,7 @@
   width: 44px; height: 44px;
   border: 0.5px solid rgba(237,232,223,0.2);
   border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  cursor: none; transition: all 0.3s;
+  display: flex; align-items: center; justify-content: center; transition: all 0.3s;
   background: transparent; color: var(--cream);
   font-size: 1.1rem; z-index: 1001;
 }
@@ -193,8 +192,7 @@
   position: fixed; top: 50%; transform: translateY(-50%);
   width: 50px; height: 50px;
   border: 0.5px solid rgba(237,232,223,0.15);
-  display: flex; align-items: center; justify-content: center;
-  cursor: none; transition: all 0.35s;
+  display: flex; align-items: center; justify-content: center; transition: all 0.35s;
   background: transparent; color: rgba(237,232,223,0.5);
   font-size: 1.2rem; z-index: 1001;
 }
@@ -227,8 +225,7 @@
 /* ── BACK ── */
 .next-project {
   border-top: 0.5px solid var(--cream-06); padding: 4rem 3.5rem;
-  display: flex; justify-content: space-between; align-items: center;
-  cursor: none; transition: background 0.4s; text-decoration: none;
+  display: flex; justify-content: space-between; align-items: center; transition: background 0.4s; text-decoration: none;
 }
 .next-project:hover { background: rgba(237,232,223,0.02); }
 .next-label {
@@ -261,8 +258,6 @@
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
 
 <!-- NAV -->
 <nav class="nav">
@@ -280,7 +275,7 @@
   </button>
 </nav>
 
-<div id="main" class="nav-drawer" id="nav-drawer" aria-hidden="true">
+<div class="nav-drawer" id="nav-drawer" aria-hidden="true">
   <ul>
     <li><a href="work.html">Work</a></li>
     <li><a href="services.html">Services</a></li>
@@ -293,7 +288,7 @@
 
 
 <!-- HERO -->
-<section class="proj-hero">
+<section id="main" class="proj-hero">
   <div class="proj-hero-img">
     <img decoding="async" loading="lazy" width="1280" height="853" srcset="images/work/harry-j-make-up/harryjpro-00005-640.webp 640w, images/work/harry-j-make-up/harryjpro-00005-1280.webp 1280w" sizes="(max-width: 768px) 100vw, 50vw" src="images/work/harry-j-make-up/harryjpro-00005-640.webp" alt="Harry J Make Up Editorial">
   </div>
@@ -371,13 +366,13 @@
   <div class="credit-item">
     <div class="credit-label">Instagram</div>
     <div class="credit-val">
-      <a href="https://instagram.com/harryjmakeup" target="_blank" style="color:var(--red-text);cursor:none;">@harryjmakeup</a>
+      <a href="https://instagram.com/harryjmakeup" target="_blank" style="color:var(--red-text);">@harryjmakeup</a>
     </div>
   </div>
   <div class="credit-item">
     <div class="credit-label">Agency</div>
     <div class="credit-val">
-      <a href="index.html" style="color:var(--red-text);cursor:none;">@ananse.creative</a>
+      <a href="index.html" style="color:var(--red-text);">@ananse.creative</a>
     </div>
   </div>
 </div>
