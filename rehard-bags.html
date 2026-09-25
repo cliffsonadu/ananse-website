@@ -41,7 +41,7 @@
 .proj-hero-content { position: relative; z-index: 2; }
 .proj-hero-eyebrow {
   font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase;
-  color: #bb5a58; margin-bottom: 1.2rem;
+  color: var(--red-text); margin-bottom: 1.2rem;
   display: flex; align-items: center; gap: 14px;
 }
 .proj-hero-eyebrow::before {
@@ -52,14 +52,14 @@
   font-size: clamp(3rem, 6vw, 6rem);
   font-weight: 300; line-height: 1.0; color: #ede8df; margin-bottom: 1.5rem;
 }
-.proj-hero h1 em { font-style: italic; color: rgba(237,232,223,0.35); }
+.proj-hero h1 em { font-style: italic; color: rgba(237,232,223,0.65); }
 .proj-hero-meta { display: flex; gap: 3rem; flex-wrap: wrap; }
 .proj-meta-item { display: flex; flex-direction: column; }
 .proj-meta-label {
   font-size: 8px; letter-spacing: 0.26em; text-transform: uppercase;
-  color: rgba(237,232,223,0.3); margin-bottom: 4px;
+  color: rgba(237,232,223,0.65); margin-bottom: 4px;
 }
-.proj-meta-val { font-size: 12px; color: rgba(237,232,223,0.6); font-weight: 300; }
+.proj-meta-val { font-size: 12px; color: rgba(237,232,223,0.65); font-weight: 300; }
 .proj-intro {
   padding: 5rem 3.5rem;
   display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem;
@@ -70,11 +70,11 @@
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 300; color: #ede8df; line-height: 1.2; margin-bottom: 1.5rem;
 }
-.proj-intro-right { font-size: 13.5px; line-height: 1.95; color: rgba(237,232,223,0.4); font-weight: 300; }
+.proj-intro-right { font-size: 13.5px; line-height: 1.95; color: rgba(237,232,223,0.65); font-weight: 300; }
 .proj-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2rem; }
 .proj-tag {
   font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase;
-  border: 0.5px solid rgba(237,232,223,0.12); padding: 6px 14px; color: rgba(237,232,223,0.35);
+  border: 0.5px solid rgba(237,232,223,0.12); padding: 6px 14px; color: rgba(237,232,223,0.65);
 }
 .gallery-wrap { padding: 4rem 3.5rem 6rem; }
 .masonry-js { display: flex; gap: 6px; align-items: flex-start; }
@@ -113,12 +113,12 @@
   width: 44px; height: 44px; border: 0.5px solid rgba(237,232,223,0.2);
   border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; background: transparent; color: #ede8df; font-size: 1.1rem; z-index: 1001;
 }
-.lb-close:hover { border-color: #610c0b; color: #bb5a58; }
+.lb-close:hover { border-color: #610c0b; color: var(--red-text); }
 .lb-nav {
   position: fixed; top: 50%; transform: translateY(-50%);
   width: 50px; height: 50px; border: 0.5px solid rgba(237,232,223,0.15);
   display: flex; align-items: center; justify-content: center; transition: all 0.35s; background: transparent;
-  color: rgba(237,232,223,0.5); font-size: 1.2rem; z-index: 1001;
+  color: rgba(237,232,223,0.65); font-size: 1.2rem; z-index: 1001;
 }
 .lb-nav:hover { border-color: #610c0b; color: #ede8df; }
 .lb-prev { left: 1.5rem; }
@@ -126,24 +126,24 @@
 .lb-counter {
   position: fixed; bottom: 1.8rem; left: 50%; transform: translateX(-50%);
   font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-  color: rgba(237,232,223,0.28); z-index: 1001; font-family: 'DM Sans', sans-serif;
+  color: rgba(237,232,223,0.65); z-index: 1001; font-family: 'DM Sans', sans-serif;
 }
 .proj-credits {
   padding: 4rem 3.5rem; border-top: 0.5px solid rgba(237,232,223,0.06);
   display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem;
 }
 .credit-item { display: flex; flex-direction: column; }
-.credit-label { font-size: 8px; letter-spacing: 0.26em; text-transform: uppercase; color: #bb5a58; margin-bottom: 6px; }
-.credit-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; color: rgba(237,232,223,0.6); }
+.credit-label { font-size: 8px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--red-text); margin-bottom: 6px; }
+.credit-val { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; color: rgba(237,232,223,0.65); }
 .next-project {
   border-top: 0.5px solid rgba(237,232,223,0.06); padding: 4rem 3.5rem;
   display: flex; justify-content: space-between; align-items: center; transition: background 0.4s; text-decoration: none;
 }
 .next-project:hover { background: rgba(237,232,223,0.02); }
-.next-label { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(237,232,223,0.25); margin-bottom: 8px; }
+.next-label { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(237,232,223,0.65); margin-bottom: 8px; }
 .next-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: #ede8df; }
-.next-arr { font-size: 2rem; color: rgba(237,232,223,0.2); transition: transform 0.4s, color 0.4s; }
-.next-project:hover .next-arr { transform: translateX(8px); color: #bb5a58; }
+.next-arr { font-size: 2rem; color: rgba(237,232,223,0.65); transition: transform 0.4s, color 0.4s; }
+.next-project:hover .next-arr { transform: translateX(8px); color: var(--red-text); }
 @media (max-width: 768px) {
   .proj-hero { padding: 0 1.5rem 3rem; }
   .proj-intro { grid-template-columns: 1fr; gap: 2rem; padding: 3.5rem 1.5rem; }
@@ -234,7 +234,7 @@
   <div class="credit-item"><div class="credit-label">Photography & Direction</div><div class="credit-val">Cliffson / Anansé Creative Haus</div></div>
   <div class="credit-item"><div class="credit-label">Client</div><div class="credit-val">Rehard Bags</div></div>
   <div class="credit-item"><div class="credit-label">Category</div><div class="credit-val">Fashion & Editorial</div></div>
-  <div class="credit-item"><div class="credit-label">Agency</div><div class="credit-val"><a href="index.html" style="color:#bb5a58;">@ananse.creative</a></div></div>
+  <div class="credit-item"><div class="credit-label">Agency</div><div class="credit-val"><a href="index.html" style="color:var(--red-text);">@ananse.creative</a></div></div>
 </div>
 
 <a href="work.html" class="next-project">

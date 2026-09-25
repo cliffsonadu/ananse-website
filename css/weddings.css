@@ -16,7 +16,7 @@
   --w-taupe: #b9ab97;
   --w-ink:   #211e1a;   /* 14.19:1 */
   --w-body:  #4a443c;   /*  8.22:1 */
-  --w-muted: #6b6459;   /*  5.00:1 */
+  --w-muted:  #5a544a;   /*  5.9:1 on sand, 6.4:1 on cream */   /*  5.00:1 */
   --w-line:  rgba(33,30,26,0.14);
 
   background: var(--w-cream);
@@ -202,7 +202,7 @@ body.nav-open { overflow: hidden; }
 .wed-service:last-child { border-right: none; padding-right: 0; }
 .wed-service-num {
   font-family: var(--serif); font-size: 3.2rem; font-weight: 300;
-  color: rgba(97,12,11,0.22); line-height: 1; margin-bottom: 0.9rem;
+  color: rgba(97,12,11,0.55); line-height: 1; margin-bottom: 0.9rem;
 }
 .wed-service h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 300; color: var(--w-ink); margin-bottom: 0.8rem; }
 .wed-service p { font-size: 12.5px; line-height: 1.9; color: var(--w-body); margin-bottom: 1.4rem; }
