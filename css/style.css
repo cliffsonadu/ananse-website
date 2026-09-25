@@ -2,7 +2,7 @@
 /* ── VARIABLES ── */
 :root {
   --red: #610c0b;            /* brand logo red — fills, buttons, rules, glows */
-  --red-text: #bb5a58;       /* AA tint for small red text on --black (4.52:1) */
+  --red-text: #bf6463;       /* AA tint for small red text on --black (4.52:1) */
                             /* TODO Lead Dev: the logo red is 1.50:1 as text and
                                unreadable at 9px. This is the most muted tint that
                                still clears AA — adjust to taste, keep it >= 4.5:1. */
@@ -70,7 +70,7 @@ ul { list-style: none; }
 .nav-links a {
   font-size: 10px; letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(237,232,223,0.5);
+  color: rgba(237,232,223,0.65);
   transition: color 0.3s;
 }
 .nav-links a:hover, .nav-links a.active { color: var(--cream); }
@@ -119,7 +119,7 @@ ul { list-style: none; }
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 10px; letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(237,232,223,0.5);
+  color: rgba(237,232,223,0.65);
   cursor: pointer; transition: color 0.35s;
 }
 .ghost-link:hover { color: var(--cream); }
@@ -170,7 +170,7 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
 .ticker-word {
   font-size: 9px; letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(237,232,223,0.5);
+  color: rgba(237,232,223,0.65);
 }
 .ticker-gem { color: var(--red-text); font-size: 7px; vertical-align: middle; }
 
@@ -183,7 +183,7 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
 .brand-bar-label {
   font-size: 9px; letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(237,232,223,0.5);
+  color: rgba(237,232,223,0.65);
   text-align: center; margin-bottom: 2.5rem;
 }
 .brand-logos {
@@ -210,7 +210,7 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
 .brand-slot-ph {
   font-family: var(--serif);
   font-size: 11px; letter-spacing: 0.15em;
-  color: rgba(237,232,223,0.5);
+  color: rgba(237,232,223,0.65);
   text-align: center; padding: 0 8px;
   font-style: italic;
 }
@@ -317,10 +317,10 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
   font-weight: 300; line-height: 1.0;
   color: var(--cream); margin-bottom: 1.5rem;
 }
-.page-hero h1 em { font-style: italic; color: rgba(237,232,223,0.5); }
+.page-hero h1 em { font-style: italic; color: rgba(237,232,223,0.65); }
 .page-hero-sub {
   font-size: 14px; line-height: 1.9;
-  color: rgba(237,232,223,0.5);
+  color: rgba(237,232,223,0.65);
   max-width: 480px; font-weight: 300;
 }
 
@@ -335,14 +335,14 @@ html.js .rv.on { opacity: 1; transform: translateY(0); }
 .footer-logo {
   font-family: var(--serif);
   font-size: 1.1rem; letter-spacing: 0.15em;
-  color: rgba(237,232,223,0.5);
+  color: rgba(237,232,223,0.65);
 }
-.footer-copy { font-size: 9px; color: rgba(237,232,223,0.5); letter-spacing: 0.08em; }
+.footer-copy { font-size: 9px; color: rgba(237,232,223,0.65); letter-spacing: 0.08em; }
 .footer-links { display: flex; gap: 2rem; }
 .footer-links a {
   font-size: 9px; letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(237,232,223,0.5);
+  color: rgba(237,232,223,0.65);
   transition: color 0.3s;
 }
 .footer-links a:hover { color: var(--cream); }
@@ -431,7 +431,7 @@ body {
   margin-top: 3rem;
   font-size: 10px; letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(237,232,223,0.5);
+  color: rgba(237,232,223,0.65);
 }
 body.nav-open { overflow: hidden; }
 
